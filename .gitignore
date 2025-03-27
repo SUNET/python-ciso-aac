@@ -23,3 +23,6 @@ dmypy.json
 
 /coverage.xml
 /.coverage
+
+# we are a package not an app
+uv.lock
