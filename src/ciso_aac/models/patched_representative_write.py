@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -31,33 +31,33 @@ class PatchedRepresentativeWrite:
         user (Union[None, UUID, Unset]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    create_user: Union[Unset, bool] = False
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    email: Union[Unset, str] = UNSET
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    phone: Union[Unset, str] = UNSET
-    role: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    entity: Union[Unset, UUID] = UNSET
-    user: Union[None, UUID, Unset] = UNSET
+    id: Unset | UUID = UNSET
+    create_user: Unset | bool = False
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    email: Unset | str = UNSET
+    first_name: Unset | str = UNSET
+    last_name: Unset | str = UNSET
+    phone: Unset | str = UNSET
+    role: Unset | str = UNSET
+    description: Unset | str = UNSET
+    entity: Unset | UUID = UNSET
+    user: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         create_user = self.create_user
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -75,11 +75,11 @@ class PatchedRepresentativeWrite:
 
         description = self.description
 
-        entity: Union[Unset, str] = UNSET
+        entity: Unset | str = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        user: Union[None, Unset, str]
+        user: None | Unset | str
         if isinstance(self.user, Unset):
             user = UNSET
         elif isinstance(self.user, UUID):
@@ -120,7 +120,7 @@ class PatchedRepresentativeWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -130,11 +130,11 @@ class PatchedRepresentativeWrite:
             else (None, str(self.create_user).encode(), "text/plain")
         )
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -166,11 +166,11 @@ class PatchedRepresentativeWrite:
             else (None, str(self.description).encode(), "text/plain")
         )
 
-        entity: Union[Unset, bytes] = UNSET
+        entity: Unset | bytes = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        user: Union[Unset, tuple[None, bytes, str]]
+        user: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user, Unset):
             user = UNSET
@@ -217,7 +217,7 @@ class PatchedRepresentativeWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -226,14 +226,14 @@ class PatchedRepresentativeWrite:
         create_user = d.pop("create_user", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -254,13 +254,13 @@ class PatchedRepresentativeWrite:
         description = d.pop("description", UNSET)
 
         _entity = d.pop("entity", UNSET)
-        entity: Union[Unset, UUID]
+        entity: Unset | UUID
         if isinstance(_entity, Unset):
             entity = UNSET
         else:
             entity = UUID(_entity)
 
-        def _parse_user(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -273,7 +273,7 @@ class PatchedRepresentativeWrite:
                 return user_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user = _parse_user(d.pop("user", UNSET))
 

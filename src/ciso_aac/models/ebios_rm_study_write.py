@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -42,22 +42,22 @@ class EbiosRMStudyWrite:
 
     id: UUID
     name: str
-    risk_matrix: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[None, Unset, datetime.date] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    version: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, None, Status72AEnum, Unset] = UNSET
-    observation: Union[None, Unset, str] = UNSET
-    meta: Union[Unset, Any] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    reference_entity: Union[Unset, UUID] = UNSET
-    assets: Union[Unset, list[UUID]] = UNSET
-    compliance_assessments: Union[Unset, list[UUID]] = UNSET
-    authors: Union[Unset, list[UUID]] = UNSET
-    reviewers: Union[Unset, list[UUID]] = UNSET
+    risk_matrix: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    due_date: None | Unset | datetime.date = UNSET
+    ref_id: Unset | str = UNSET
+    version: None | Unset | str = UNSET
+    status: BlankEnum | None | Status72AEnum | Unset = UNSET
+    observation: None | Unset | str = UNSET
+    meta: Unset | Any = UNSET
+    folder: Unset | UUID = UNSET
+    reference_entity: Unset | UUID = UNSET
+    assets: Unset | list[UUID] = UNSET
+    compliance_assessments: Unset | list[UUID] = UNSET
+    authors: Unset | list[UUID] = UNSET
+    reviewers: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,19 +65,19 @@ class EbiosRMStudyWrite:
 
         name = self.name
 
-        risk_matrix: Union[Unset, str] = UNSET
+        risk_matrix: Unset | str = UNSET
         if not isinstance(self.risk_matrix, Unset):
             risk_matrix = str(self.risk_matrix)
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -85,7 +85,7 @@ class EbiosRMStudyWrite:
         else:
             eta = self.eta
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         elif isinstance(self.due_date, datetime.date):
@@ -95,13 +95,13 @@ class EbiosRMStudyWrite:
 
         ref_id = self.ref_id
 
-        version: Union[None, Unset, str]
+        version: None | Unset | str
         if isinstance(self.version, Unset):
             version = UNSET
         else:
             version = self.version
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status72AEnum):
@@ -111,7 +111,7 @@ class EbiosRMStudyWrite:
         else:
             status = self.status
 
-        observation: Union[None, Unset, str]
+        observation: None | Unset | str
         if isinstance(self.observation, Unset):
             observation = UNSET
         else:
@@ -119,36 +119,36 @@ class EbiosRMStudyWrite:
 
         meta = self.meta
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        reference_entity: Union[Unset, str] = UNSET
+        reference_entity: Unset | str = UNSET
         if not isinstance(self.reference_entity, Unset):
             reference_entity = str(self.reference_entity)
 
-        assets: Union[Unset, list[str]] = UNSET
+        assets: Unset | list[str] = UNSET
         if not isinstance(self.assets, Unset):
             assets = []
             for assets_item_data in self.assets:
                 assets_item = str(assets_item_data)
                 assets.append(assets_item)
 
-        compliance_assessments: Union[Unset, list[str]] = UNSET
+        compliance_assessments: Unset | list[str] = UNSET
         if not isinstance(self.compliance_assessments, Unset):
             compliance_assessments = []
             for compliance_assessments_item_data in self.compliance_assessments:
                 compliance_assessments_item = str(compliance_assessments_item_data)
                 compliance_assessments.append(compliance_assessments_item)
 
-        authors: Union[Unset, list[str]] = UNSET
+        authors: Unset | list[str] = UNSET
         if not isinstance(self.authors, Unset):
             authors = []
             for authors_item_data in self.authors:
                 authors_item = str(authors_item_data)
                 authors.append(authors_item)
 
-        reviewers: Union[Unset, list[str]] = UNSET
+        reviewers: Unset | list[str] = UNSET
         if not isinstance(self.reviewers, Unset):
             reviewers = []
             for reviewers_item_data in self.reviewers:
@@ -203,7 +203,7 @@ class EbiosRMStudyWrite:
 
         name = (None, str(self.name).encode(), "text/plain")
 
-        risk_matrix: Union[Unset, bytes] = UNSET
+        risk_matrix: Unset | bytes = UNSET
         if not isinstance(self.risk_matrix, Unset):
             risk_matrix = str(self.risk_matrix)
 
@@ -213,7 +213,7 @@ class EbiosRMStudyWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -222,7 +222,7 @@ class EbiosRMStudyWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        eta: Union[Unset, tuple[None, bytes, str]]
+        eta: Unset | tuple[None, bytes, str]
 
         if isinstance(self.eta, Unset):
             eta = UNSET
@@ -231,7 +231,7 @@ class EbiosRMStudyWrite:
         else:
             eta = (None, str(self.eta).encode(), "text/plain")
 
-        due_date: Union[Unset, tuple[None, bytes, str]]
+        due_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.due_date, Unset):
             due_date = UNSET
@@ -242,7 +242,7 @@ class EbiosRMStudyWrite:
 
         ref_id = self.ref_id if isinstance(self.ref_id, Unset) else (None, str(self.ref_id).encode(), "text/plain")
 
-        version: Union[Unset, tuple[None, bytes, str]]
+        version: Unset | tuple[None, bytes, str]
 
         if isinstance(self.version, Unset):
             version = UNSET
@@ -251,7 +251,7 @@ class EbiosRMStudyWrite:
         else:
             version = (None, str(self.version).encode(), "text/plain")
 
-        status: Union[Unset, tuple[None, bytes, str]]
+        status: Unset | tuple[None, bytes, str]
 
         if isinstance(self.status, Unset):
             status = UNSET
@@ -264,7 +264,7 @@ class EbiosRMStudyWrite:
         else:
             status = (None, str(self.status).encode(), "text/plain")
 
-        observation: Union[Unset, tuple[None, bytes, str]]
+        observation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.observation, Unset):
             observation = UNSET
@@ -275,15 +275,15 @@ class EbiosRMStudyWrite:
 
         meta = self.meta if isinstance(self.meta, Unset) else (None, str(self.meta).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        reference_entity: Union[Unset, bytes] = UNSET
+        reference_entity: Unset | bytes = UNSET
         if not isinstance(self.reference_entity, Unset):
             reference_entity = str(self.reference_entity)
 
-        assets: Union[Unset, tuple[None, bytes, str]] = UNSET
+        assets: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.assets, Unset):
             _temp_assets = []
             for assets_item_data in self.assets:
@@ -291,7 +291,7 @@ class EbiosRMStudyWrite:
                 _temp_assets.append(assets_item)
             assets = (None, json.dumps(_temp_assets).encode(), "application/json")
 
-        compliance_assessments: Union[Unset, tuple[None, bytes, str]] = UNSET
+        compliance_assessments: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.compliance_assessments, Unset):
             _temp_compliance_assessments = []
             for compliance_assessments_item_data in self.compliance_assessments:
@@ -299,7 +299,7 @@ class EbiosRMStudyWrite:
                 _temp_compliance_assessments.append(compliance_assessments_item)
             compliance_assessments = (None, json.dumps(_temp_compliance_assessments).encode(), "application/json")
 
-        authors: Union[Unset, tuple[None, bytes, str]] = UNSET
+        authors: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.authors, Unset):
             _temp_authors = []
             for authors_item_data in self.authors:
@@ -307,7 +307,7 @@ class EbiosRMStudyWrite:
                 _temp_authors.append(authors_item)
             authors = (None, json.dumps(_temp_authors).encode(), "application/json")
 
-        reviewers: Union[Unset, tuple[None, bytes, str]] = UNSET
+        reviewers: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.reviewers, Unset):
             _temp_reviewers = []
             for reviewers_item_data in self.reviewers:
@@ -368,7 +368,7 @@ class EbiosRMStudyWrite:
         name = d.pop("name")
 
         _risk_matrix = d.pop("risk_matrix", UNSET)
-        risk_matrix: Union[Unset, UUID]
+        risk_matrix: Unset | UUID
         if isinstance(_risk_matrix, Unset):
             risk_matrix = UNSET
         else:
@@ -376,16 +376,16 @@ class EbiosRMStudyWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -398,11 +398,11 @@ class EbiosRMStudyWrite:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_due_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -415,22 +415,22 @@ class EbiosRMStudyWrite:
                 return due_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
         ref_id = d.pop("ref_id", UNSET)
 
-        def _parse_version(data: object) -> Union[None, Unset, str]:
+        def _parse_version(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         version = _parse_version(d.pop("version", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, None, Status72AEnum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | None | Status72AEnum | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -451,30 +451,30 @@ class EbiosRMStudyWrite:
                 return status_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, None, Status72AEnum, Unset], data)
+            return cast(BlankEnum | None | Status72AEnum | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_observation(data: object) -> Union[None, Unset, str]:
+        def _parse_observation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         observation = _parse_observation(d.pop("observation", UNSET))
 
         meta = d.pop("meta", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
         _reference_entity = d.pop("reference_entity", UNSET)
-        reference_entity: Union[Unset, UUID]
+        reference_entity: Unset | UUID
         if isinstance(_reference_entity, Unset):
             reference_entity = UNSET
         else:

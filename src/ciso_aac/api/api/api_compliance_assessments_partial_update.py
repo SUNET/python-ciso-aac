@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-    ],
+    body: PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -47,8 +43,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ComplianceAssessmentWrite]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> ComplianceAssessmentWrite | None:
     if response.status_code == 200:
         response_200 = ComplianceAssessmentWrite.from_dict(response.json())
 
@@ -60,7 +56,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[ComplianceAssessmentWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -74,11 +70,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-    ],
+    body: PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite,
 ) -> Response[ComplianceAssessmentWrite]:
     """API endpoint that allows compliance assessments to be viewed or edited.
 
@@ -112,12 +104,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-    ],
-) -> Optional[ComplianceAssessmentWrite]:
+    body: PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite,
+) -> ComplianceAssessmentWrite | None:
     """API endpoint that allows compliance assessments to be viewed or edited.
 
     Args:
@@ -145,11 +133,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-    ],
+    body: PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite,
 ) -> Response[ComplianceAssessmentWrite]:
     """API endpoint that allows compliance assessments to be viewed or edited.
 
@@ -181,12 +165,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-        PatchedComplianceAssessmentWrite,
-    ],
-) -> Optional[ComplianceAssessmentWrite]:
+    body: PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite | PatchedComplianceAssessmentWrite,
+) -> ComplianceAssessmentWrite | None:
     """API endpoint that allows compliance assessments to be viewed or edited.
 
     Args:

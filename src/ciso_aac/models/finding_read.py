@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -54,11 +54,11 @@ class FindingRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    severity: Union[Unset, int] = UNSET
-    status: Union[Unset, Status40BEnum] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    severity: Unset | int = UNSET
+    status: Unset | Status40BEnum = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,7 +86,7 @@ class FindingRead:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -96,7 +96,7 @@ class FindingRead:
 
         severity = self.severity
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
@@ -157,12 +157,12 @@ class FindingRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -171,7 +171,7 @@ class FindingRead:
         severity = d.pop("severity", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, Status40BEnum]
+        status: Unset | Status40BEnum
         if isinstance(_status, Unset):
             status = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -14,11 +14,7 @@ from ...types import Response
 def _get_kwargs(
     id: UUID,
     *,
-    body: Union[
-        PatchedUserWrite,
-        PatchedUserWrite,
-        PatchedUserWrite,
-    ],
+    body: PatchedUserWrite | PatchedUserWrite | PatchedUserWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -47,7 +43,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[UserWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> UserWrite | None:
     if response.status_code == 200:
         response_200 = UserWrite.from_dict(response.json())
 
@@ -58,7 +54,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[UserWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[UserWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,11 +67,7 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedUserWrite,
-        PatchedUserWrite,
-        PatchedUserWrite,
-    ],
+    body: PatchedUserWrite | PatchedUserWrite | PatchedUserWrite,
 ) -> Response[UserWrite]:
     """API endpoint that allows users to be viewed or edited
 
@@ -109,12 +101,8 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedUserWrite,
-        PatchedUserWrite,
-        PatchedUserWrite,
-    ],
-) -> Optional[UserWrite]:
+    body: PatchedUserWrite | PatchedUserWrite | PatchedUserWrite,
+) -> UserWrite | None:
     """API endpoint that allows users to be viewed or edited
 
     Args:
@@ -142,11 +130,7 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedUserWrite,
-        PatchedUserWrite,
-        PatchedUserWrite,
-    ],
+    body: PatchedUserWrite | PatchedUserWrite | PatchedUserWrite,
 ) -> Response[UserWrite]:
     """API endpoint that allows users to be viewed or edited
 
@@ -178,12 +162,8 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedUserWrite,
-        PatchedUserWrite,
-        PatchedUserWrite,
-    ],
-) -> Optional[UserWrite]:
+    body: PatchedUserWrite | PatchedUserWrite | PatchedUserWrite,
+) -> UserWrite | None:
     """API endpoint that allows users to be viewed or edited
 
     Args:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        FearedEventWrite,
-        FearedEventWrite,
-        FearedEventWrite,
-    ],
+    body: FearedEventWrite | FearedEventWrite | FearedEventWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -44,9 +40,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[FearedEventWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FearedEventWrite | None:
     if response.status_code == 201:
         response_201 = FearedEventWrite.from_dict(response.json())
 
@@ -57,9 +51,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[FearedEventWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FearedEventWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,11 +63,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FearedEventWrite,
-        FearedEventWrite,
-        FearedEventWrite,
-    ],
+    body: FearedEventWrite | FearedEventWrite | FearedEventWrite,
 ) -> Response[FearedEventWrite]:
     """
     Args:
@@ -105,12 +93,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FearedEventWrite,
-        FearedEventWrite,
-        FearedEventWrite,
-    ],
-) -> Optional[FearedEventWrite]:
+    body: FearedEventWrite | FearedEventWrite | FearedEventWrite,
+) -> FearedEventWrite | None:
     """
     Args:
         body (FearedEventWrite):
@@ -134,11 +118,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FearedEventWrite,
-        FearedEventWrite,
-        FearedEventWrite,
-    ],
+    body: FearedEventWrite | FearedEventWrite | FearedEventWrite,
 ) -> Response[FearedEventWrite]:
     """
     Args:
@@ -166,12 +146,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FearedEventWrite,
-        FearedEventWrite,
-        FearedEventWrite,
-    ],
-) -> Optional[FearedEventWrite]:
+    body: FearedEventWrite | FearedEventWrite | FearedEventWrite,
+) -> FearedEventWrite | None:
     """
     Args:
         body (FearedEventWrite):

@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -43,17 +43,17 @@ class FindingWrite:
     id: UUID
     name: str
     findings_assessment: UUID
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    severity: Union[Unset, int] = UNSET
-    status: Union[Unset, Status40BEnum] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    filtering_labels: Union[Unset, list[UUID]] = UNSET
-    vulnerabilities: Union[Unset, list[UUID]] = UNSET
-    reference_controls: Union[Unset, list[UUID]] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
-    owner: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    severity: Unset | int = UNSET
+    status: Unset | Status40BEnum = UNSET
+    folder: Unset | UUID = UNSET
+    filtering_labels: Unset | list[UUID] = UNSET
+    vulnerabilities: Unset | list[UUID] = UNSET
+    reference_controls: Unset | list[UUID] = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
+    owner: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,7 +65,7 @@ class FindingWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -75,43 +75,43 @@ class FindingWrite:
 
         severity = self.severity
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        filtering_labels: Union[Unset, list[str]] = UNSET
+        filtering_labels: Unset | list[str] = UNSET
         if not isinstance(self.filtering_labels, Unset):
             filtering_labels = []
             for filtering_labels_item_data in self.filtering_labels:
                 filtering_labels_item = str(filtering_labels_item_data)
                 filtering_labels.append(filtering_labels_item)
 
-        vulnerabilities: Union[Unset, list[str]] = UNSET
+        vulnerabilities: Unset | list[str] = UNSET
         if not isinstance(self.vulnerabilities, Unset):
             vulnerabilities = []
             for vulnerabilities_item_data in self.vulnerabilities:
                 vulnerabilities_item = str(vulnerabilities_item_data)
                 vulnerabilities.append(vulnerabilities_item)
 
-        reference_controls: Union[Unset, list[str]] = UNSET
+        reference_controls: Unset | list[str] = UNSET
         if not isinstance(self.reference_controls, Unset):
             reference_controls = []
             for reference_controls_item_data in self.reference_controls:
                 reference_controls_item = str(reference_controls_item_data)
                 reference_controls.append(reference_controls_item)
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
                 applied_controls_item = str(applied_controls_item_data)
                 applied_controls.append(applied_controls_item)
 
-        owner: Union[Unset, list[str]] = UNSET
+        owner: Unset | list[str] = UNSET
         if not isinstance(self.owner, Unset):
             owner = []
             for owner_item_data in self.owner:
@@ -165,7 +165,7 @@ class FindingWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -180,15 +180,15 @@ class FindingWrite:
             self.severity if isinstance(self.severity, Unset) else (None, str(self.severity).encode(), "text/plain")
         )
 
-        status: Union[Unset, tuple[None, bytes, str]] = UNSET
+        status: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.status, Unset):
             status = (None, str(self.status.value).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        filtering_labels: Union[Unset, tuple[None, bytes, str]] = UNSET
+        filtering_labels: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.filtering_labels, Unset):
             _temp_filtering_labels = []
             for filtering_labels_item_data in self.filtering_labels:
@@ -196,7 +196,7 @@ class FindingWrite:
                 _temp_filtering_labels.append(filtering_labels_item)
             filtering_labels = (None, json.dumps(_temp_filtering_labels).encode(), "application/json")
 
-        vulnerabilities: Union[Unset, tuple[None, bytes, str]] = UNSET
+        vulnerabilities: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.vulnerabilities, Unset):
             _temp_vulnerabilities = []
             for vulnerabilities_item_data in self.vulnerabilities:
@@ -204,7 +204,7 @@ class FindingWrite:
                 _temp_vulnerabilities.append(vulnerabilities_item)
             vulnerabilities = (None, json.dumps(_temp_vulnerabilities).encode(), "application/json")
 
-        reference_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        reference_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.reference_controls, Unset):
             _temp_reference_controls = []
             for reference_controls_item_data in self.reference_controls:
@@ -212,7 +212,7 @@ class FindingWrite:
                 _temp_reference_controls.append(reference_controls_item)
             reference_controls = (None, json.dumps(_temp_reference_controls).encode(), "application/json")
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -220,7 +220,7 @@ class FindingWrite:
                 _temp_applied_controls.append(applied_controls_item)
             applied_controls = (None, json.dumps(_temp_applied_controls).encode(), "application/json")
 
-        owner: Union[Unset, tuple[None, bytes, str]] = UNSET
+        owner: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.owner, Unset):
             _temp_owner = []
             for owner_item_data in self.owner:
@@ -275,12 +275,12 @@ class FindingWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -289,14 +289,14 @@ class FindingWrite:
         severity = d.pop("severity", UNSET)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, Status40BEnum]
+        status: Unset | Status40BEnum
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = Status40BEnum(_status)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

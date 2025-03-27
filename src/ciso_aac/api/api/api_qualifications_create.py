@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        QualificationWrite,
-        QualificationWrite,
-        QualificationWrite,
-    ],
+    body: QualificationWrite | QualificationWrite | QualificationWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -44,9 +40,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[QualificationWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> QualificationWrite | None:
     if response.status_code == 201:
         response_201 = QualificationWrite.from_dict(response.json())
 
@@ -57,9 +51,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[QualificationWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[QualificationWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,11 +63,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        QualificationWrite,
-        QualificationWrite,
-        QualificationWrite,
-    ],
+    body: QualificationWrite | QualificationWrite | QualificationWrite,
 ) -> Response[QualificationWrite]:
     """API endpoint that allows qualifications to be viewed or edited.
 
@@ -106,12 +94,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        QualificationWrite,
-        QualificationWrite,
-        QualificationWrite,
-    ],
-) -> Optional[QualificationWrite]:
+    body: QualificationWrite | QualificationWrite | QualificationWrite,
+) -> QualificationWrite | None:
     """API endpoint that allows qualifications to be viewed or edited.
 
     Args:
@@ -136,11 +120,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        QualificationWrite,
-        QualificationWrite,
-        QualificationWrite,
-    ],
+    body: QualificationWrite | QualificationWrite | QualificationWrite,
 ) -> Response[QualificationWrite]:
     """API endpoint that allows qualifications to be viewed or edited.
 
@@ -169,12 +149,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        QualificationWrite,
-        QualificationWrite,
-        QualificationWrite,
-    ],
-) -> Optional[QualificationWrite]:
+    body: QualificationWrite | QualificationWrite | QualificationWrite,
+) -> QualificationWrite | None:
     """API endpoint that allows qualifications to be viewed or edited.
 
     Args:

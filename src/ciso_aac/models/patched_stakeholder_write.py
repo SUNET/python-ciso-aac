@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -38,28 +38,28 @@ class PatchedStakeholderWrite:
         applied_controls (Union[Unset, list[UUID]]): Controls applied to lower stakeholder criticality
     """
 
-    id: Union[Unset, UUID] = UNSET
-    current_criticality: Union[Unset, int] = UNSET
-    residual_criticality: Union[Unset, int] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    category: Union[Unset, StakeholderWriteCategoryEnum] = UNSET
-    current_dependency: Union[Unset, int] = UNSET
-    current_penetration: Union[Unset, int] = UNSET
-    current_maturity: Union[Unset, int] = UNSET
-    current_trust: Union[Unset, int] = UNSET
-    residual_dependency: Union[Unset, int] = UNSET
-    residual_penetration: Union[Unset, int] = UNSET
-    residual_maturity: Union[Unset, int] = UNSET
-    residual_trust: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    ebios_rm_study: Union[Unset, UUID] = UNSET
-    entity: Union[Unset, UUID] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    current_criticality: Unset | int = UNSET
+    residual_criticality: Unset | int = UNSET
+    is_published: Unset | bool = UNSET
+    category: Unset | StakeholderWriteCategoryEnum = UNSET
+    current_dependency: Unset | int = UNSET
+    current_penetration: Unset | int = UNSET
+    current_maturity: Unset | int = UNSET
+    current_trust: Unset | int = UNSET
+    residual_dependency: Unset | int = UNSET
+    residual_penetration: Unset | int = UNSET
+    residual_maturity: Unset | int = UNSET
+    residual_trust: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    ebios_rm_study: Unset | UUID = UNSET
+    entity: Unset | UUID = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -69,7 +69,7 @@ class PatchedStakeholderWrite:
 
         is_published = self.is_published
 
-        category: Union[Unset, str] = UNSET
+        category: Unset | str = UNSET
         if not isinstance(self.category, Unset):
             category = self.category.value
 
@@ -93,15 +93,15 @@ class PatchedStakeholderWrite:
 
         justification = self.justification
 
-        ebios_rm_study: Union[Unset, str] = UNSET
+        ebios_rm_study: Unset | str = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        entity: Union[Unset, str] = UNSET
+        entity: Unset | str = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -151,7 +151,7 @@ class PatchedStakeholderWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -173,7 +173,7 @@ class PatchedStakeholderWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        category: Union[Unset, tuple[None, bytes, str]] = UNSET
+        category: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.category, Unset):
             category = (None, str(self.category.value).encode(), "text/plain")
 
@@ -237,15 +237,15 @@ class PatchedStakeholderWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        ebios_rm_study: Union[Unset, bytes] = UNSET
+        ebios_rm_study: Unset | bytes = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        entity: Union[Unset, bytes] = UNSET
+        entity: Unset | bytes = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -301,7 +301,7 @@ class PatchedStakeholderWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -314,7 +314,7 @@ class PatchedStakeholderWrite:
         is_published = d.pop("is_published", UNSET)
 
         _category = d.pop("category", UNSET)
-        category: Union[Unset, StakeholderWriteCategoryEnum]
+        category: Unset | StakeholderWriteCategoryEnum
         if isinstance(_category, Unset):
             category = UNSET
         else:
@@ -341,14 +341,14 @@ class PatchedStakeholderWrite:
         justification = d.pop("justification", UNSET)
 
         _ebios_rm_study = d.pop("ebios_rm_study", UNSET)
-        ebios_rm_study: Union[Unset, UUID]
+        ebios_rm_study: Unset | UUID
         if isinstance(_ebios_rm_study, Unset):
             ebios_rm_study = UNSET
         else:
             ebios_rm_study = UUID(_ebios_rm_study)
 
         _entity = d.pop("entity", UNSET)
-        entity: Union[Unset, UUID]
+        entity: Unset | UUID
         if isinstance(_entity, Unset):
             entity = UNSET
         else:

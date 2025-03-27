@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -45,11 +45,11 @@ class AttackPathRead:
     updated_at: datetime.datetime
     name: str
     strategic_scenario: UUID
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,7 +77,7 @@ class AttackPathRead:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -146,12 +146,12 @@ class AttackPathRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 

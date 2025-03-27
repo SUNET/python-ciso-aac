@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -45,73 +45,73 @@ class PatchedSecurityExceptionWrite:
         owners (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    requirement_assessments: Union[Unset, list[UUID]] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    severity: Union[Unset, SeverityEnum] = UNSET
-    status: Union[Unset, Status687Enum] = UNSET
-    expiration_date: Union[None, Unset, datetime.date] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    approver: Union[None, UUID, Unset] = UNSET
-    owners: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    requirement_assessments: Unset | list[UUID] = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    severity: Unset | SeverityEnum = UNSET
+    status: Unset | Status687Enum = UNSET
+    expiration_date: None | Unset | datetime.date = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    approver: None | UUID | Unset = UNSET
+    owners: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        requirement_assessments: Union[Unset, list[str]] = UNSET
+        requirement_assessments: Unset | list[str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
                 requirement_assessments_item = str(requirement_assessments_item_data)
                 requirement_assessments.append(requirement_assessments_item)
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
                 applied_controls_item = str(applied_controls_item_data)
                 applied_controls.append(applied_controls_item)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        severity: Union[Unset, int] = UNSET
+        severity: Unset | int = UNSET
         if not isinstance(self.severity, Unset):
             severity = self.severity.value
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
-        expiration_date: Union[None, Unset, str]
+        expiration_date: None | Unset | str
         if isinstance(self.expiration_date, Unset):
             expiration_date = UNSET
         elif isinstance(self.expiration_date, datetime.date):
@@ -121,11 +121,11 @@ class PatchedSecurityExceptionWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[None, Unset, str]
+        approver: None | Unset | str
         if isinstance(self.approver, Unset):
             approver = UNSET
         elif isinstance(self.approver, UUID):
@@ -133,7 +133,7 @@ class PatchedSecurityExceptionWrite:
         else:
             approver = self.approver
 
-        owners: Union[Unset, list[str]] = UNSET
+        owners: Unset | list[str] = UNSET
         if not isinstance(self.owners, Unset):
             owners = []
             for owners_item_data in self.owners:
@@ -177,11 +177,11 @@ class PatchedSecurityExceptionWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        requirement_assessments: Union[Unset, tuple[None, bytes, str]] = UNSET
+        requirement_assessments: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             _temp_requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
@@ -189,7 +189,7 @@ class PatchedSecurityExceptionWrite:
                 _temp_requirement_assessments.append(requirement_assessments_item)
             requirement_assessments = (None, json.dumps(_temp_requirement_assessments).encode(), "application/json")
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -197,17 +197,17 @@ class PatchedSecurityExceptionWrite:
                 _temp_applied_controls.append(applied_controls_item)
             applied_controls = (None, json.dumps(_temp_applied_controls).encode(), "application/json")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -216,7 +216,7 @@ class PatchedSecurityExceptionWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -225,15 +225,15 @@ class PatchedSecurityExceptionWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        severity: Union[Unset, tuple[None, bytes, str]] = UNSET
+        severity: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.severity, Unset):
             severity = (None, str(self.severity.value).encode(), "text/plain")
 
-        status: Union[Unset, tuple[None, bytes, str]] = UNSET
+        status: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.status, Unset):
             status = (None, str(self.status.value).encode(), "text/plain")
 
-        expiration_date: Union[Unset, tuple[None, bytes, str]]
+        expiration_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.expiration_date, Unset):
             expiration_date = UNSET
@@ -248,11 +248,11 @@ class PatchedSecurityExceptionWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[Unset, tuple[None, bytes, str]]
+        approver: Unset | tuple[None, bytes, str]
 
         if isinstance(self.approver, Unset):
             approver = UNSET
@@ -261,7 +261,7 @@ class PatchedSecurityExceptionWrite:
         else:
             approver = (None, str(self.approver).encode(), "text/plain")
 
-        owners: Union[Unset, tuple[None, bytes, str]] = UNSET
+        owners: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.owners, Unset):
             _temp_owners = []
             for owners_item_data in self.owners:
@@ -311,7 +311,7 @@ class PatchedSecurityExceptionWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -332,14 +332,14 @@ class PatchedSecurityExceptionWrite:
             applied_controls.append(applied_controls_item)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -347,39 +347,39 @@ class PatchedSecurityExceptionWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
         _severity = d.pop("severity", UNSET)
-        severity: Union[Unset, SeverityEnum]
+        severity: Unset | SeverityEnum
         if isinstance(_severity, Unset):
             severity = UNSET
         else:
             severity = SeverityEnum(_severity)
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, Status687Enum]
+        status: Unset | Status687Enum
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = Status687Enum(_status)
 
-        def _parse_expiration_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiration_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -392,20 +392,20 @@ class PatchedSecurityExceptionWrite:
                 return expiration_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiration_date = _parse_expiration_date(d.pop("expiration_date", UNSET))
 
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_approver(data: object) -> Union[None, UUID, Unset]:
+        def _parse_approver(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -418,7 +418,7 @@ class PatchedSecurityExceptionWrite:
                 return approver_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         approver = _parse_approver(d.pop("approver", UNSET))
 

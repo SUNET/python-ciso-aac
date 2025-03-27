@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,19 +36,19 @@ class LoadedLibrary:
 
     id: UUID
     name: str
-    description: Union[None, str]
-    urn: Union[None, str]
+    description: None | str
+    urn: None | str
     version: int
     reference_count: int
     locales: list[Any]
     has_update: bool
-    ref_id: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = "en"
-    packager: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    publication_date: Union[None, Unset, datetime.date] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    objects_meta: Union[Unset, Any] = UNSET
+    ref_id: None | Unset | str = UNSET
+    locale: Unset | str = "en"
+    packager: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    publication_date: None | Unset | datetime.date = UNSET
+    builtin: Unset | bool = UNSET
+    objects_meta: Unset | Any = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,10 +56,10 @@ class LoadedLibrary:
 
         name = self.name
 
-        description: Union[None, str]
+        description: None | str
         description = self.description
 
-        urn: Union[None, str]
+        urn: None | str
         urn = self.urn
 
         version = self.version
@@ -70,7 +70,7 @@ class LoadedLibrary:
 
         has_update = self.has_update
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
@@ -78,19 +78,19 @@ class LoadedLibrary:
 
         locale = self.locale
 
-        packager: Union[None, Unset, str]
+        packager: None | Unset | str
         if isinstance(self.packager, Unset):
             packager = UNSET
         else:
             packager = self.packager
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
             provider = self.provider
 
-        publication_date: Union[None, Unset, str]
+        publication_date: None | Unset | str
         if isinstance(self.publication_date, Unset):
             publication_date = UNSET
         elif isinstance(self.publication_date, datetime.date):
@@ -140,17 +140,17 @@ class LoadedLibrary:
 
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, str]:
+        def _parse_description(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         description = _parse_description(d.pop("description"))
 
-        def _parse_urn(data: object) -> Union[None, str]:
+        def _parse_urn(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         urn = _parse_urn(d.pop("urn"))
 
@@ -162,36 +162,36 @@ class LoadedLibrary:
 
         has_update = d.pop("has_update")
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
         locale = d.pop("locale", UNSET)
 
-        def _parse_packager(data: object) -> Union[None, Unset, str]:
+        def _parse_packager(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         packager = _parse_packager(d.pop("packager", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
-        def _parse_publication_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_publication_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -204,7 +204,7 @@ class LoadedLibrary:
                 return publication_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         publication_date = _parse_publication_date(d.pop("publication_date", UNSET))
 

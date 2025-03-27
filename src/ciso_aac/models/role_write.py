@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -32,11 +32,11 @@ class RoleWrite:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    permissions: Union[Unset, list[int]] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    builtin: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    permissions: Unset | list[int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,7 +50,7 @@ class RoleWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -58,11 +58,11 @@ class RoleWrite:
 
         builtin = self.builtin
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        permissions: Union[Unset, list[int]] = UNSET
+        permissions: Unset | list[int] = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions
 
@@ -104,7 +104,7 @@ class RoleWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -115,11 +115,11 @@ class RoleWrite:
 
         builtin = self.builtin if isinstance(self.builtin, Unset) else (None, str(self.builtin).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        permissions: Union[Unset, tuple[None, bytes, str]] = UNSET
+        permissions: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.permissions, Unset):
             _temp_permissions = self.permissions
             permissions = (None, json.dumps(_temp_permissions).encode(), "application/json")
@@ -162,19 +162,19 @@ class RoleWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         builtin = d.pop("builtin", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

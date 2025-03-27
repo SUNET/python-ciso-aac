@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -32,22 +32,22 @@ class PatchedPerimeterWrite:
         folder (Union[Unset, UUID]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    lc_status: Union[Unset, LcStatusEnum] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    lc_status: Unset | LcStatusEnum = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -55,23 +55,23 @@ class PatchedPerimeterWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        lc_status: Union[Unset, str] = UNSET
+        lc_status: Unset | str = UNSET
         if not isinstance(self.lc_status, Unset):
             lc_status = self.lc_status.value
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -98,11 +98,11 @@ class PatchedPerimeterWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -114,7 +114,7 @@ class PatchedPerimeterWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -123,7 +123,7 @@ class PatchedPerimeterWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -132,11 +132,11 @@ class PatchedPerimeterWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        lc_status: Union[Unset, tuple[None, bytes, str]] = UNSET
+        lc_status: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.lc_status, Unset):
             lc_status = (None, str(self.lc_status.value).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -168,14 +168,14 @@ class PatchedPerimeterWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -185,33 +185,33 @@ class PatchedPerimeterWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
         _lc_status = d.pop("lc_status", UNSET)
-        lc_status: Union[Unset, LcStatusEnum]
+        lc_status: Unset | LcStatusEnum
         if isinstance(_lc_status, Unset):
             lc_status = UNSET
         else:
             lc_status = LcStatusEnum(_lc_status)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

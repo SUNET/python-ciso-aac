@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -28,28 +28,28 @@ class PatchedEntityWrite:
         folder (Union[Unset, UUID]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    mission: Union[Unset, str] = UNSET
-    reference_link: Union[None, Unset, str] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    mission: Unset | str = UNSET
+    reference_link: None | Unset | str = UNSET
+    builtin: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -57,7 +57,7 @@ class PatchedEntityWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -65,7 +65,7 @@ class PatchedEntityWrite:
 
         mission = self.mission
 
-        reference_link: Union[None, Unset, str]
+        reference_link: None | Unset | str
         if isinstance(self.reference_link, Unset):
             reference_link = UNSET
         else:
@@ -73,7 +73,7 @@ class PatchedEntityWrite:
 
         builtin = self.builtin
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -104,15 +104,15 @@ class PatchedEntityWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -124,7 +124,7 @@ class PatchedEntityWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -135,7 +135,7 @@ class PatchedEntityWrite:
 
         mission = self.mission if isinstance(self.mission, Unset) else (None, str(self.mission).encode(), "text/plain")
 
-        reference_link: Union[Unset, tuple[None, bytes, str]]
+        reference_link: Unset | tuple[None, bytes, str]
 
         if isinstance(self.reference_link, Unset):
             reference_link = UNSET
@@ -146,7 +146,7 @@ class PatchedEntityWrite:
 
         builtin = self.builtin if isinstance(self.builtin, Unset) else (None, str(self.builtin).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -182,21 +182,21 @@ class PatchedEntityWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -206,30 +206,30 @@ class PatchedEntityWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         mission = d.pop("mission", UNSET)
 
-        def _parse_reference_link(data: object) -> Union[None, Unset, str]:
+        def _parse_reference_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         reference_link = _parse_reference_link(d.pop("reference_link", UNSET))
 
         builtin = d.pop("builtin", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

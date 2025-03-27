@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -51,57 +51,57 @@ class PatchedEntityAssessmentWrite:
         solutions (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    create_audit: Union[Unset, bool] = False
-    framework: Union[Unset, UUID] = UNSET
-    selected_implementation_groups: Union[Unset, list[str]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[None, Unset, datetime.date] = UNSET
-    version: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, None, Status72AEnum, Unset] = UNSET
-    observation: Union[None, Unset, str] = UNSET
-    criticality: Union[Unset, int] = UNSET
-    penetration: Union[Unset, int] = UNSET
-    dependency: Union[Unset, int] = UNSET
-    maturity: Union[Unset, int] = UNSET
-    trust: Union[Unset, int] = UNSET
-    conclusion: Union[BlankEnum, ConclusionEnum, None, Unset] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    perimeter: Union[None, UUID, Unset] = UNSET
-    entity: Union[Unset, UUID] = UNSET
-    compliance_assessment: Union[None, UUID, Unset] = UNSET
-    evidence: Union[None, UUID, Unset] = UNSET
-    authors: Union[Unset, list[UUID]] = UNSET
-    reviewers: Union[Unset, list[UUID]] = UNSET
-    representatives: Union[Unset, list[UUID]] = UNSET
-    solutions: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    create_audit: Unset | bool = False
+    framework: Unset | UUID = UNSET
+    selected_implementation_groups: Unset | list[str] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    due_date: None | Unset | datetime.date = UNSET
+    version: None | Unset | str = UNSET
+    status: BlankEnum | None | Status72AEnum | Unset = UNSET
+    observation: None | Unset | str = UNSET
+    criticality: Unset | int = UNSET
+    penetration: Unset | int = UNSET
+    dependency: Unset | int = UNSET
+    maturity: Unset | int = UNSET
+    trust: Unset | int = UNSET
+    conclusion: BlankEnum | ConclusionEnum | None | Unset = UNSET
+    folder: Unset | UUID = UNSET
+    perimeter: None | UUID | Unset = UNSET
+    entity: Unset | UUID = UNSET
+    compliance_assessment: None | UUID | Unset = UNSET
+    evidence: None | UUID | Unset = UNSET
+    authors: Unset | list[UUID] = UNSET
+    reviewers: Unset | list[UUID] = UNSET
+    representatives: Unset | list[UUID] = UNSET
+    solutions: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         create_audit = self.create_audit
 
-        framework: Union[Unset, str] = UNSET
+        framework: Unset | str = UNSET
         if not isinstance(self.framework, Unset):
             framework = str(self.framework)
 
-        selected_implementation_groups: Union[Unset, list[str]] = UNSET
+        selected_implementation_groups: Unset | list[str] = UNSET
         if not isinstance(self.selected_implementation_groups, Unset):
             selected_implementation_groups = self.selected_implementation_groups
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -109,13 +109,13 @@ class PatchedEntityAssessmentWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -123,7 +123,7 @@ class PatchedEntityAssessmentWrite:
         else:
             eta = self.eta
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         elif isinstance(self.due_date, datetime.date):
@@ -131,13 +131,13 @@ class PatchedEntityAssessmentWrite:
         else:
             due_date = self.due_date
 
-        version: Union[None, Unset, str]
+        version: None | Unset | str
         if isinstance(self.version, Unset):
             version = UNSET
         else:
             version = self.version
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status72AEnum):
@@ -147,7 +147,7 @@ class PatchedEntityAssessmentWrite:
         else:
             status = self.status
 
-        observation: Union[None, Unset, str]
+        observation: None | Unset | str
         if isinstance(self.observation, Unset):
             observation = UNSET
         else:
@@ -163,7 +163,7 @@ class PatchedEntityAssessmentWrite:
 
         trust = self.trust
 
-        conclusion: Union[None, Unset, str]
+        conclusion: None | Unset | str
         if isinstance(self.conclusion, Unset):
             conclusion = UNSET
         elif isinstance(self.conclusion, ConclusionEnum):
@@ -173,11 +173,11 @@ class PatchedEntityAssessmentWrite:
         else:
             conclusion = self.conclusion
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        perimeter: Union[None, Unset, str]
+        perimeter: None | Unset | str
         if isinstance(self.perimeter, Unset):
             perimeter = UNSET
         elif isinstance(self.perimeter, UUID):
@@ -185,11 +185,11 @@ class PatchedEntityAssessmentWrite:
         else:
             perimeter = self.perimeter
 
-        entity: Union[Unset, str] = UNSET
+        entity: Unset | str = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        compliance_assessment: Union[None, Unset, str]
+        compliance_assessment: None | Unset | str
         if isinstance(self.compliance_assessment, Unset):
             compliance_assessment = UNSET
         elif isinstance(self.compliance_assessment, UUID):
@@ -197,7 +197,7 @@ class PatchedEntityAssessmentWrite:
         else:
             compliance_assessment = self.compliance_assessment
 
-        evidence: Union[None, Unset, str]
+        evidence: None | Unset | str
         if isinstance(self.evidence, Unset):
             evidence = UNSET
         elif isinstance(self.evidence, UUID):
@@ -205,28 +205,28 @@ class PatchedEntityAssessmentWrite:
         else:
             evidence = self.evidence
 
-        authors: Union[Unset, list[str]] = UNSET
+        authors: Unset | list[str] = UNSET
         if not isinstance(self.authors, Unset):
             authors = []
             for authors_item_data in self.authors:
                 authors_item = str(authors_item_data)
                 authors.append(authors_item)
 
-        reviewers: Union[Unset, list[str]] = UNSET
+        reviewers: Unset | list[str] = UNSET
         if not isinstance(self.reviewers, Unset):
             reviewers = []
             for reviewers_item_data in self.reviewers:
                 reviewers_item = str(reviewers_item_data)
                 reviewers.append(reviewers_item)
 
-        representatives: Union[Unset, list[str]] = UNSET
+        representatives: Unset | list[str] = UNSET
         if not isinstance(self.representatives, Unset):
             representatives = []
             for representatives_item_data in self.representatives:
                 representatives_item = str(representatives_item_data)
                 representatives.append(representatives_item)
 
-        solutions: Union[Unset, list[str]] = UNSET
+        solutions: Unset | list[str] = UNSET
         if not isinstance(self.solutions, Unset):
             solutions = []
             for solutions_item_data in self.solutions:
@@ -298,7 +298,7 @@ class PatchedEntityAssessmentWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -308,11 +308,11 @@ class PatchedEntityAssessmentWrite:
             else (None, str(self.create_audit).encode(), "text/plain")
         )
 
-        framework: Union[Unset, bytes] = UNSET
+        framework: Unset | bytes = UNSET
         if not isinstance(self.framework, Unset):
             framework = str(self.framework)
 
-        selected_implementation_groups: Union[Unset, tuple[None, bytes, str]] = UNSET
+        selected_implementation_groups: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.selected_implementation_groups, Unset):
             _temp_selected_implementation_groups = self.selected_implementation_groups
             selected_implementation_groups = (
@@ -321,11 +321,11 @@ class PatchedEntityAssessmentWrite:
                 "application/json",
             )
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -337,7 +337,7 @@ class PatchedEntityAssessmentWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -346,7 +346,7 @@ class PatchedEntityAssessmentWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        eta: Union[Unset, tuple[None, bytes, str]]
+        eta: Unset | tuple[None, bytes, str]
 
         if isinstance(self.eta, Unset):
             eta = UNSET
@@ -355,7 +355,7 @@ class PatchedEntityAssessmentWrite:
         else:
             eta = (None, str(self.eta).encode(), "text/plain")
 
-        due_date: Union[Unset, tuple[None, bytes, str]]
+        due_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.due_date, Unset):
             due_date = UNSET
@@ -364,7 +364,7 @@ class PatchedEntityAssessmentWrite:
         else:
             due_date = (None, str(self.due_date).encode(), "text/plain")
 
-        version: Union[Unset, tuple[None, bytes, str]]
+        version: Unset | tuple[None, bytes, str]
 
         if isinstance(self.version, Unset):
             version = UNSET
@@ -373,7 +373,7 @@ class PatchedEntityAssessmentWrite:
         else:
             version = (None, str(self.version).encode(), "text/plain")
 
-        status: Union[Unset, tuple[None, bytes, str]]
+        status: Unset | tuple[None, bytes, str]
 
         if isinstance(self.status, Unset):
             status = UNSET
@@ -386,7 +386,7 @@ class PatchedEntityAssessmentWrite:
         else:
             status = (None, str(self.status).encode(), "text/plain")
 
-        observation: Union[Unset, tuple[None, bytes, str]]
+        observation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.observation, Unset):
             observation = UNSET
@@ -419,7 +419,7 @@ class PatchedEntityAssessmentWrite:
 
         trust = self.trust if isinstance(self.trust, Unset) else (None, str(self.trust).encode(), "text/plain")
 
-        conclusion: Union[Unset, tuple[None, bytes, str]]
+        conclusion: Unset | tuple[None, bytes, str]
 
         if isinstance(self.conclusion, Unset):
             conclusion = UNSET
@@ -432,11 +432,11 @@ class PatchedEntityAssessmentWrite:
         else:
             conclusion = (None, str(self.conclusion).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        perimeter: Union[Unset, tuple[None, bytes, str]]
+        perimeter: Unset | tuple[None, bytes, str]
 
         if isinstance(self.perimeter, Unset):
             perimeter = UNSET
@@ -445,11 +445,11 @@ class PatchedEntityAssessmentWrite:
         else:
             perimeter = (None, str(self.perimeter).encode(), "text/plain")
 
-        entity: Union[Unset, bytes] = UNSET
+        entity: Unset | bytes = UNSET
         if not isinstance(self.entity, Unset):
             entity = str(self.entity)
 
-        compliance_assessment: Union[Unset, tuple[None, bytes, str]]
+        compliance_assessment: Unset | tuple[None, bytes, str]
 
         if isinstance(self.compliance_assessment, Unset):
             compliance_assessment = UNSET
@@ -458,7 +458,7 @@ class PatchedEntityAssessmentWrite:
         else:
             compliance_assessment = (None, str(self.compliance_assessment).encode(), "text/plain")
 
-        evidence: Union[Unset, tuple[None, bytes, str]]
+        evidence: Unset | tuple[None, bytes, str]
 
         if isinstance(self.evidence, Unset):
             evidence = UNSET
@@ -467,7 +467,7 @@ class PatchedEntityAssessmentWrite:
         else:
             evidence = (None, str(self.evidence).encode(), "text/plain")
 
-        authors: Union[Unset, tuple[None, bytes, str]] = UNSET
+        authors: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.authors, Unset):
             _temp_authors = []
             for authors_item_data in self.authors:
@@ -475,7 +475,7 @@ class PatchedEntityAssessmentWrite:
                 _temp_authors.append(authors_item)
             authors = (None, json.dumps(_temp_authors).encode(), "application/json")
 
-        reviewers: Union[Unset, tuple[None, bytes, str]] = UNSET
+        reviewers: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.reviewers, Unset):
             _temp_reviewers = []
             for reviewers_item_data in self.reviewers:
@@ -483,7 +483,7 @@ class PatchedEntityAssessmentWrite:
                 _temp_reviewers.append(reviewers_item)
             reviewers = (None, json.dumps(_temp_reviewers).encode(), "application/json")
 
-        representatives: Union[Unset, tuple[None, bytes, str]] = UNSET
+        representatives: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.representatives, Unset):
             _temp_representatives = []
             for representatives_item_data in self.representatives:
@@ -491,7 +491,7 @@ class PatchedEntityAssessmentWrite:
                 _temp_representatives.append(representatives_item)
             representatives = (None, json.dumps(_temp_representatives).encode(), "application/json")
 
-        solutions: Union[Unset, tuple[None, bytes, str]] = UNSET
+        solutions: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.solutions, Unset):
             _temp_solutions = []
             for solutions_item_data in self.solutions:
@@ -569,7 +569,7 @@ class PatchedEntityAssessmentWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -578,7 +578,7 @@ class PatchedEntityAssessmentWrite:
         create_audit = d.pop("create_audit", UNSET)
 
         _framework = d.pop("framework", UNSET)
-        framework: Union[Unset, UUID]
+        framework: Unset | UUID
         if isinstance(_framework, Unset):
             framework = UNSET
         else:
@@ -587,14 +587,14 @@ class PatchedEntityAssessmentWrite:
         selected_implementation_groups = cast(list[str], d.pop("selected_implementation_groups", UNSET))
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -604,16 +604,16 @@ class PatchedEntityAssessmentWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -626,11 +626,11 @@ class PatchedEntityAssessmentWrite:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_due_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -643,20 +643,20 @@ class PatchedEntityAssessmentWrite:
                 return due_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
-        def _parse_version(data: object) -> Union[None, Unset, str]:
+        def _parse_version(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         version = _parse_version(d.pop("version", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, None, Status72AEnum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | None | Status72AEnum | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -677,16 +677,16 @@ class PatchedEntityAssessmentWrite:
                 return status_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, None, Status72AEnum, Unset], data)
+            return cast(BlankEnum | None | Status72AEnum | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_observation(data: object) -> Union[None, Unset, str]:
+        def _parse_observation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         observation = _parse_observation(d.pop("observation", UNSET))
 
@@ -700,7 +700,7 @@ class PatchedEntityAssessmentWrite:
 
         trust = d.pop("trust", UNSET)
 
-        def _parse_conclusion(data: object) -> Union[BlankEnum, ConclusionEnum, None, Unset]:
+        def _parse_conclusion(data: object) -> BlankEnum | ConclusionEnum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -721,18 +721,18 @@ class PatchedEntityAssessmentWrite:
                 return conclusion_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, ConclusionEnum, None, Unset], data)
+            return cast(BlankEnum | ConclusionEnum | None | Unset, data)
 
         conclusion = _parse_conclusion(d.pop("conclusion", UNSET))
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_perimeter(data: object) -> Union[None, UUID, Unset]:
+        def _parse_perimeter(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -745,18 +745,18 @@ class PatchedEntityAssessmentWrite:
                 return perimeter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         perimeter = _parse_perimeter(d.pop("perimeter", UNSET))
 
         _entity = d.pop("entity", UNSET)
-        entity: Union[Unset, UUID]
+        entity: Unset | UUID
         if isinstance(_entity, Unset):
             entity = UNSET
         else:
             entity = UUID(_entity)
 
-        def _parse_compliance_assessment(data: object) -> Union[None, UUID, Unset]:
+        def _parse_compliance_assessment(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -769,11 +769,11 @@ class PatchedEntityAssessmentWrite:
                 return compliance_assessment_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         compliance_assessment = _parse_compliance_assessment(d.pop("compliance_assessment", UNSET))
 
-        def _parse_evidence(data: object) -> Union[None, UUID, Unset]:
+        def _parse_evidence(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -786,7 +786,7 @@ class PatchedEntityAssessmentWrite:
                 return evidence_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         evidence = _parse_evidence(d.pop("evidence", UNSET))
 

@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -40,73 +40,73 @@ class PatchedLoadedLibraryDetailed:
         folder (Union[Unset, UUID]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    annotation: Union[None, Unset, str] = UNSET
-    locales: Union[Unset, list[Any]] = UNSET
-    dependencies: Union[Unset, list[str]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = "en"
-    default_locale: Union[Unset, bool] = UNSET
-    urn: Union[None, Unset, str] = UNSET
-    copyright_: Union[None, Unset, str] = UNSET
-    version: Union[Unset, int] = UNSET
-    packager: Union[None, Unset, str] = UNSET
-    publication_date: Union[None, Unset, datetime.date] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    objects_meta: Union[Unset, Any] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    annotation: None | Unset | str = UNSET
+    locales: Unset | list[Any] = UNSET
+    dependencies: Unset | list[str] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    locale: Unset | str = "en"
+    default_locale: Unset | bool = UNSET
+    urn: None | Unset | str = UNSET
+    copyright_: None | Unset | str = UNSET
+    version: Unset | int = UNSET
+    packager: None | Unset | str = UNSET
+    publication_date: None | Unset | datetime.date = UNSET
+    builtin: Unset | bool = UNSET
+    objects_meta: Unset | Any = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        annotation: Union[None, Unset, str]
+        annotation: None | Unset | str
         if isinstance(self.annotation, Unset):
             annotation = UNSET
         else:
             annotation = self.annotation
 
-        locales: Union[Unset, list[Any]] = UNSET
+        locales: Unset | list[Any] = UNSET
         if not isinstance(self.locales, Unset):
             locales = self.locales
 
-        dependencies: Union[Unset, list[str]] = UNSET
+        dependencies: Unset | list[str] = UNSET
         if not isinstance(self.dependencies, Unset):
             dependencies = self.dependencies
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         is_published = self.is_published
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -116,13 +116,13 @@ class PatchedLoadedLibraryDetailed:
 
         default_locale = self.default_locale
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        copyright_: Union[None, Unset, str]
+        copyright_: None | Unset | str
         if isinstance(self.copyright_, Unset):
             copyright_ = UNSET
         else:
@@ -130,13 +130,13 @@ class PatchedLoadedLibraryDetailed:
 
         version = self.version
 
-        packager: Union[None, Unset, str]
+        packager: None | Unset | str
         if isinstance(self.packager, Unset):
             packager = UNSET
         else:
             packager = self.packager
 
-        publication_date: Union[None, Unset, str]
+        publication_date: None | Unset | str
         if isinstance(self.publication_date, Unset):
             publication_date = UNSET
         elif isinstance(self.publication_date, datetime.date):
@@ -148,7 +148,7 @@ class PatchedLoadedLibraryDetailed:
 
         objects_meta = self.objects_meta
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -201,13 +201,13 @@ class PatchedLoadedLibraryDetailed:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -216,7 +216,7 @@ class PatchedLoadedLibraryDetailed:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        annotation: Union[Unset, tuple[None, bytes, str]]
+        annotation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.annotation, Unset):
             annotation = UNSET
@@ -225,21 +225,21 @@ class PatchedLoadedLibraryDetailed:
         else:
             annotation = (None, str(self.annotation).encode(), "text/plain")
 
-        locales: Union[Unset, tuple[None, bytes, str]] = UNSET
+        locales: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.locales, Unset):
             _temp_locales = self.locales
             locales = (None, json.dumps(_temp_locales).encode(), "application/json")
 
-        dependencies: Union[Unset, tuple[None, bytes, str]] = UNSET
+        dependencies: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.dependencies, Unset):
             _temp_dependencies = self.dependencies
             dependencies = (None, json.dumps(_temp_dependencies).encode(), "application/json")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -249,7 +249,7 @@ class PatchedLoadedLibraryDetailed:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -258,7 +258,7 @@ class PatchedLoadedLibraryDetailed:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -275,7 +275,7 @@ class PatchedLoadedLibraryDetailed:
             else (None, str(self.default_locale).encode(), "text/plain")
         )
 
-        urn: Union[Unset, tuple[None, bytes, str]]
+        urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.urn, Unset):
             urn = UNSET
@@ -284,7 +284,7 @@ class PatchedLoadedLibraryDetailed:
         else:
             urn = (None, str(self.urn).encode(), "text/plain")
 
-        copyright_: Union[Unset, tuple[None, bytes, str]]
+        copyright_: Unset | tuple[None, bytes, str]
 
         if isinstance(self.copyright_, Unset):
             copyright_ = UNSET
@@ -295,7 +295,7 @@ class PatchedLoadedLibraryDetailed:
 
         version = self.version if isinstance(self.version, Unset) else (None, str(self.version).encode(), "text/plain")
 
-        packager: Union[Unset, tuple[None, bytes, str]]
+        packager: Unset | tuple[None, bytes, str]
 
         if isinstance(self.packager, Unset):
             packager = UNSET
@@ -304,7 +304,7 @@ class PatchedLoadedLibraryDetailed:
         else:
             packager = (None, str(self.packager).encode(), "text/plain")
 
-        publication_date: Union[Unset, tuple[None, bytes, str]]
+        publication_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.publication_date, Unset):
             publication_date = UNSET
@@ -321,7 +321,7 @@ class PatchedLoadedLibraryDetailed:
             else (None, str(self.objects_meta).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -379,7 +379,7 @@ class PatchedLoadedLibraryDetailed:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -387,21 +387,21 @@ class PatchedLoadedLibraryDetailed:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_annotation(data: object) -> Union[None, Unset, str]:
+        def _parse_annotation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         annotation = _parse_annotation(d.pop("annotation", UNSET))
 
@@ -410,14 +410,14 @@ class PatchedLoadedLibraryDetailed:
         dependencies = cast(list[str], d.pop("dependencies", UNSET))
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -425,21 +425,21 @@ class PatchedLoadedLibraryDetailed:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
@@ -447,36 +447,36 @@ class PatchedLoadedLibraryDetailed:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_copyright_(data: object) -> Union[None, Unset, str]:
+        def _parse_copyright_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         copyright_ = _parse_copyright_(d.pop("copyright", UNSET))
 
         version = d.pop("version", UNSET)
 
-        def _parse_packager(data: object) -> Union[None, Unset, str]:
+        def _parse_packager(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         packager = _parse_packager(d.pop("packager", UNSET))
 
-        def _parse_publication_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_publication_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -489,7 +489,7 @@ class PatchedLoadedLibraryDetailed:
                 return publication_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         publication_date = _parse_publication_date(d.pop("publication_date", UNSET))
 
@@ -498,7 +498,7 @@ class PatchedLoadedLibraryDetailed:
         objects_meta = d.pop("objects_meta", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

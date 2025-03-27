@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -64,43 +64,43 @@ class SSOSettingsWrite:
     id: UUID
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    is_enabled: Union[Unset, bool] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    provider_id: Union[None, Unset, str] = UNSET
-    client_id: Union[None, Unset, str] = UNSET
-    provider_name: Union[None, Unset, str] = UNSET
-    attribute_mapping_uid: Union[None, Unset, list[Union[None, str]]] = UNSET
-    attribute_mapping_email_verified: Union[None, Unset, list[Union[None, str]]] = UNSET
-    attribute_mapping_email: Union[None, Unset, list[Union[None, str]]] = UNSET
-    idp_entity_id: Union[None, Unset, str] = UNSET
-    metadata_url: Union[None, Unset, str] = UNSET
-    sso_url: Union[None, Unset, str] = UNSET
-    slo_url: Union[None, Unset, str] = UNSET
-    x509cert: Union[None, Unset, str] = UNSET
-    sp_entity_id: Union[None, Unset, str] = UNSET
-    allow_repeat_attribute_name: Union[Unset, bool] = UNSET
-    allow_single_label_domains: Union[Unset, bool] = UNSET
-    authn_request_signed: Union[Unset, bool] = UNSET
-    digest_algorithm: Union[None, Unset, str] = UNSET
-    logout_request_signed: Union[Unset, bool] = UNSET
-    logout_response_signed: Union[Unset, bool] = UNSET
-    metadata_signed: Union[Unset, bool] = UNSET
-    name_id_encrypted: Union[Unset, bool] = UNSET
-    reject_deprecated_algorithm: Union[Unset, bool] = UNSET
-    reject_idp_initiated_sso: Union[Unset, bool] = UNSET
-    signature_algorithm: Union[None, Unset, str] = UNSET
-    want_assertion_encrypted: Union[Unset, bool] = UNSET
-    want_assertion_signed: Union[Unset, bool] = UNSET
-    want_attribute_statement: Union[Unset, bool] = UNSET
-    want_message_signed: Union[Unset, bool] = UNSET
-    want_name_id: Union[Unset, bool] = UNSET
-    want_name_id_encrypted: Union[Unset, bool] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, NameEnum] = UNSET
-    secret: Union[Unset, str] = UNSET
-    key: Union[Unset, str] = UNSET
-    settings: Union[Unset, Any] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    is_enabled: Unset | bool = UNSET
+    provider: None | Unset | str = UNSET
+    provider_id: None | Unset | str = UNSET
+    client_id: None | Unset | str = UNSET
+    provider_name: None | Unset | str = UNSET
+    attribute_mapping_uid: None | Unset | list[None | str] = UNSET
+    attribute_mapping_email_verified: None | Unset | list[None | str] = UNSET
+    attribute_mapping_email: None | Unset | list[None | str] = UNSET
+    idp_entity_id: None | Unset | str = UNSET
+    metadata_url: None | Unset | str = UNSET
+    sso_url: None | Unset | str = UNSET
+    slo_url: None | Unset | str = UNSET
+    x509cert: None | Unset | str = UNSET
+    sp_entity_id: None | Unset | str = UNSET
+    allow_repeat_attribute_name: Unset | bool = UNSET
+    allow_single_label_domains: Unset | bool = UNSET
+    authn_request_signed: Unset | bool = UNSET
+    digest_algorithm: None | Unset | str = UNSET
+    logout_request_signed: Unset | bool = UNSET
+    logout_response_signed: Unset | bool = UNSET
+    metadata_signed: Unset | bool = UNSET
+    name_id_encrypted: Unset | bool = UNSET
+    reject_deprecated_algorithm: Unset | bool = UNSET
+    reject_idp_initiated_sso: Unset | bool = UNSET
+    signature_algorithm: None | Unset | str = UNSET
+    want_assertion_encrypted: Unset | bool = UNSET
+    want_assertion_signed: Unset | bool = UNSET
+    want_attribute_statement: Unset | bool = UNSET
+    want_message_signed: Unset | bool = UNSET
+    want_name_id: Unset | bool = UNSET
+    want_name_id_encrypted: Unset | bool = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | NameEnum = UNSET
+    secret: Unset | str = UNSET
+    key: Unset | str = UNSET
+    settings: Unset | Any = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -112,100 +112,100 @@ class SSOSettingsWrite:
 
         is_enabled = self.is_enabled
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
             provider = self.provider
 
-        provider_id: Union[None, Unset, str]
+        provider_id: None | Unset | str
         if isinstance(self.provider_id, Unset):
             provider_id = UNSET
         else:
             provider_id = self.provider_id
 
-        client_id: Union[None, Unset, str]
+        client_id: None | Unset | str
         if isinstance(self.client_id, Unset):
             client_id = UNSET
         else:
             client_id = self.client_id
 
-        provider_name: Union[None, Unset, str]
+        provider_name: None | Unset | str
         if isinstance(self.provider_name, Unset):
             provider_name = UNSET
         else:
             provider_name = self.provider_name
 
-        attribute_mapping_uid: Union[None, Unset, list[Union[None, str]]]
+        attribute_mapping_uid: None | Unset | list[None | str]
         if isinstance(self.attribute_mapping_uid, Unset):
             attribute_mapping_uid = UNSET
         elif isinstance(self.attribute_mapping_uid, list):
             attribute_mapping_uid = []
             for attribute_mapping_uid_type_0_item_data in self.attribute_mapping_uid:
-                attribute_mapping_uid_type_0_item: Union[None, str]
+                attribute_mapping_uid_type_0_item: None | str
                 attribute_mapping_uid_type_0_item = attribute_mapping_uid_type_0_item_data
                 attribute_mapping_uid.append(attribute_mapping_uid_type_0_item)
 
         else:
             attribute_mapping_uid = self.attribute_mapping_uid
 
-        attribute_mapping_email_verified: Union[None, Unset, list[Union[None, str]]]
+        attribute_mapping_email_verified: None | Unset | list[None | str]
         if isinstance(self.attribute_mapping_email_verified, Unset):
             attribute_mapping_email_verified = UNSET
         elif isinstance(self.attribute_mapping_email_verified, list):
             attribute_mapping_email_verified = []
             for attribute_mapping_email_verified_type_0_item_data in self.attribute_mapping_email_verified:
-                attribute_mapping_email_verified_type_0_item: Union[None, str]
+                attribute_mapping_email_verified_type_0_item: None | str
                 attribute_mapping_email_verified_type_0_item = attribute_mapping_email_verified_type_0_item_data
                 attribute_mapping_email_verified.append(attribute_mapping_email_verified_type_0_item)
 
         else:
             attribute_mapping_email_verified = self.attribute_mapping_email_verified
 
-        attribute_mapping_email: Union[None, Unset, list[Union[None, str]]]
+        attribute_mapping_email: None | Unset | list[None | str]
         if isinstance(self.attribute_mapping_email, Unset):
             attribute_mapping_email = UNSET
         elif isinstance(self.attribute_mapping_email, list):
             attribute_mapping_email = []
             for attribute_mapping_email_type_0_item_data in self.attribute_mapping_email:
-                attribute_mapping_email_type_0_item: Union[None, str]
+                attribute_mapping_email_type_0_item: None | str
                 attribute_mapping_email_type_0_item = attribute_mapping_email_type_0_item_data
                 attribute_mapping_email.append(attribute_mapping_email_type_0_item)
 
         else:
             attribute_mapping_email = self.attribute_mapping_email
 
-        idp_entity_id: Union[None, Unset, str]
+        idp_entity_id: None | Unset | str
         if isinstance(self.idp_entity_id, Unset):
             idp_entity_id = UNSET
         else:
             idp_entity_id = self.idp_entity_id
 
-        metadata_url: Union[None, Unset, str]
+        metadata_url: None | Unset | str
         if isinstance(self.metadata_url, Unset):
             metadata_url = UNSET
         else:
             metadata_url = self.metadata_url
 
-        sso_url: Union[None, Unset, str]
+        sso_url: None | Unset | str
         if isinstance(self.sso_url, Unset):
             sso_url = UNSET
         else:
             sso_url = self.sso_url
 
-        slo_url: Union[None, Unset, str]
+        slo_url: None | Unset | str
         if isinstance(self.slo_url, Unset):
             slo_url = UNSET
         else:
             slo_url = self.slo_url
 
-        x509cert: Union[None, Unset, str]
+        x509cert: None | Unset | str
         if isinstance(self.x509cert, Unset):
             x509cert = UNSET
         else:
             x509cert = self.x509cert
 
-        sp_entity_id: Union[None, Unset, str]
+        sp_entity_id: None | Unset | str
         if isinstance(self.sp_entity_id, Unset):
             sp_entity_id = UNSET
         else:
@@ -217,7 +217,7 @@ class SSOSettingsWrite:
 
         authn_request_signed = self.authn_request_signed
 
-        digest_algorithm: Union[None, Unset, str]
+        digest_algorithm: None | Unset | str
         if isinstance(self.digest_algorithm, Unset):
             digest_algorithm = UNSET
         else:
@@ -235,7 +235,7 @@ class SSOSettingsWrite:
 
         reject_idp_initiated_sso = self.reject_idp_initiated_sso
 
-        signature_algorithm: Union[None, Unset, str]
+        signature_algorithm: None | Unset | str
         if isinstance(self.signature_algorithm, Unset):
             signature_algorithm = UNSET
         else:
@@ -255,7 +255,7 @@ class SSOSettingsWrite:
 
         is_published = self.is_published
 
-        name: Union[Unset, str] = UNSET
+        name: Unset | str = UNSET
         if not isinstance(self.name, Unset):
             name = self.name.value
 
@@ -265,7 +265,7 @@ class SSOSettingsWrite:
 
         settings = self.settings
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -368,7 +368,7 @@ class SSOSettingsWrite:
             else (None, str(self.is_enabled).encode(), "text/plain")
         )
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -377,7 +377,7 @@ class SSOSettingsWrite:
         else:
             provider = (None, str(self.provider).encode(), "text/plain")
 
-        provider_id: Union[Unset, tuple[None, bytes, str]]
+        provider_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider_id, Unset):
             provider_id = UNSET
@@ -386,7 +386,7 @@ class SSOSettingsWrite:
         else:
             provider_id = (None, str(self.provider_id).encode(), "text/plain")
 
-        client_id: Union[Unset, tuple[None, bytes, str]]
+        client_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.client_id, Unset):
             client_id = UNSET
@@ -395,7 +395,7 @@ class SSOSettingsWrite:
         else:
             client_id = (None, str(self.client_id).encode(), "text/plain")
 
-        provider_name: Union[Unset, tuple[None, bytes, str]]
+        provider_name: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider_name, Unset):
             provider_name = UNSET
@@ -404,28 +404,28 @@ class SSOSettingsWrite:
         else:
             provider_name = (None, str(self.provider_name).encode(), "text/plain")
 
-        attribute_mapping_uid: Union[Unset, tuple[None, bytes, str]]
+        attribute_mapping_uid: Unset | tuple[None, bytes, str]
 
         if isinstance(self.attribute_mapping_uid, Unset):
             attribute_mapping_uid = UNSET
         elif isinstance(self.attribute_mapping_uid, list):
             _temp_attribute_mapping_uid = []
             for attribute_mapping_uid_type_0_item_data in self.attribute_mapping_uid:
-                attribute_mapping_uid_type_0_item: Union[None, str]
+                attribute_mapping_uid_type_0_item: None | str
                 attribute_mapping_uid_type_0_item = attribute_mapping_uid_type_0_item_data
                 _temp_attribute_mapping_uid.append(attribute_mapping_uid_type_0_item)
             attribute_mapping_uid = (None, json.dumps(_temp_attribute_mapping_uid).encode(), "application/json")
         else:
             attribute_mapping_uid = (None, str(self.attribute_mapping_uid).encode(), "text/plain")
 
-        attribute_mapping_email_verified: Union[Unset, tuple[None, bytes, str]]
+        attribute_mapping_email_verified: Unset | tuple[None, bytes, str]
 
         if isinstance(self.attribute_mapping_email_verified, Unset):
             attribute_mapping_email_verified = UNSET
         elif isinstance(self.attribute_mapping_email_verified, list):
             _temp_attribute_mapping_email_verified = []
             for attribute_mapping_email_verified_type_0_item_data in self.attribute_mapping_email_verified:
-                attribute_mapping_email_verified_type_0_item: Union[None, str]
+                attribute_mapping_email_verified_type_0_item: None | str
                 attribute_mapping_email_verified_type_0_item = attribute_mapping_email_verified_type_0_item_data
                 _temp_attribute_mapping_email_verified.append(attribute_mapping_email_verified_type_0_item)
             attribute_mapping_email_verified = (
@@ -436,21 +436,21 @@ class SSOSettingsWrite:
         else:
             attribute_mapping_email_verified = (None, str(self.attribute_mapping_email_verified).encode(), "text/plain")
 
-        attribute_mapping_email: Union[Unset, tuple[None, bytes, str]]
+        attribute_mapping_email: Unset | tuple[None, bytes, str]
 
         if isinstance(self.attribute_mapping_email, Unset):
             attribute_mapping_email = UNSET
         elif isinstance(self.attribute_mapping_email, list):
             _temp_attribute_mapping_email = []
             for attribute_mapping_email_type_0_item_data in self.attribute_mapping_email:
-                attribute_mapping_email_type_0_item: Union[None, str]
+                attribute_mapping_email_type_0_item: None | str
                 attribute_mapping_email_type_0_item = attribute_mapping_email_type_0_item_data
                 _temp_attribute_mapping_email.append(attribute_mapping_email_type_0_item)
             attribute_mapping_email = (None, json.dumps(_temp_attribute_mapping_email).encode(), "application/json")
         else:
             attribute_mapping_email = (None, str(self.attribute_mapping_email).encode(), "text/plain")
 
-        idp_entity_id: Union[Unset, tuple[None, bytes, str]]
+        idp_entity_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.idp_entity_id, Unset):
             idp_entity_id = UNSET
@@ -459,7 +459,7 @@ class SSOSettingsWrite:
         else:
             idp_entity_id = (None, str(self.idp_entity_id).encode(), "text/plain")
 
-        metadata_url: Union[Unset, tuple[None, bytes, str]]
+        metadata_url: Unset | tuple[None, bytes, str]
 
         if isinstance(self.metadata_url, Unset):
             metadata_url = UNSET
@@ -468,7 +468,7 @@ class SSOSettingsWrite:
         else:
             metadata_url = (None, str(self.metadata_url).encode(), "text/plain")
 
-        sso_url: Union[Unset, tuple[None, bytes, str]]
+        sso_url: Unset | tuple[None, bytes, str]
 
         if isinstance(self.sso_url, Unset):
             sso_url = UNSET
@@ -477,7 +477,7 @@ class SSOSettingsWrite:
         else:
             sso_url = (None, str(self.sso_url).encode(), "text/plain")
 
-        slo_url: Union[Unset, tuple[None, bytes, str]]
+        slo_url: Unset | tuple[None, bytes, str]
 
         if isinstance(self.slo_url, Unset):
             slo_url = UNSET
@@ -486,7 +486,7 @@ class SSOSettingsWrite:
         else:
             slo_url = (None, str(self.slo_url).encode(), "text/plain")
 
-        x509cert: Union[Unset, tuple[None, bytes, str]]
+        x509cert: Unset | tuple[None, bytes, str]
 
         if isinstance(self.x509cert, Unset):
             x509cert = UNSET
@@ -495,7 +495,7 @@ class SSOSettingsWrite:
         else:
             x509cert = (None, str(self.x509cert).encode(), "text/plain")
 
-        sp_entity_id: Union[Unset, tuple[None, bytes, str]]
+        sp_entity_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.sp_entity_id, Unset):
             sp_entity_id = UNSET
@@ -522,7 +522,7 @@ class SSOSettingsWrite:
             else (None, str(self.authn_request_signed).encode(), "text/plain")
         )
 
-        digest_algorithm: Union[Unset, tuple[None, bytes, str]]
+        digest_algorithm: Unset | tuple[None, bytes, str]
 
         if isinstance(self.digest_algorithm, Unset):
             digest_algorithm = UNSET
@@ -567,7 +567,7 @@ class SSOSettingsWrite:
             else (None, str(self.reject_idp_initiated_sso).encode(), "text/plain")
         )
 
-        signature_algorithm: Union[Unset, tuple[None, bytes, str]]
+        signature_algorithm: Unset | tuple[None, bytes, str]
 
         if isinstance(self.signature_algorithm, Unset):
             signature_algorithm = UNSET
@@ -618,7 +618,7 @@ class SSOSettingsWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        name: Union[Unset, tuple[None, bytes, str]] = UNSET
+        name: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.name, Unset):
             name = (None, str(self.name.value).encode(), "text/plain")
 
@@ -630,7 +630,7 @@ class SSOSettingsWrite:
             self.settings if isinstance(self.settings, Unset) else (None, str(self.settings).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -733,43 +733,43 @@ class SSOSettingsWrite:
 
         is_enabled = d.pop("is_enabled", UNSET)
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
-        def _parse_provider_id(data: object) -> Union[None, Unset, str]:
+        def _parse_provider_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider_id = _parse_provider_id(d.pop("provider_id", UNSET))
 
-        def _parse_client_id(data: object) -> Union[None, Unset, str]:
+        def _parse_client_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         client_id = _parse_client_id(d.pop("client_id", UNSET))
 
-        def _parse_provider_name(data: object) -> Union[None, Unset, str]:
+        def _parse_provider_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider_name = _parse_provider_name(d.pop("provider_name", UNSET))
 
-        def _parse_attribute_mapping_uid(data: object) -> Union[None, Unset, list[Union[None, str]]]:
+        def _parse_attribute_mapping_uid(data: object) -> None | Unset | list[None | str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -781,10 +781,10 @@ class SSOSettingsWrite:
                 _attribute_mapping_uid_type_0 = data
                 for attribute_mapping_uid_type_0_item_data in _attribute_mapping_uid_type_0:
 
-                    def _parse_attribute_mapping_uid_type_0_item(data: object) -> Union[None, str]:
+                    def _parse_attribute_mapping_uid_type_0_item(data: object) -> None | str:
                         if data is None:
                             return data
-                        return cast(Union[None, str], data)
+                        return cast(None | str, data)
 
                     attribute_mapping_uid_type_0_item = _parse_attribute_mapping_uid_type_0_item(
                         attribute_mapping_uid_type_0_item_data
@@ -795,11 +795,11 @@ class SSOSettingsWrite:
                 return attribute_mapping_uid_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[Union[None, str]]], data)
+            return cast(None | Unset | list[None | str], data)
 
         attribute_mapping_uid = _parse_attribute_mapping_uid(d.pop("attribute_mapping_uid", UNSET))
 
-        def _parse_attribute_mapping_email_verified(data: object) -> Union[None, Unset, list[Union[None, str]]]:
+        def _parse_attribute_mapping_email_verified(data: object) -> None | Unset | list[None | str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -811,10 +811,10 @@ class SSOSettingsWrite:
                 _attribute_mapping_email_verified_type_0 = data
                 for attribute_mapping_email_verified_type_0_item_data in _attribute_mapping_email_verified_type_0:
 
-                    def _parse_attribute_mapping_email_verified_type_0_item(data: object) -> Union[None, str]:
+                    def _parse_attribute_mapping_email_verified_type_0_item(data: object) -> None | str:
                         if data is None:
                             return data
-                        return cast(Union[None, str], data)
+                        return cast(None | str, data)
 
                     attribute_mapping_email_verified_type_0_item = _parse_attribute_mapping_email_verified_type_0_item(
                         attribute_mapping_email_verified_type_0_item_data
@@ -825,13 +825,13 @@ class SSOSettingsWrite:
                 return attribute_mapping_email_verified_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[Union[None, str]]], data)
+            return cast(None | Unset | list[None | str], data)
 
         attribute_mapping_email_verified = _parse_attribute_mapping_email_verified(
             d.pop("attribute_mapping_email_verified", UNSET)
         )
 
-        def _parse_attribute_mapping_email(data: object) -> Union[None, Unset, list[Union[None, str]]]:
+        def _parse_attribute_mapping_email(data: object) -> None | Unset | list[None | str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -843,10 +843,10 @@ class SSOSettingsWrite:
                 _attribute_mapping_email_type_0 = data
                 for attribute_mapping_email_type_0_item_data in _attribute_mapping_email_type_0:
 
-                    def _parse_attribute_mapping_email_type_0_item(data: object) -> Union[None, str]:
+                    def _parse_attribute_mapping_email_type_0_item(data: object) -> None | str:
                         if data is None:
                             return data
-                        return cast(Union[None, str], data)
+                        return cast(None | str, data)
 
                     attribute_mapping_email_type_0_item = _parse_attribute_mapping_email_type_0_item(
                         attribute_mapping_email_type_0_item_data
@@ -857,61 +857,61 @@ class SSOSettingsWrite:
                 return attribute_mapping_email_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, list[Union[None, str]]], data)
+            return cast(None | Unset | list[None | str], data)
 
         attribute_mapping_email = _parse_attribute_mapping_email(d.pop("attribute_mapping_email", UNSET))
 
-        def _parse_idp_entity_id(data: object) -> Union[None, Unset, str]:
+        def _parse_idp_entity_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         idp_entity_id = _parse_idp_entity_id(d.pop("idp_entity_id", UNSET))
 
-        def _parse_metadata_url(data: object) -> Union[None, Unset, str]:
+        def _parse_metadata_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         metadata_url = _parse_metadata_url(d.pop("metadata_url", UNSET))
 
-        def _parse_sso_url(data: object) -> Union[None, Unset, str]:
+        def _parse_sso_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         sso_url = _parse_sso_url(d.pop("sso_url", UNSET))
 
-        def _parse_slo_url(data: object) -> Union[None, Unset, str]:
+        def _parse_slo_url(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         slo_url = _parse_slo_url(d.pop("slo_url", UNSET))
 
-        def _parse_x509cert(data: object) -> Union[None, Unset, str]:
+        def _parse_x509cert(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         x509cert = _parse_x509cert(d.pop("x509cert", UNSET))
 
-        def _parse_sp_entity_id(data: object) -> Union[None, Unset, str]:
+        def _parse_sp_entity_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         sp_entity_id = _parse_sp_entity_id(d.pop("sp_entity_id", UNSET))
 
@@ -921,12 +921,12 @@ class SSOSettingsWrite:
 
         authn_request_signed = d.pop("authn_request_signed", UNSET)
 
-        def _parse_digest_algorithm(data: object) -> Union[None, Unset, str]:
+        def _parse_digest_algorithm(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         digest_algorithm = _parse_digest_algorithm(d.pop("digest_algorithm", UNSET))
 
@@ -942,12 +942,12 @@ class SSOSettingsWrite:
 
         reject_idp_initiated_sso = d.pop("reject_idp_initiated_sso", UNSET)
 
-        def _parse_signature_algorithm(data: object) -> Union[None, Unset, str]:
+        def _parse_signature_algorithm(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         signature_algorithm = _parse_signature_algorithm(d.pop("signature_algorithm", UNSET))
 
@@ -966,7 +966,7 @@ class SSOSettingsWrite:
         is_published = d.pop("is_published", UNSET)
 
         _name = d.pop("name", UNSET)
-        name: Union[Unset, NameEnum]
+        name: Unset | NameEnum
         if isinstance(_name, Unset):
             name = UNSET
         else:
@@ -979,7 +979,7 @@ class SSOSettingsWrite:
         settings = d.pop("settings", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

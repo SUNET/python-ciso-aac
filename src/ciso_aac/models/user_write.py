@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -31,12 +31,12 @@ class UserWrite:
 
     id: UUID
     email: str
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    is_active: Union[Unset, bool] = UNSET
-    date_joined: Union[Unset, datetime.datetime] = UNSET
-    user_groups: Union[Unset, list[UUID]] = UNSET
-    is_third_party: Union[Unset, bool] = UNSET
+    first_name: Unset | str = UNSET
+    last_name: Unset | str = UNSET
+    is_active: Unset | bool = UNSET
+    date_joined: Unset | datetime.datetime = UNSET
+    user_groups: Unset | list[UUID] = UNSET
+    is_third_party: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,11 +50,11 @@ class UserWrite:
 
         is_active = self.is_active
 
-        date_joined: Union[Unset, str] = UNSET
+        date_joined: Unset | str = UNSET
         if not isinstance(self.date_joined, Unset):
             date_joined = self.date_joined.isoformat()
 
-        user_groups: Union[Unset, list[str]] = UNSET
+        user_groups: Unset | list[str] = UNSET
         if not isinstance(self.user_groups, Unset):
             user_groups = []
             for user_groups_item_data in self.user_groups:
@@ -105,11 +105,11 @@ class UserWrite:
             self.is_active if isinstance(self.is_active, Unset) else (None, str(self.is_active).encode(), "text/plain")
         )
 
-        date_joined: Union[Unset, bytes] = UNSET
+        date_joined: Unset | bytes = UNSET
         if not isinstance(self.date_joined, Unset):
             date_joined = self.date_joined.isoformat().encode()
 
-        user_groups: Union[Unset, tuple[None, bytes, str]] = UNSET
+        user_groups: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.user_groups, Unset):
             _temp_user_groups = []
             for user_groups_item_data in self.user_groups:
@@ -162,7 +162,7 @@ class UserWrite:
         is_active = d.pop("is_active", UNSET)
 
         _date_joined = d.pop("date_joined", UNSET)
-        date_joined: Union[Unset, datetime.datetime]
+        date_joined: Unset | datetime.datetime
         if isinstance(_date_joined, Unset):
             date_joined = UNSET
         else:

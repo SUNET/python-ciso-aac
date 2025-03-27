@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -44,18 +44,18 @@ class StakeholderWrite:
     category: StakeholderWriteCategoryEnum
     ebios_rm_study: UUID
     entity: UUID
-    is_published: Union[Unset, bool] = UNSET
-    current_dependency: Union[Unset, int] = UNSET
-    current_penetration: Union[Unset, int] = UNSET
-    current_maturity: Union[Unset, int] = UNSET
-    current_trust: Union[Unset, int] = UNSET
-    residual_dependency: Union[Unset, int] = UNSET
-    residual_penetration: Union[Unset, int] = UNSET
-    residual_maturity: Union[Unset, int] = UNSET
-    residual_trust: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    current_dependency: Unset | int = UNSET
+    current_penetration: Unset | int = UNSET
+    current_maturity: Unset | int = UNSET
+    current_trust: Unset | int = UNSET
+    residual_dependency: Unset | int = UNSET
+    residual_penetration: Unset | int = UNSET
+    residual_maturity: Unset | int = UNSET
+    residual_trust: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,7 +93,7 @@ class StakeholderWrite:
 
         justification = self.justification
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -218,7 +218,7 @@ class StakeholderWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:

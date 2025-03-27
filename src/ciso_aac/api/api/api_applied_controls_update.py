@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        AppliedControlWrite,
-        AppliedControlWrite,
-        AppliedControlWrite,
-    ],
+    body: AppliedControlWrite | AppliedControlWrite | AppliedControlWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AppliedControlWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AppliedControlWrite | None:
     if response.status_code == 200:
         response_200 = AppliedControlWrite.from_dict(response.json())
 
@@ -58,9 +52,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AppliedControlWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AppliedControlWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,11 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AppliedControlWrite,
-        AppliedControlWrite,
-        AppliedControlWrite,
-    ],
+    body: AppliedControlWrite | AppliedControlWrite | AppliedControlWrite,
 ) -> Response[AppliedControlWrite]:
     """API endpoint that allows applied controls to be viewed or edited.
 
@@ -111,12 +99,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AppliedControlWrite,
-        AppliedControlWrite,
-        AppliedControlWrite,
-    ],
-) -> Optional[AppliedControlWrite]:
+    body: AppliedControlWrite | AppliedControlWrite | AppliedControlWrite,
+) -> AppliedControlWrite | None:
     """API endpoint that allows applied controls to be viewed or edited.
 
     Args:
@@ -144,11 +128,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AppliedControlWrite,
-        AppliedControlWrite,
-        AppliedControlWrite,
-    ],
+    body: AppliedControlWrite | AppliedControlWrite | AppliedControlWrite,
 ) -> Response[AppliedControlWrite]:
     """API endpoint that allows applied controls to be viewed or edited.
 
@@ -180,12 +160,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AppliedControlWrite,
-        AppliedControlWrite,
-        AppliedControlWrite,
-    ],
-) -> Optional[AppliedControlWrite]:
+    body: AppliedControlWrite | AppliedControlWrite | AppliedControlWrite,
+) -> AppliedControlWrite | None:
     """API endpoint that allows applied controls to be viewed or edited.
 
     Args:

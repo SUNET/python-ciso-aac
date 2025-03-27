@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,12 +36,12 @@ class RiskAcceptanceWrite:
     updated_at: datetime.datetime
     name: str
     risk_scenarios: list[UUID]
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    expiry_date: Union[None, Unset, datetime.date] = UNSET
-    justification: Union[None, Unset, str] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    approver: Union[None, UUID, Unset] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    expiry_date: None | Unset | datetime.date = UNSET
+    justification: None | Unset | str = UNSET
+    folder: Unset | UUID = UNSET
+    approver: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -60,13 +60,13 @@ class RiskAcceptanceWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        expiry_date: Union[None, Unset, str]
+        expiry_date: None | Unset | str
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
         elif isinstance(self.expiry_date, datetime.date):
@@ -74,17 +74,17 @@ class RiskAcceptanceWrite:
         else:
             expiry_date = self.expiry_date
 
-        justification: Union[None, Unset, str]
+        justification: None | Unset | str
         if isinstance(self.justification, Unset):
             justification = UNSET
         else:
             justification = self.justification
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[None, Unset, str]
+        approver: None | Unset | str
         if isinstance(self.approver, Unset):
             approver = UNSET
         elif isinstance(self.approver, UUID):
@@ -139,7 +139,7 @@ class RiskAcceptanceWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -148,7 +148,7 @@ class RiskAcceptanceWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        expiry_date: Union[Unset, tuple[None, bytes, str]]
+        expiry_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
@@ -157,7 +157,7 @@ class RiskAcceptanceWrite:
         else:
             expiry_date = (None, str(self.expiry_date).encode(), "text/plain")
 
-        justification: Union[Unset, tuple[None, bytes, str]]
+        justification: Unset | tuple[None, bytes, str]
 
         if isinstance(self.justification, Unset):
             justification = UNSET
@@ -166,11 +166,11 @@ class RiskAcceptanceWrite:
         else:
             justification = (None, str(self.justification).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[Unset, tuple[None, bytes, str]]
+        approver: Unset | tuple[None, bytes, str]
 
         if isinstance(self.approver, Unset):
             approver = UNSET
@@ -227,16 +227,16 @@ class RiskAcceptanceWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_expiry_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiry_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -249,27 +249,27 @@ class RiskAcceptanceWrite:
                 return expiry_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiry_date = _parse_expiry_date(d.pop("expiry_date", UNSET))
 
-        def _parse_justification(data: object) -> Union[None, Unset, str]:
+        def _parse_justification(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         justification = _parse_justification(d.pop("justification", UNSET))
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_approver(data: object) -> Union[None, UUID, Unset]:
+        def _parse_approver(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -282,7 +282,7 @@ class RiskAcceptanceWrite:
                 return approver_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         approver = _parse_approver(d.pop("approver", UNSET))
 

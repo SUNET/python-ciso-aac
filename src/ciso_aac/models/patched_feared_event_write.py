@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -28,21 +28,21 @@ class PatchedFearedEventWrite:
         qualifications (Union[Unset, list[UUID]]): Qualifications carried by the feared event
     """
 
-    id: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    gravity: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    ebios_rm_study: Union[Unset, UUID] = UNSET
-    assets: Union[Unset, list[UUID]] = UNSET
-    qualifications: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    gravity: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    ebios_rm_study: Unset | UUID = UNSET
+    assets: Unset | list[UUID] = UNSET
+    qualifications: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -50,7 +50,7 @@ class PatchedFearedEventWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -64,18 +64,18 @@ class PatchedFearedEventWrite:
 
         justification = self.justification
 
-        ebios_rm_study: Union[Unset, str] = UNSET
+        ebios_rm_study: Unset | str = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        assets: Union[Unset, list[str]] = UNSET
+        assets: Unset | list[str] = UNSET
         if not isinstance(self.assets, Unset):
             assets = []
             for assets_item_data in self.assets:
                 assets_item = str(assets_item_data)
                 assets.append(assets_item)
 
-        qualifications: Union[Unset, list[str]] = UNSET
+        qualifications: Unset | list[str] = UNSET
         if not isinstance(self.qualifications, Unset):
             qualifications = []
             for qualifications_item_data in self.qualifications:
@@ -111,7 +111,7 @@ class PatchedFearedEventWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -123,7 +123,7 @@ class PatchedFearedEventWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -148,11 +148,11 @@ class PatchedFearedEventWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        ebios_rm_study: Union[Unset, bytes] = UNSET
+        ebios_rm_study: Unset | bytes = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        assets: Union[Unset, tuple[None, bytes, str]] = UNSET
+        assets: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.assets, Unset):
             _temp_assets = []
             for assets_item_data in self.assets:
@@ -160,7 +160,7 @@ class PatchedFearedEventWrite:
                 _temp_assets.append(assets_item)
             assets = (None, json.dumps(_temp_assets).encode(), "application/json")
 
-        qualifications: Union[Unset, tuple[None, bytes, str]] = UNSET
+        qualifications: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.qualifications, Unset):
             _temp_qualifications = []
             for qualifications_item_data in self.qualifications:
@@ -202,7 +202,7 @@ class PatchedFearedEventWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -212,12 +212,12 @@ class PatchedFearedEventWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -230,7 +230,7 @@ class PatchedFearedEventWrite:
         justification = d.pop("justification", UNSET)
 
         _ebios_rm_study = d.pop("ebios_rm_study", UNSET)
-        ebios_rm_study: Union[Unset, UUID]
+        ebios_rm_study: Unset | UUID
         if isinstance(_ebios_rm_study, Unset):
             ebios_rm_study = UNSET
         else:

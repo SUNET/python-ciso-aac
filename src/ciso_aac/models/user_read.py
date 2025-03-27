@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -31,12 +31,12 @@ class UserRead:
     id: UUID
     email: str
     user_groups: list[str]
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    is_active: Union[Unset, bool] = UNSET
-    date_joined: Union[Unset, datetime.datetime] = UNSET
-    is_sso: Union[Unset, bool] = UNSET
-    is_third_party: Union[Unset, bool] = UNSET
+    first_name: Unset | str = UNSET
+    last_name: Unset | str = UNSET
+    is_active: Unset | bool = UNSET
+    date_joined: Unset | datetime.datetime = UNSET
+    is_sso: Unset | bool = UNSET
+    is_third_party: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,7 +52,7 @@ class UserRead:
 
         is_active = self.is_active
 
-        date_joined: Union[Unset, str] = UNSET
+        date_joined: Unset | str = UNSET
         if not isinstance(self.date_joined, Unset):
             date_joined = self.date_joined.isoformat()
 
@@ -100,7 +100,7 @@ class UserRead:
         is_active = d.pop("is_active", UNSET)
 
         _date_joined = d.pop("date_joined", UNSET)
-        date_joined: Union[Unset, datetime.datetime]
+        date_joined: Unset | datetime.datetime
         if isinstance(_date_joined, Unset):
             date_joined = UNSET
         else:

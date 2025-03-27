@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -31,29 +31,29 @@ class PatchedRiskAcceptanceWrite:
             of the chosen domain
     """
 
-    id: Union[Unset, UUID] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    expiry_date: Union[None, Unset, datetime.date] = UNSET
-    justification: Union[None, Unset, str] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    approver: Union[None, UUID, Unset] = UNSET
-    risk_scenarios: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    expiry_date: None | Unset | datetime.date = UNSET
+    justification: None | Unset | str = UNSET
+    folder: Unset | UUID = UNSET
+    approver: None | UUID | Unset = UNSET
+    risk_scenarios: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -61,13 +61,13 @@ class PatchedRiskAcceptanceWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        expiry_date: Union[None, Unset, str]
+        expiry_date: None | Unset | str
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
         elif isinstance(self.expiry_date, datetime.date):
@@ -75,17 +75,17 @@ class PatchedRiskAcceptanceWrite:
         else:
             expiry_date = self.expiry_date
 
-        justification: Union[None, Unset, str]
+        justification: None | Unset | str
         if isinstance(self.justification, Unset):
             justification = UNSET
         else:
             justification = self.justification
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[None, Unset, str]
+        approver: None | Unset | str
         if isinstance(self.approver, Unset):
             approver = UNSET
         elif isinstance(self.approver, UUID):
@@ -93,7 +93,7 @@ class PatchedRiskAcceptanceWrite:
         else:
             approver = self.approver
 
-        risk_scenarios: Union[Unset, list[str]] = UNSET
+        risk_scenarios: Unset | list[str] = UNSET
         if not isinstance(self.risk_scenarios, Unset):
             risk_scenarios = []
             for risk_scenarios_item_data in self.risk_scenarios:
@@ -129,15 +129,15 @@ class PatchedRiskAcceptanceWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -149,7 +149,7 @@ class PatchedRiskAcceptanceWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -158,7 +158,7 @@ class PatchedRiskAcceptanceWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        expiry_date: Union[Unset, tuple[None, bytes, str]]
+        expiry_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
@@ -167,7 +167,7 @@ class PatchedRiskAcceptanceWrite:
         else:
             expiry_date = (None, str(self.expiry_date).encode(), "text/plain")
 
-        justification: Union[Unset, tuple[None, bytes, str]]
+        justification: Unset | tuple[None, bytes, str]
 
         if isinstance(self.justification, Unset):
             justification = UNSET
@@ -176,11 +176,11 @@ class PatchedRiskAcceptanceWrite:
         else:
             justification = (None, str(self.justification).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        approver: Union[Unset, tuple[None, bytes, str]]
+        approver: Unset | tuple[None, bytes, str]
 
         if isinstance(self.approver, Unset):
             approver = UNSET
@@ -189,7 +189,7 @@ class PatchedRiskAcceptanceWrite:
         else:
             approver = (None, str(self.approver).encode(), "text/plain")
 
-        risk_scenarios: Union[Unset, tuple[None, bytes, str]] = UNSET
+        risk_scenarios: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.risk_scenarios, Unset):
             _temp_risk_scenarios = []
             for risk_scenarios_item_data in self.risk_scenarios:
@@ -231,21 +231,21 @@ class PatchedRiskAcceptanceWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -255,16 +255,16 @@ class PatchedRiskAcceptanceWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_expiry_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiry_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -277,27 +277,27 @@ class PatchedRiskAcceptanceWrite:
                 return expiry_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiry_date = _parse_expiry_date(d.pop("expiry_date", UNSET))
 
-        def _parse_justification(data: object) -> Union[None, Unset, str]:
+        def _parse_justification(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         justification = _parse_justification(d.pop("justification", UNSET))
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_approver(data: object) -> Union[None, UUID, Unset]:
+        def _parse_approver(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -310,7 +310,7 @@ class PatchedRiskAcceptanceWrite:
                 return approver_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         approver = _parse_approver(d.pop("approver", UNSET))
 

@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -26,19 +26,19 @@ class PatchedOperationalScenarioWrite:
         threats (Union[Unset, list[UUID]]): Threats leveraged by the operational scenario
     """
 
-    id: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    operating_modes_description: Union[Unset, str] = UNSET
-    likelihood: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    ebios_rm_study: Union[Unset, UUID] = UNSET
-    attack_path: Union[Unset, UUID] = UNSET
-    threats: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    operating_modes_description: Unset | str = UNSET
+    likelihood: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    ebios_rm_study: Unset | UUID = UNSET
+    attack_path: Unset | UUID = UNSET
+    threats: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -52,15 +52,15 @@ class PatchedOperationalScenarioWrite:
 
         justification = self.justification
 
-        ebios_rm_study: Union[Unset, str] = UNSET
+        ebios_rm_study: Unset | str = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        attack_path: Union[Unset, str] = UNSET
+        attack_path: Unset | str = UNSET
         if not isinstance(self.attack_path, Unset):
             attack_path = str(self.attack_path)
 
-        threats: Union[Unset, list[str]] = UNSET
+        threats: Unset | list[str] = UNSET
         if not isinstance(self.threats, Unset):
             threats = []
             for threats_item_data in self.threats:
@@ -92,7 +92,7 @@ class PatchedOperationalScenarioWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -126,15 +126,15 @@ class PatchedOperationalScenarioWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        ebios_rm_study: Union[Unset, bytes] = UNSET
+        ebios_rm_study: Unset | bytes = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        attack_path: Union[Unset, bytes] = UNSET
+        attack_path: Unset | bytes = UNSET
         if not isinstance(self.attack_path, Unset):
             attack_path = str(self.attack_path)
 
-        threats: Union[Unset, tuple[None, bytes, str]] = UNSET
+        threats: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.threats, Unset):
             _temp_threats = []
             for threats_item_data in self.threats:
@@ -172,7 +172,7 @@ class PatchedOperationalScenarioWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -189,14 +189,14 @@ class PatchedOperationalScenarioWrite:
         justification = d.pop("justification", UNSET)
 
         _ebios_rm_study = d.pop("ebios_rm_study", UNSET)
-        ebios_rm_study: Union[Unset, UUID]
+        ebios_rm_study: Unset | UUID
         if isinstance(_ebios_rm_study, Unset):
             ebios_rm_study = UNSET
         else:
             ebios_rm_study = UUID(_ebios_rm_study)
 
         _attack_path = d.pop("attack_path", UNSET)
-        attack_path: Union[Unset, UUID]
+        attack_path: Unset | UUID
         if isinstance(_attack_path, Unset):
             attack_path = UNSET
         else:

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -20,9 +20,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[AttackPathRead]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AttackPathRead | None:
     if response.status_code == 200:
         response_200 = AttackPathRead.from_dict(response.json())
 
@@ -33,9 +31,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[AttackPathRead]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AttackPathRead]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -76,7 +72,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[AttackPathRead]:
+) -> AttackPathRead | None:
     """
     Args:
         id (str):
@@ -125,7 +121,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[AttackPathRead]:
+) -> AttackPathRead | None:
     """
     Args:
         id (str):

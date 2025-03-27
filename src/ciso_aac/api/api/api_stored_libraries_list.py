@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,16 +12,16 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
-    locale: Union[Unset, str] = UNSET,
-    object_type: Union[Unset, list[ApiStoredLibrariesListObjectTypeItem]] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    packager: Union[Unset, str] = UNSET,
-    provider: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-    urn: Union[Unset, str] = UNSET,
-    version: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    locale: Unset | str = UNSET,
+    object_type: Unset | list[ApiStoredLibrariesListObjectTypeItem] = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    packager: Unset | str = UNSET,
+    provider: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+    urn: Unset | str = UNSET,
+    version: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -29,7 +29,7 @@ def _get_kwargs(
 
     params["locale"] = locale
 
-    json_object_type: Union[Unset, list[str]] = UNSET
+    json_object_type: Unset | list[str] = UNSET
     if not isinstance(object_type, Unset):
         json_object_type = []
         for object_type_item_data in object_type:
@@ -64,8 +64,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PaginatedStoredLibraryList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PaginatedStoredLibraryList | None:
     if response.status_code == 200:
         response_200 = PaginatedStoredLibraryList.from_dict(response.json())
 
@@ -77,7 +77,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[PaginatedStoredLibraryList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -90,16 +90,16 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    locale: Union[Unset, str] = UNSET,
-    object_type: Union[Unset, list[ApiStoredLibrariesListObjectTypeItem]] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    packager: Union[Unset, str] = UNSET,
-    provider: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-    urn: Union[Unset, str] = UNSET,
-    version: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    locale: Unset | str = UNSET,
+    object_type: Unset | list[ApiStoredLibrariesListObjectTypeItem] = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    packager: Unset | str = UNSET,
+    provider: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+    urn: Unset | str = UNSET,
+    version: Unset | int = UNSET,
 ) -> Response[PaginatedStoredLibraryList]:
     """
     Args:
@@ -145,17 +145,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    locale: Union[Unset, str] = UNSET,
-    object_type: Union[Unset, list[ApiStoredLibrariesListObjectTypeItem]] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    packager: Union[Unset, str] = UNSET,
-    provider: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-    urn: Union[Unset, str] = UNSET,
-    version: Union[Unset, int] = UNSET,
-) -> Optional[PaginatedStoredLibraryList]:
+    limit: Unset | int = UNSET,
+    locale: Unset | str = UNSET,
+    object_type: Unset | list[ApiStoredLibrariesListObjectTypeItem] = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    packager: Unset | str = UNSET,
+    provider: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+    urn: Unset | str = UNSET,
+    version: Unset | int = UNSET,
+) -> PaginatedStoredLibraryList | None:
     """
     Args:
         limit (Union[Unset, int]):
@@ -195,16 +195,16 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    locale: Union[Unset, str] = UNSET,
-    object_type: Union[Unset, list[ApiStoredLibrariesListObjectTypeItem]] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    packager: Union[Unset, str] = UNSET,
-    provider: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-    urn: Union[Unset, str] = UNSET,
-    version: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    locale: Unset | str = UNSET,
+    object_type: Unset | list[ApiStoredLibrariesListObjectTypeItem] = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    packager: Unset | str = UNSET,
+    provider: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+    urn: Unset | str = UNSET,
+    version: Unset | int = UNSET,
 ) -> Response[PaginatedStoredLibraryList]:
     """
     Args:
@@ -248,17 +248,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    locale: Union[Unset, str] = UNSET,
-    object_type: Union[Unset, list[ApiStoredLibrariesListObjectTypeItem]] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    packager: Union[Unset, str] = UNSET,
-    provider: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-    urn: Union[Unset, str] = UNSET,
-    version: Union[Unset, int] = UNSET,
-) -> Optional[PaginatedStoredLibraryList]:
+    limit: Unset | int = UNSET,
+    locale: Unset | str = UNSET,
+    object_type: Unset | list[ApiStoredLibrariesListObjectTypeItem] = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    packager: Unset | str = UNSET,
+    provider: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+    urn: Unset | str = UNSET,
+    version: Unset | int = UNSET,
+) -> PaginatedStoredLibraryList | None:
     """
     Args:
         limit (Union[Unset, int]):

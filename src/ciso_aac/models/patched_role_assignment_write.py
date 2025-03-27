@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -32,31 +32,31 @@ class PatchedRoleAssignmentWrite:
         perimeter_folders (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    is_recursive: Union[Unset, bool] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    user: Union[None, UUID, Unset] = UNSET
-    user_group: Union[None, UUID, Unset] = UNSET
-    role: Union[Unset, UUID] = UNSET
-    perimeter_folders: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    is_recursive: Unset | bool = UNSET
+    builtin: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    user: None | UUID | Unset = UNSET
+    user_group: None | UUID | Unset = UNSET
+    role: Unset | UUID = UNSET
+    perimeter_folders: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -64,7 +64,7 @@ class PatchedRoleAssignmentWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -74,11 +74,11 @@ class PatchedRoleAssignmentWrite:
 
         builtin = self.builtin
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        user: Union[None, Unset, str]
+        user: None | Unset | str
         if isinstance(self.user, Unset):
             user = UNSET
         elif isinstance(self.user, UUID):
@@ -86,7 +86,7 @@ class PatchedRoleAssignmentWrite:
         else:
             user = self.user
 
-        user_group: Union[None, Unset, str]
+        user_group: None | Unset | str
         if isinstance(self.user_group, Unset):
             user_group = UNSET
         elif isinstance(self.user_group, UUID):
@@ -94,11 +94,11 @@ class PatchedRoleAssignmentWrite:
         else:
             user_group = self.user_group
 
-        role: Union[Unset, str] = UNSET
+        role: Unset | str = UNSET
         if not isinstance(self.role, Unset):
             role = str(self.role)
 
-        perimeter_folders: Union[Unset, list[str]] = UNSET
+        perimeter_folders: Unset | list[str] = UNSET
         if not isinstance(self.perimeter_folders, Unset):
             perimeter_folders = []
             for perimeter_folders_item_data in self.perimeter_folders:
@@ -138,15 +138,15 @@ class PatchedRoleAssignmentWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -158,7 +158,7 @@ class PatchedRoleAssignmentWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -175,11 +175,11 @@ class PatchedRoleAssignmentWrite:
 
         builtin = self.builtin if isinstance(self.builtin, Unset) else (None, str(self.builtin).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        user: Union[Unset, tuple[None, bytes, str]]
+        user: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user, Unset):
             user = UNSET
@@ -188,7 +188,7 @@ class PatchedRoleAssignmentWrite:
         else:
             user = (None, str(self.user).encode(), "text/plain")
 
-        user_group: Union[Unset, tuple[None, bytes, str]]
+        user_group: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user_group, Unset):
             user_group = UNSET
@@ -197,11 +197,11 @@ class PatchedRoleAssignmentWrite:
         else:
             user_group = (None, str(self.user_group).encode(), "text/plain")
 
-        role: Union[Unset, bytes] = UNSET
+        role: Unset | bytes = UNSET
         if not isinstance(self.role, Unset):
             role = str(self.role)
 
-        perimeter_folders: Union[Unset, tuple[None, bytes, str]] = UNSET
+        perimeter_folders: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.perimeter_folders, Unset):
             _temp_perimeter_folders = []
             for perimeter_folders_item_data in self.perimeter_folders:
@@ -247,21 +247,21 @@ class PatchedRoleAssignmentWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -271,12 +271,12 @@ class PatchedRoleAssignmentWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -285,13 +285,13 @@ class PatchedRoleAssignmentWrite:
         builtin = d.pop("builtin", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_user(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -304,11 +304,11 @@ class PatchedRoleAssignmentWrite:
                 return user_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user = _parse_user(d.pop("user", UNSET))
 
-        def _parse_user_group(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user_group(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -321,12 +321,12 @@ class PatchedRoleAssignmentWrite:
                 return user_group_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user_group = _parse_user_group(d.pop("user_group", UNSET))
 
         _role = d.pop("role", UNSET)
-        role: Union[Unset, UUID]
+        role: Unset | UUID
         if isinstance(_role, Unset):
             role = UNSET
         else:

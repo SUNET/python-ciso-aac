@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -51,41 +51,41 @@ class PatchedRoToWrite:
         feared_events (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    risk_origin: Union[Unset, RiskOriginEnum] = UNSET
-    target_objective: Union[Unset, str] = UNSET
-    motivation: Union[Unset, MotivationEnum] = UNSET
-    resources: Union[Unset, ResourcesEnum] = UNSET
-    activity: Union[Unset, ActivityEnum] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    ebios_rm_study: Union[Unset, UUID] = UNSET
-    feared_events: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    risk_origin: Unset | RiskOriginEnum = UNSET
+    target_objective: Unset | str = UNSET
+    motivation: Unset | MotivationEnum = UNSET
+    resources: Unset | ResourcesEnum = UNSET
+    activity: Unset | ActivityEnum = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    ebios_rm_study: Unset | UUID = UNSET
+    feared_events: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         is_published = self.is_published
 
-        risk_origin: Union[Unset, str] = UNSET
+        risk_origin: Unset | str = UNSET
         if not isinstance(self.risk_origin, Unset):
             risk_origin = self.risk_origin.value
 
         target_objective = self.target_objective
 
-        motivation: Union[Unset, int] = UNSET
+        motivation: Unset | int = UNSET
         if not isinstance(self.motivation, Unset):
             motivation = self.motivation.value
 
-        resources: Union[Unset, int] = UNSET
+        resources: Unset | int = UNSET
         if not isinstance(self.resources, Unset):
             resources = self.resources.value
 
-        activity: Union[Unset, int] = UNSET
+        activity: Unset | int = UNSET
         if not isinstance(self.activity, Unset):
             activity = self.activity.value
 
@@ -93,11 +93,11 @@ class PatchedRoToWrite:
 
         justification = self.justification
 
-        ebios_rm_study: Union[Unset, str] = UNSET
+        ebios_rm_study: Unset | str = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        feared_events: Union[Unset, list[str]] = UNSET
+        feared_events: Unset | list[str] = UNSET
         if not isinstance(self.feared_events, Unset):
             feared_events = []
             for feared_events_item_data in self.feared_events:
@@ -133,7 +133,7 @@ class PatchedRoToWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -143,7 +143,7 @@ class PatchedRoToWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        risk_origin: Union[Unset, tuple[None, bytes, str]] = UNSET
+        risk_origin: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.risk_origin, Unset):
             risk_origin = (None, str(self.risk_origin.value).encode(), "text/plain")
 
@@ -153,15 +153,15 @@ class PatchedRoToWrite:
             else (None, str(self.target_objective).encode(), "text/plain")
         )
 
-        motivation: Union[Unset, tuple[None, bytes, str]] = UNSET
+        motivation: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.motivation, Unset):
             motivation = (None, str(self.motivation.value).encode(), "text/plain")
 
-        resources: Union[Unset, tuple[None, bytes, str]] = UNSET
+        resources: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.resources, Unset):
             resources = (None, str(self.resources.value).encode(), "text/plain")
 
-        activity: Union[Unset, tuple[None, bytes, str]] = UNSET
+        activity: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.activity, Unset):
             activity = (None, str(self.activity.value).encode(), "text/plain")
 
@@ -177,11 +177,11 @@ class PatchedRoToWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        ebios_rm_study: Union[Unset, bytes] = UNSET
+        ebios_rm_study: Unset | bytes = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        feared_events: Union[Unset, tuple[None, bytes, str]] = UNSET
+        feared_events: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.feared_events, Unset):
             _temp_feared_events = []
             for feared_events_item_data in self.feared_events:
@@ -223,7 +223,7 @@ class PatchedRoToWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -232,7 +232,7 @@ class PatchedRoToWrite:
         is_published = d.pop("is_published", UNSET)
 
         _risk_origin = d.pop("risk_origin", UNSET)
-        risk_origin: Union[Unset, RiskOriginEnum]
+        risk_origin: Unset | RiskOriginEnum
         if isinstance(_risk_origin, Unset):
             risk_origin = UNSET
         else:
@@ -241,21 +241,21 @@ class PatchedRoToWrite:
         target_objective = d.pop("target_objective", UNSET)
 
         _motivation = d.pop("motivation", UNSET)
-        motivation: Union[Unset, MotivationEnum]
+        motivation: Unset | MotivationEnum
         if isinstance(_motivation, Unset):
             motivation = UNSET
         else:
             motivation = MotivationEnum(_motivation)
 
         _resources = d.pop("resources", UNSET)
-        resources: Union[Unset, ResourcesEnum]
+        resources: Unset | ResourcesEnum
         if isinstance(_resources, Unset):
             resources = UNSET
         else:
             resources = ResourcesEnum(_resources)
 
         _activity = d.pop("activity", UNSET)
-        activity: Union[Unset, ActivityEnum]
+        activity: Unset | ActivityEnum
         if isinstance(_activity, Unset):
             activity = UNSET
         else:
@@ -266,7 +266,7 @@ class PatchedRoToWrite:
         justification = d.pop("justification", UNSET)
 
         _ebios_rm_study = d.pop("ebios_rm_study", UNSET)
-        ebios_rm_study: Union[Unset, UUID]
+        ebios_rm_study: Unset | UUID
         if isinstance(_ebios_rm_study, Unset):
             ebios_rm_study = UNSET
         else:

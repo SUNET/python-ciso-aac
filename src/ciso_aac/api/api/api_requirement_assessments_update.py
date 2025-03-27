@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-    ],
+    body: RequirementAssessmentWrite | RequirementAssessmentWrite | RequirementAssessmentWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,8 +42,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RequirementAssessmentWrite]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RequirementAssessmentWrite | None:
     if response.status_code == 200:
         response_200 = RequirementAssessmentWrite.from_dict(response.json())
 
@@ -59,7 +55,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RequirementAssessmentWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -73,11 +69,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-    ],
+    body: RequirementAssessmentWrite | RequirementAssessmentWrite | RequirementAssessmentWrite,
 ) -> Response[RequirementAssessmentWrite]:
     """API endpoint that allows requirement assessments to be viewed or edited.
 
@@ -111,12 +103,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-    ],
-) -> Optional[RequirementAssessmentWrite]:
+    body: RequirementAssessmentWrite | RequirementAssessmentWrite | RequirementAssessmentWrite,
+) -> RequirementAssessmentWrite | None:
     """API endpoint that allows requirement assessments to be viewed or edited.
 
     Args:
@@ -144,11 +132,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-    ],
+    body: RequirementAssessmentWrite | RequirementAssessmentWrite | RequirementAssessmentWrite,
 ) -> Response[RequirementAssessmentWrite]:
     """API endpoint that allows requirement assessments to be viewed or edited.
 
@@ -180,12 +164,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-        RequirementAssessmentWrite,
-    ],
-) -> Optional[RequirementAssessmentWrite]:
+    body: RequirementAssessmentWrite | RequirementAssessmentWrite | RequirementAssessmentWrite,
+) -> RequirementAssessmentWrite | None:
     """API endpoint that allows requirement assessments to be viewed or edited.
 
     Args:

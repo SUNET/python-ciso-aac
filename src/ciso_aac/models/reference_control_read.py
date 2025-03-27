@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -40,21 +40,21 @@ class ReferenceControlRead:
 
     id: UUID
     name: str
-    description: Union[None, str]
-    annotation: Union[None, str]
+    description: None | str
+    annotation: None | str
     folder: str
     library: str
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    category: Union[BlankEnum, CategoryAe3Enum, None, Unset] = UNSET
-    csf_function: Union[BlankEnum, CsfFunctionEnum, None, Unset] = UNSET
-    typical_evidence: Union[Unset, Any] = UNSET
-    is_published: Union[Unset, bool] = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    category: BlankEnum | CategoryAe3Enum | None | Unset = UNSET
+    csf_function: BlankEnum | CsfFunctionEnum | None | Unset = UNSET
+    typical_evidence: Unset | Any = UNSET
+    is_published: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,10 +62,10 @@ class ReferenceControlRead:
 
         name = self.name
 
-        description: Union[None, str]
+        description: None | str
         description = self.description
 
-        annotation: Union[None, str]
+        annotation: None | str
         annotation = self.annotation
 
         folder = self.folder
@@ -76,19 +76,19 @@ class ReferenceControlRead:
 
         updated_at = self.updated_at.isoformat()
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -98,7 +98,7 @@ class ReferenceControlRead:
 
         default_locale = self.default_locale
 
-        category: Union[None, Unset, str]
+        category: None | Unset | str
         if isinstance(self.category, Unset):
             category = UNSET
         elif isinstance(self.category, CategoryAe3Enum):
@@ -108,7 +108,7 @@ class ReferenceControlRead:
         else:
             category = self.category
 
-        csf_function: Union[None, Unset, str]
+        csf_function: None | Unset | str
         if isinstance(self.csf_function, Unset):
             csf_function = UNSET
         elif isinstance(self.csf_function, CsfFunctionEnum):
@@ -164,17 +164,17 @@ class ReferenceControlRead:
 
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, str]:
+        def _parse_description(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         description = _parse_description(d.pop("description"))
 
-        def _parse_annotation(data: object) -> Union[None, str]:
+        def _parse_annotation(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         annotation = _parse_annotation(d.pop("annotation"))
 
@@ -186,30 +186,30 @@ class ReferenceControlRead:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
@@ -217,7 +217,7 @@ class ReferenceControlRead:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_category(data: object) -> Union[BlankEnum, CategoryAe3Enum, None, Unset]:
+        def _parse_category(data: object) -> BlankEnum | CategoryAe3Enum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -238,11 +238,11 @@ class ReferenceControlRead:
                 return category_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CategoryAe3Enum, None, Unset], data)
+            return cast(BlankEnum | CategoryAe3Enum | None | Unset, data)
 
         category = _parse_category(d.pop("category", UNSET))
 
-        def _parse_csf_function(data: object) -> Union[BlankEnum, CsfFunctionEnum, None, Unset]:
+        def _parse_csf_function(data: object) -> BlankEnum | CsfFunctionEnum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -263,7 +263,7 @@ class ReferenceControlRead:
                 return csf_function_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CsfFunctionEnum, None, Unset], data)
+            return cast(BlankEnum | CsfFunctionEnum | None | Unset, data)
 
         csf_function = _parse_csf_function(d.pop("csf_function", UNSET))
 

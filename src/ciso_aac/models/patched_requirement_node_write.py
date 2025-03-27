@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -43,56 +43,56 @@ class PatchedRequirementNodeWrite:
         framework (Union[None, UUID, Unset]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    annotation: Union[None, Unset, str] = UNSET
-    reference_controls: Union[Unset, list[str]] = UNSET
-    threats: Union[Unset, list[str]] = UNSET
-    display_short: Union[Unset, str] = UNSET
-    display_long: Union[Unset, str] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    parent_urn: Union[None, Unset, str] = UNSET
-    order_id: Union[None, Unset, int] = UNSET
-    implementation_groups: Union[Unset, Any] = UNSET
-    assessable: Union[Unset, bool] = UNSET
-    typical_evidence: Union[None, Unset, str] = UNSET
-    question: Union[Unset, Any] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    framework: Union[None, UUID, Unset] = UNSET
+    id: Unset | UUID = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    annotation: None | Unset | str = UNSET
+    reference_controls: Unset | list[str] = UNSET
+    threats: Unset | list[str] = UNSET
+    display_short: Unset | str = UNSET
+    display_long: Unset | str = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    parent_urn: None | Unset | str = UNSET
+    order_id: None | Unset | int = UNSET
+    implementation_groups: Unset | Any = UNSET
+    assessable: Unset | bool = UNSET
+    typical_evidence: None | Unset | str = UNSET
+    question: Unset | Any = UNSET
+    folder: Unset | UUID = UNSET
+    framework: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        annotation: Union[None, Unset, str]
+        annotation: None | Unset | str
         if isinstance(self.annotation, Unset):
             annotation = UNSET
         else:
             annotation = self.annotation
 
-        reference_controls: Union[Unset, list[str]] = UNSET
+        reference_controls: Unset | list[str] = UNSET
         if not isinstance(self.reference_controls, Unset):
             reference_controls = self.reference_controls
 
-        threats: Union[Unset, list[str]] = UNSET
+        threats: Unset | list[str] = UNSET
         if not isinstance(self.threats, Unset):
             threats = self.threats
 
@@ -100,29 +100,29 @@ class PatchedRequirementNodeWrite:
 
         display_long = self.display_long
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         is_published = self.is_published
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -132,13 +132,13 @@ class PatchedRequirementNodeWrite:
 
         default_locale = self.default_locale
 
-        parent_urn: Union[None, Unset, str]
+        parent_urn: None | Unset | str
         if isinstance(self.parent_urn, Unset):
             parent_urn = UNSET
         else:
             parent_urn = self.parent_urn
 
-        order_id: Union[None, Unset, int]
+        order_id: None | Unset | int
         if isinstance(self.order_id, Unset):
             order_id = UNSET
         else:
@@ -148,7 +148,7 @@ class PatchedRequirementNodeWrite:
 
         assessable = self.assessable
 
-        typical_evidence: Union[None, Unset, str]
+        typical_evidence: None | Unset | str
         if isinstance(self.typical_evidence, Unset):
             typical_evidence = UNSET
         else:
@@ -156,11 +156,11 @@ class PatchedRequirementNodeWrite:
 
         question = self.question
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        framework: Union[None, Unset, str]
+        framework: None | Unset | str
         if isinstance(self.framework, Unset):
             framework = UNSET
         elif isinstance(self.framework, UUID):
@@ -223,13 +223,13 @@ class PatchedRequirementNodeWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -238,7 +238,7 @@ class PatchedRequirementNodeWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        annotation: Union[Unset, tuple[None, bytes, str]]
+        annotation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.annotation, Unset):
             annotation = UNSET
@@ -247,12 +247,12 @@ class PatchedRequirementNodeWrite:
         else:
             annotation = (None, str(self.annotation).encode(), "text/plain")
 
-        reference_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        reference_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.reference_controls, Unset):
             _temp_reference_controls = self.reference_controls
             reference_controls = (None, json.dumps(_temp_reference_controls).encode(), "application/json")
 
-        threats: Union[Unset, tuple[None, bytes, str]] = UNSET
+        threats: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.threats, Unset):
             _temp_threats = self.threats
             threats = (None, json.dumps(_temp_threats).encode(), "application/json")
@@ -269,11 +269,11 @@ class PatchedRequirementNodeWrite:
             else (None, str(self.display_long).encode(), "text/plain")
         )
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -283,7 +283,7 @@ class PatchedRequirementNodeWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        urn: Union[Unset, tuple[None, bytes, str]]
+        urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.urn, Unset):
             urn = UNSET
@@ -292,7 +292,7 @@ class PatchedRequirementNodeWrite:
         else:
             urn = (None, str(self.urn).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -301,7 +301,7 @@ class PatchedRequirementNodeWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -318,7 +318,7 @@ class PatchedRequirementNodeWrite:
             else (None, str(self.default_locale).encode(), "text/plain")
         )
 
-        parent_urn: Union[Unset, tuple[None, bytes, str]]
+        parent_urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.parent_urn, Unset):
             parent_urn = UNSET
@@ -327,7 +327,7 @@ class PatchedRequirementNodeWrite:
         else:
             parent_urn = (None, str(self.parent_urn).encode(), "text/plain")
 
-        order_id: Union[Unset, tuple[None, bytes, str]]
+        order_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.order_id, Unset):
             order_id = UNSET
@@ -348,7 +348,7 @@ class PatchedRequirementNodeWrite:
             else (None, str(self.assessable).encode(), "text/plain")
         )
 
-        typical_evidence: Union[Unset, tuple[None, bytes, str]]
+        typical_evidence: Unset | tuple[None, bytes, str]
 
         if isinstance(self.typical_evidence, Unset):
             typical_evidence = UNSET
@@ -361,11 +361,11 @@ class PatchedRequirementNodeWrite:
             self.question if isinstance(self.question, Unset) else (None, str(self.question).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        framework: Union[Unset, tuple[None, bytes, str]]
+        framework: Unset | tuple[None, bytes, str]
 
         if isinstance(self.framework, Unset):
             framework = UNSET
@@ -434,7 +434,7 @@ class PatchedRequirementNodeWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -442,21 +442,21 @@ class PatchedRequirementNodeWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_annotation(data: object) -> Union[None, Unset, str]:
+        def _parse_annotation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         annotation = _parse_annotation(d.pop("annotation", UNSET))
 
@@ -469,14 +469,14 @@ class PatchedRequirementNodeWrite:
         display_long = d.pop("display_long", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -484,30 +484,30 @@ class PatchedRequirementNodeWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
@@ -515,21 +515,21 @@ class PatchedRequirementNodeWrite:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_parent_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_parent_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         parent_urn = _parse_parent_urn(d.pop("parent_urn", UNSET))
 
-        def _parse_order_id(data: object) -> Union[None, Unset, int]:
+        def _parse_order_id(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         order_id = _parse_order_id(d.pop("order_id", UNSET))
 
@@ -537,25 +537,25 @@ class PatchedRequirementNodeWrite:
 
         assessable = d.pop("assessable", UNSET)
 
-        def _parse_typical_evidence(data: object) -> Union[None, Unset, str]:
+        def _parse_typical_evidence(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         typical_evidence = _parse_typical_evidence(d.pop("typical_evidence", UNSET))
 
         question = d.pop("question", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_framework(data: object) -> Union[None, UUID, Unset]:
+        def _parse_framework(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -568,7 +568,7 @@ class PatchedRequirementNodeWrite:
                 return framework_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         framework = _parse_framework(d.pop("framework", UNSET))
 

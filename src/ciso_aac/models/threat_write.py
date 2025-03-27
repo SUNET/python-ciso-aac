@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -35,17 +35,17 @@ class ThreatWrite:
     id: UUID
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    name: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    annotation: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    library: Union[None, UUID, Unset] = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    name: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    annotation: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    library: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,37 +55,37 @@ class ThreatWrite:
 
         updated_at = self.updated_at.isoformat()
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
             provider = self.provider
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        annotation: Union[None, Unset, str]
+        annotation: None | Unset | str
         if isinstance(self.annotation, Unset):
             annotation = UNSET
         else:
@@ -97,11 +97,11 @@ class ThreatWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        library: Union[None, Unset, str]
+        library: None | Unset | str
         if isinstance(self.library, Unset):
             library = UNSET
         elif isinstance(self.library, UUID):
@@ -150,7 +150,7 @@ class ThreatWrite:
 
         updated_at = self.updated_at.isoformat().encode()
 
-        urn: Union[Unset, tuple[None, bytes, str]]
+        urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.urn, Unset):
             urn = UNSET
@@ -159,7 +159,7 @@ class ThreatWrite:
         else:
             urn = (None, str(self.urn).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -168,7 +168,7 @@ class ThreatWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -177,7 +177,7 @@ class ThreatWrite:
         else:
             provider = (None, str(self.provider).encode(), "text/plain")
 
-        name: Union[Unset, tuple[None, bytes, str]]
+        name: Unset | tuple[None, bytes, str]
 
         if isinstance(self.name, Unset):
             name = UNSET
@@ -186,7 +186,7 @@ class ThreatWrite:
         else:
             name = (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -195,7 +195,7 @@ class ThreatWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        annotation: Union[Unset, tuple[None, bytes, str]]
+        annotation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.annotation, Unset):
             annotation = UNSET
@@ -218,11 +218,11 @@ class ThreatWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        library: Union[Unset, tuple[None, bytes, str]]
+        library: Unset | tuple[None, bytes, str]
 
         if isinstance(self.library, Unset):
             library = UNSET
@@ -276,57 +276,57 @@ class ThreatWrite:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_annotation(data: object) -> Union[None, Unset, str]:
+        def _parse_annotation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         annotation = _parse_annotation(d.pop("annotation", UNSET))
 
@@ -337,13 +337,13 @@ class ThreatWrite:
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_library(data: object) -> Union[None, UUID, Unset]:
+        def _parse_library(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -356,7 +356,7 @@ class ThreatWrite:
                 return library_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         library = _parse_library(d.pop("library", UNSET))
 

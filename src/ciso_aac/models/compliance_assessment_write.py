@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -52,27 +52,27 @@ class ComplianceAssessmentWrite:
     updated_at: datetime.datetime
     name: str
     framework: UUID
-    baseline: Union[None, UUID, Unset] = UNSET
-    ebios_rm_studies: Union[Unset, list[Union[None, UUID]]] = UNSET
-    create_applied_controls_from_suggestions: Union[Unset, bool] = False
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[None, Unset, datetime.date] = UNSET
-    version: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, None, Status72AEnum, Unset] = UNSET
-    observation: Union[None, Unset, str] = UNSET
-    selected_implementation_groups: Union[Unset, Any] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    min_score: Union[None, Unset, int] = UNSET
-    max_score: Union[None, Unset, int] = UNSET
-    scores_definition: Union[Unset, Any] = UNSET
-    show_documentation_score: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    perimeter: Union[None, UUID, Unset] = UNSET
-    authors: Union[Unset, list[UUID]] = UNSET
-    reviewers: Union[Unset, list[UUID]] = UNSET
-    assets: Union[Unset, list[UUID]] = UNSET
+    baseline: None | UUID | Unset = UNSET
+    ebios_rm_studies: Unset | list[None | UUID] = UNSET
+    create_applied_controls_from_suggestions: Unset | bool = False
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    due_date: None | Unset | datetime.date = UNSET
+    version: None | Unset | str = UNSET
+    status: BlankEnum | None | Status72AEnum | Unset = UNSET
+    observation: None | Unset | str = UNSET
+    selected_implementation_groups: Unset | Any = UNSET
+    ref_id: None | Unset | str = UNSET
+    min_score: None | Unset | int = UNSET
+    max_score: None | Unset | int = UNSET
+    scores_definition: Unset | Any = UNSET
+    show_documentation_score: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    perimeter: None | UUID | Unset = UNSET
+    authors: Unset | list[UUID] = UNSET
+    reviewers: Unset | list[UUID] = UNSET
+    assets: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,7 +86,7 @@ class ComplianceAssessmentWrite:
 
         framework = str(self.framework)
 
-        baseline: Union[None, Unset, str]
+        baseline: None | Unset | str
         if isinstance(self.baseline, Unset):
             baseline = UNSET
         elif isinstance(self.baseline, UUID):
@@ -94,11 +94,11 @@ class ComplianceAssessmentWrite:
         else:
             baseline = self.baseline
 
-        ebios_rm_studies: Union[Unset, list[Union[None, str]]] = UNSET
+        ebios_rm_studies: Unset | list[None | str] = UNSET
         if not isinstance(self.ebios_rm_studies, Unset):
             ebios_rm_studies = []
             for ebios_rm_studies_item_data in self.ebios_rm_studies:
-                ebios_rm_studies_item: Union[None, str]
+                ebios_rm_studies_item: None | str
                 if isinstance(ebios_rm_studies_item_data, UUID):
                     ebios_rm_studies_item = str(ebios_rm_studies_item_data)
                 else:
@@ -109,13 +109,13 @@ class ComplianceAssessmentWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -123,7 +123,7 @@ class ComplianceAssessmentWrite:
         else:
             eta = self.eta
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         elif isinstance(self.due_date, datetime.date):
@@ -131,13 +131,13 @@ class ComplianceAssessmentWrite:
         else:
             due_date = self.due_date
 
-        version: Union[None, Unset, str]
+        version: None | Unset | str
         if isinstance(self.version, Unset):
             version = UNSET
         else:
             version = self.version
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status72AEnum):
@@ -147,7 +147,7 @@ class ComplianceAssessmentWrite:
         else:
             status = self.status
 
-        observation: Union[None, Unset, str]
+        observation: None | Unset | str
         if isinstance(self.observation, Unset):
             observation = UNSET
         else:
@@ -155,19 +155,19 @@ class ComplianceAssessmentWrite:
 
         selected_implementation_groups = self.selected_implementation_groups
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        min_score: Union[None, Unset, int]
+        min_score: None | Unset | int
         if isinstance(self.min_score, Unset):
             min_score = UNSET
         else:
             min_score = self.min_score
 
-        max_score: Union[None, Unset, int]
+        max_score: None | Unset | int
         if isinstance(self.max_score, Unset):
             max_score = UNSET
         else:
@@ -177,11 +177,11 @@ class ComplianceAssessmentWrite:
 
         show_documentation_score = self.show_documentation_score
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        perimeter: Union[None, Unset, str]
+        perimeter: None | Unset | str
         if isinstance(self.perimeter, Unset):
             perimeter = UNSET
         elif isinstance(self.perimeter, UUID):
@@ -189,21 +189,21 @@ class ComplianceAssessmentWrite:
         else:
             perimeter = self.perimeter
 
-        authors: Union[Unset, list[str]] = UNSET
+        authors: Unset | list[str] = UNSET
         if not isinstance(self.authors, Unset):
             authors = []
             for authors_item_data in self.authors:
                 authors_item = str(authors_item_data)
                 authors.append(authors_item)
 
-        reviewers: Union[Unset, list[str]] = UNSET
+        reviewers: Unset | list[str] = UNSET
         if not isinstance(self.reviewers, Unset):
             reviewers = []
             for reviewers_item_data in self.reviewers:
                 reviewers_item = str(reviewers_item_data)
                 reviewers.append(reviewers_item)
 
-        assets: Union[Unset, list[str]] = UNSET
+        assets: Unset | list[str] = UNSET
         if not isinstance(self.assets, Unset):
             assets = []
             for assets_item_data in self.assets:
@@ -277,7 +277,7 @@ class ComplianceAssessmentWrite:
 
         framework = str(self.framework)
 
-        baseline: Union[Unset, tuple[None, bytes, str]]
+        baseline: Unset | tuple[None, bytes, str]
 
         if isinstance(self.baseline, Unset):
             baseline = UNSET
@@ -286,11 +286,11 @@ class ComplianceAssessmentWrite:
         else:
             baseline = (None, str(self.baseline).encode(), "text/plain")
 
-        ebios_rm_studies: Union[Unset, tuple[None, bytes, str]] = UNSET
+        ebios_rm_studies: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.ebios_rm_studies, Unset):
             _temp_ebios_rm_studies = []
             for ebios_rm_studies_item_data in self.ebios_rm_studies:
-                ebios_rm_studies_item: Union[None, str]
+                ebios_rm_studies_item: None | str
                 if isinstance(ebios_rm_studies_item_data, UUID):
                     ebios_rm_studies_item = str(ebios_rm_studies_item_data)
                 else:
@@ -310,7 +310,7 @@ class ComplianceAssessmentWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -319,7 +319,7 @@ class ComplianceAssessmentWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        eta: Union[Unset, tuple[None, bytes, str]]
+        eta: Unset | tuple[None, bytes, str]
 
         if isinstance(self.eta, Unset):
             eta = UNSET
@@ -328,7 +328,7 @@ class ComplianceAssessmentWrite:
         else:
             eta = (None, str(self.eta).encode(), "text/plain")
 
-        due_date: Union[Unset, tuple[None, bytes, str]]
+        due_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.due_date, Unset):
             due_date = UNSET
@@ -337,7 +337,7 @@ class ComplianceAssessmentWrite:
         else:
             due_date = (None, str(self.due_date).encode(), "text/plain")
 
-        version: Union[Unset, tuple[None, bytes, str]]
+        version: Unset | tuple[None, bytes, str]
 
         if isinstance(self.version, Unset):
             version = UNSET
@@ -346,7 +346,7 @@ class ComplianceAssessmentWrite:
         else:
             version = (None, str(self.version).encode(), "text/plain")
 
-        status: Union[Unset, tuple[None, bytes, str]]
+        status: Unset | tuple[None, bytes, str]
 
         if isinstance(self.status, Unset):
             status = UNSET
@@ -359,7 +359,7 @@ class ComplianceAssessmentWrite:
         else:
             status = (None, str(self.status).encode(), "text/plain")
 
-        observation: Union[Unset, tuple[None, bytes, str]]
+        observation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.observation, Unset):
             observation = UNSET
@@ -374,7 +374,7 @@ class ComplianceAssessmentWrite:
             else (None, str(self.selected_implementation_groups).encode(), "text/plain")
         )
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -383,7 +383,7 @@ class ComplianceAssessmentWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        min_score: Union[Unset, tuple[None, bytes, str]]
+        min_score: Unset | tuple[None, bytes, str]
 
         if isinstance(self.min_score, Unset):
             min_score = UNSET
@@ -392,7 +392,7 @@ class ComplianceAssessmentWrite:
         else:
             min_score = (None, str(self.min_score).encode(), "text/plain")
 
-        max_score: Union[Unset, tuple[None, bytes, str]]
+        max_score: Unset | tuple[None, bytes, str]
 
         if isinstance(self.max_score, Unset):
             max_score = UNSET
@@ -413,11 +413,11 @@ class ComplianceAssessmentWrite:
             else (None, str(self.show_documentation_score).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        perimeter: Union[Unset, tuple[None, bytes, str]]
+        perimeter: Unset | tuple[None, bytes, str]
 
         if isinstance(self.perimeter, Unset):
             perimeter = UNSET
@@ -426,7 +426,7 @@ class ComplianceAssessmentWrite:
         else:
             perimeter = (None, str(self.perimeter).encode(), "text/plain")
 
-        authors: Union[Unset, tuple[None, bytes, str]] = UNSET
+        authors: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.authors, Unset):
             _temp_authors = []
             for authors_item_data in self.authors:
@@ -434,7 +434,7 @@ class ComplianceAssessmentWrite:
                 _temp_authors.append(authors_item)
             authors = (None, json.dumps(_temp_authors).encode(), "application/json")
 
-        reviewers: Union[Unset, tuple[None, bytes, str]] = UNSET
+        reviewers: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.reviewers, Unset):
             _temp_reviewers = []
             for reviewers_item_data in self.reviewers:
@@ -442,7 +442,7 @@ class ComplianceAssessmentWrite:
                 _temp_reviewers.append(reviewers_item)
             reviewers = (None, json.dumps(_temp_reviewers).encode(), "application/json")
 
-        assets: Union[Unset, tuple[None, bytes, str]] = UNSET
+        assets: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.assets, Unset):
             _temp_assets = []
             for assets_item_data in self.assets:
@@ -521,7 +521,7 @@ class ComplianceAssessmentWrite:
 
         framework = UUID(d.pop("framework"))
 
-        def _parse_baseline(data: object) -> Union[None, UUID, Unset]:
+        def _parse_baseline(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -534,7 +534,7 @@ class ComplianceAssessmentWrite:
                 return baseline_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         baseline = _parse_baseline(d.pop("baseline", UNSET))
 
@@ -542,7 +542,7 @@ class ComplianceAssessmentWrite:
         _ebios_rm_studies = d.pop("ebios_rm_studies", UNSET)
         for ebios_rm_studies_item_data in _ebios_rm_studies or []:
 
-            def _parse_ebios_rm_studies_item(data: object) -> Union[None, UUID]:
+            def _parse_ebios_rm_studies_item(data: object) -> None | UUID:
                 if data is None:
                     return data
                 try:
@@ -553,7 +553,7 @@ class ComplianceAssessmentWrite:
                     return ebios_rm_studies_item_type_0
                 except:  # noqa: E722
                     pass
-                return cast(Union[None, UUID], data)
+                return cast(None | UUID, data)
 
             ebios_rm_studies_item = _parse_ebios_rm_studies_item(ebios_rm_studies_item_data)
 
@@ -563,16 +563,16 @@ class ComplianceAssessmentWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -585,11 +585,11 @@ class ComplianceAssessmentWrite:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_due_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -602,20 +602,20 @@ class ComplianceAssessmentWrite:
                 return due_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
-        def _parse_version(data: object) -> Union[None, Unset, str]:
+        def _parse_version(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         version = _parse_version(d.pop("version", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, None, Status72AEnum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | None | Status72AEnum | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -636,45 +636,45 @@ class ComplianceAssessmentWrite:
                 return status_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, None, Status72AEnum, Unset], data)
+            return cast(BlankEnum | None | Status72AEnum | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_observation(data: object) -> Union[None, Unset, str]:
+        def _parse_observation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         observation = _parse_observation(d.pop("observation", UNSET))
 
         selected_implementation_groups = d.pop("selected_implementation_groups", UNSET)
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_min_score(data: object) -> Union[None, Unset, int]:
+        def _parse_min_score(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         min_score = _parse_min_score(d.pop("min_score", UNSET))
 
-        def _parse_max_score(data: object) -> Union[None, Unset, int]:
+        def _parse_max_score(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         max_score = _parse_max_score(d.pop("max_score", UNSET))
 
@@ -683,13 +683,13 @@ class ComplianceAssessmentWrite:
         show_documentation_score = d.pop("show_documentation_score", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_perimeter(data: object) -> Union[None, UUID, Unset]:
+        def _parse_perimeter(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -702,7 +702,7 @@ class ComplianceAssessmentWrite:
                 return perimeter_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         perimeter = _parse_perimeter(d.pop("perimeter", UNSET))
 

@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -23,17 +23,17 @@ class PatchedStrategicScenarioWrite:
         ro_to_couple (Union[Unset, UUID]): RO/TO couple from which the attach path is derived
     """
 
-    id: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    ebios_rm_study: Union[Unset, UUID] = UNSET
-    ro_to_couple: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    ebios_rm_study: Unset | UUID = UNSET
+    ro_to_couple: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -41,7 +41,7 @@ class PatchedStrategicScenarioWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -49,11 +49,11 @@ class PatchedStrategicScenarioWrite:
 
         ref_id = self.ref_id
 
-        ebios_rm_study: Union[Unset, str] = UNSET
+        ebios_rm_study: Unset | str = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        ro_to_couple: Union[Unset, str] = UNSET
+        ro_to_couple: Unset | str = UNSET
         if not isinstance(self.ro_to_couple, Unset):
             ro_to_couple = str(self.ro_to_couple)
 
@@ -78,7 +78,7 @@ class PatchedStrategicScenarioWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -90,7 +90,7 @@ class PatchedStrategicScenarioWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -101,11 +101,11 @@ class PatchedStrategicScenarioWrite:
 
         ref_id = self.ref_id if isinstance(self.ref_id, Unset) else (None, str(self.ref_id).encode(), "text/plain")
 
-        ebios_rm_study: Union[Unset, bytes] = UNSET
+        ebios_rm_study: Unset | bytes = UNSET
         if not isinstance(self.ebios_rm_study, Unset):
             ebios_rm_study = str(self.ebios_rm_study)
 
-        ro_to_couple: Union[Unset, bytes] = UNSET
+        ro_to_couple: Unset | bytes = UNSET
         if not isinstance(self.ro_to_couple, Unset):
             ro_to_couple = str(self.ro_to_couple)
 
@@ -135,7 +135,7 @@ class PatchedStrategicScenarioWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -145,26 +145,26 @@ class PatchedStrategicScenarioWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         ref_id = d.pop("ref_id", UNSET)
 
         _ebios_rm_study = d.pop("ebios_rm_study", UNSET)
-        ebios_rm_study: Union[Unset, UUID]
+        ebios_rm_study: Unset | UUID
         if isinstance(_ebios_rm_study, Unset):
             ebios_rm_study = UNSET
         else:
             ebios_rm_study = UUID(_ebios_rm_study)
 
         _ro_to_couple = d.pop("ro_to_couple", UNSET)
-        ro_to_couple: Union[Unset, UUID]
+        ro_to_couple: Unset | UUID
         if isinstance(_ro_to_couple, Unset):
             ro_to_couple = UNSET
         else:

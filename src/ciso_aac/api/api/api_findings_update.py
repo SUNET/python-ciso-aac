@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        FindingWrite,
-        FindingWrite,
-        FindingWrite,
-    ],
+    body: FindingWrite | FindingWrite | FindingWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,7 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[FindingWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> FindingWrite | None:
     if response.status_code == 200:
         response_200 = FindingWrite.from_dict(response.json())
 
@@ -56,7 +52,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[FindingWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[FindingWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,11 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FindingWrite,
-        FindingWrite,
-        FindingWrite,
-    ],
+    body: FindingWrite | FindingWrite | FindingWrite,
 ) -> Response[FindingWrite]:
     """
     Args:
@@ -106,12 +98,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FindingWrite,
-        FindingWrite,
-        FindingWrite,
-    ],
-) -> Optional[FindingWrite]:
+    body: FindingWrite | FindingWrite | FindingWrite,
+) -> FindingWrite | None:
     """
     Args:
         id (str):
@@ -138,11 +126,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FindingWrite,
-        FindingWrite,
-        FindingWrite,
-    ],
+    body: FindingWrite | FindingWrite | FindingWrite,
 ) -> Response[FindingWrite]:
     """
     Args:
@@ -173,12 +157,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        FindingWrite,
-        FindingWrite,
-        FindingWrite,
-    ],
-) -> Optional[FindingWrite]:
+    body: FindingWrite | FindingWrite | FindingWrite,
+) -> FindingWrite | None:
     """
     Args:
         id (str):

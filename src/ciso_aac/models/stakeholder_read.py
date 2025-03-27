@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -51,17 +51,17 @@ class StakeholderRead:
     residual_criticality: str
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    is_published: Union[Unset, bool] = UNSET
-    current_dependency: Union[Unset, int] = UNSET
-    current_penetration: Union[Unset, int] = UNSET
-    current_maturity: Union[Unset, int] = UNSET
-    current_trust: Union[Unset, int] = UNSET
-    residual_dependency: Union[Unset, int] = UNSET
-    residual_penetration: Union[Unset, int] = UNSET
-    residual_maturity: Union[Unset, int] = UNSET
-    residual_trust: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
+    is_published: Unset | bool = UNSET
+    current_dependency: Unset | int = UNSET
+    current_penetration: Unset | int = UNSET
+    current_maturity: Unset | int = UNSET
+    current_trust: Unset | int = UNSET
+    residual_dependency: Unset | int = UNSET
+    residual_penetration: Unset | int = UNSET
+    residual_maturity: Unset | int = UNSET
+    residual_trust: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

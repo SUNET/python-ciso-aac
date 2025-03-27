@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,8 +11,8 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -32,8 +32,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PaginatedGlobalSettingsList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PaginatedGlobalSettingsList | None:
     if response.status_code == 200:
         response_200 = PaginatedGlobalSettingsList.from_dict(response.json())
 
@@ -45,7 +45,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[PaginatedGlobalSettingsList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -58,8 +58,8 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
 ) -> Response[PaginatedGlobalSettingsList]:
     """
     Args:
@@ -89,9 +89,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-) -> Optional[PaginatedGlobalSettingsList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+) -> PaginatedGlobalSettingsList | None:
     """
     Args:
         limit (Union[Unset, int]):
@@ -115,8 +115,8 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
 ) -> Response[PaginatedGlobalSettingsList]:
     """
     Args:
@@ -144,9 +144,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-) -> Optional[PaginatedGlobalSettingsList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+) -> PaginatedGlobalSettingsList | None:
     """
     Args:
         limit (Union[Unset, int]):

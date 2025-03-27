@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -54,14 +54,14 @@ class RiskAssessmentRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[None, Unset, datetime.date] = UNSET
-    version: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, None, Status72AEnum, Unset] = UNSET
-    observation: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    due_date: None | Unset | datetime.date = UNSET
+    version: None | Unset | str = UNSET
+    status: BlankEnum | None | Status72AEnum | Unset = UNSET
+    observation: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,13 +93,13 @@ class RiskAssessmentRead:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -107,7 +107,7 @@ class RiskAssessmentRead:
         else:
             eta = self.eta
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         elif isinstance(self.due_date, datetime.date):
@@ -115,13 +115,13 @@ class RiskAssessmentRead:
         else:
             due_date = self.due_date
 
-        version: Union[None, Unset, str]
+        version: None | Unset | str
         if isinstance(self.version, Unset):
             version = UNSET
         else:
             version = self.version
 
-        status: Union[None, Unset, str]
+        status: None | Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status72AEnum):
@@ -131,13 +131,13 @@ class RiskAssessmentRead:
         else:
             status = self.status
 
-        observation: Union[None, Unset, str]
+        observation: None | Unset | str
         if isinstance(self.observation, Unset):
             observation = UNSET
         else:
             observation = self.observation
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
@@ -212,16 +212,16 @@ class RiskAssessmentRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -234,11 +234,11 @@ class RiskAssessmentRead:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_due_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -251,20 +251,20 @@ class RiskAssessmentRead:
                 return due_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
-        def _parse_version(data: object) -> Union[None, Unset, str]:
+        def _parse_version(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         version = _parse_version(d.pop("version", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, None, Status72AEnum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | None | Status72AEnum | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -285,25 +285,25 @@ class RiskAssessmentRead:
                 return status_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, None, Status72AEnum, Unset], data)
+            return cast(BlankEnum | None | Status72AEnum | Unset, data)
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_observation(data: object) -> Union[None, Unset, str]:
+        def _parse_observation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         observation = _parse_observation(d.pop("observation", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 

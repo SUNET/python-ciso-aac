@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -38,69 +38,69 @@ class PatchedReferenceControlWrite:
         library (Union[None, UUID, Unset]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    name: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    annotation: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    category: Union[BlankEnum, CategoryAe3Enum, None, Unset] = UNSET
-    csf_function: Union[BlankEnum, CsfFunctionEnum, None, Unset] = UNSET
-    typical_evidence: Union[Unset, Any] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    library: Union[None, UUID, Unset] = UNSET
+    id: Unset | UUID = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    name: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    annotation: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    category: BlankEnum | CategoryAe3Enum | None | Unset = UNSET
+    csf_function: BlankEnum | CsfFunctionEnum | None | Unset = UNSET
+    typical_evidence: Unset | Any = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    library: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
             provider = self.provider
 
-        name: Union[None, Unset, str]
+        name: None | Unset | str
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        annotation: Union[None, Unset, str]
+        annotation: None | Unset | str
         if isinstance(self.annotation, Unset):
             annotation = UNSET
         else:
@@ -110,7 +110,7 @@ class PatchedReferenceControlWrite:
 
         default_locale = self.default_locale
 
-        category: Union[None, Unset, str]
+        category: None | Unset | str
         if isinstance(self.category, Unset):
             category = UNSET
         elif isinstance(self.category, CategoryAe3Enum):
@@ -120,7 +120,7 @@ class PatchedReferenceControlWrite:
         else:
             category = self.category
 
-        csf_function: Union[None, Unset, str]
+        csf_function: None | Unset | str
         if isinstance(self.csf_function, Unset):
             csf_function = UNSET
         elif isinstance(self.csf_function, CsfFunctionEnum):
@@ -134,11 +134,11 @@ class PatchedReferenceControlWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        library: Union[None, Unset, str]
+        library: None | Unset | str
         if isinstance(self.library, Unset):
             library = UNSET
         elif isinstance(self.library, UUID):
@@ -187,19 +187,19 @@ class PatchedReferenceControlWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
-        urn: Union[Unset, tuple[None, bytes, str]]
+        urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.urn, Unset):
             urn = UNSET
@@ -208,7 +208,7 @@ class PatchedReferenceControlWrite:
         else:
             urn = (None, str(self.urn).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -217,7 +217,7 @@ class PatchedReferenceControlWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -226,7 +226,7 @@ class PatchedReferenceControlWrite:
         else:
             provider = (None, str(self.provider).encode(), "text/plain")
 
-        name: Union[Unset, tuple[None, bytes, str]]
+        name: Unset | tuple[None, bytes, str]
 
         if isinstance(self.name, Unset):
             name = UNSET
@@ -235,7 +235,7 @@ class PatchedReferenceControlWrite:
         else:
             name = (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -244,7 +244,7 @@ class PatchedReferenceControlWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        annotation: Union[Unset, tuple[None, bytes, str]]
+        annotation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.annotation, Unset):
             annotation = UNSET
@@ -261,7 +261,7 @@ class PatchedReferenceControlWrite:
             else (None, str(self.default_locale).encode(), "text/plain")
         )
 
-        category: Union[Unset, tuple[None, bytes, str]]
+        category: Unset | tuple[None, bytes, str]
 
         if isinstance(self.category, Unset):
             category = UNSET
@@ -274,7 +274,7 @@ class PatchedReferenceControlWrite:
         else:
             category = (None, str(self.category).encode(), "text/plain")
 
-        csf_function: Union[Unset, tuple[None, bytes, str]]
+        csf_function: Unset | tuple[None, bytes, str]
 
         if isinstance(self.csf_function, Unset):
             csf_function = UNSET
@@ -299,11 +299,11 @@ class PatchedReferenceControlWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        library: Union[Unset, tuple[None, bytes, str]]
+        library: Unset | tuple[None, bytes, str]
 
         if isinstance(self.library, Unset):
             library = UNSET
@@ -358,77 +358,77 @@ class PatchedReferenceControlWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
             updated_at = isoparse(_updated_at)
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
-        def _parse_name(data: object) -> Union[None, Unset, str]:
+        def _parse_name(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         name = _parse_name(d.pop("name", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_annotation(data: object) -> Union[None, Unset, str]:
+        def _parse_annotation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         annotation = _parse_annotation(d.pop("annotation", UNSET))
 
@@ -436,7 +436,7 @@ class PatchedReferenceControlWrite:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_category(data: object) -> Union[BlankEnum, CategoryAe3Enum, None, Unset]:
+        def _parse_category(data: object) -> BlankEnum | CategoryAe3Enum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -457,11 +457,11 @@ class PatchedReferenceControlWrite:
                 return category_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CategoryAe3Enum, None, Unset], data)
+            return cast(BlankEnum | CategoryAe3Enum | None | Unset, data)
 
         category = _parse_category(d.pop("category", UNSET))
 
-        def _parse_csf_function(data: object) -> Union[BlankEnum, CsfFunctionEnum, None, Unset]:
+        def _parse_csf_function(data: object) -> BlankEnum | CsfFunctionEnum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -482,7 +482,7 @@ class PatchedReferenceControlWrite:
                 return csf_function_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CsfFunctionEnum, None, Unset], data)
+            return cast(BlankEnum | CsfFunctionEnum | None | Unset, data)
 
         csf_function = _parse_csf_function(d.pop("csf_function", UNSET))
 
@@ -491,13 +491,13 @@ class PatchedReferenceControlWrite:
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_library(data: object) -> Union[None, UUID, Unset]:
+        def _parse_library(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -510,7 +510,7 @@ class PatchedReferenceControlWrite:
                 return library_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         library = _parse_library(d.pop("library", UNSET))
 

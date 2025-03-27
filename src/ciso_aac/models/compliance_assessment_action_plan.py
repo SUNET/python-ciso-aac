@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -51,11 +51,11 @@ class ComplianceAssessmentActionPlan:
     reference_control: str
     evidences: list[str]
     owner: list[str]
-    ref_id: Union[None, Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, Status2E9Enum, Unset] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    expiry_date: Union[None, Unset, datetime.date] = UNSET
+    ref_id: None | Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    status: BlankEnum | Status2E9Enum | Unset = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    expiry_date: None | Unset | datetime.date = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -85,19 +85,19 @@ class ComplianceAssessmentActionPlan:
 
         owner = self.owner
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        status: Union[Unset, str]
+        status: Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status2E9Enum):
@@ -105,7 +105,7 @@ class ComplianceAssessmentActionPlan:
         else:
             status = self.status.value
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -113,7 +113,7 @@ class ComplianceAssessmentActionPlan:
         else:
             eta = self.eta
 
-        expiry_date: Union[None, Unset, str]
+        expiry_date: None | Unset | str
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
         elif isinstance(self.expiry_date, datetime.date):
@@ -182,25 +182,25 @@ class ComplianceAssessmentActionPlan:
 
         owner = cast(list[str], d.pop("owner"))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, Status2E9Enum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | Status2E9Enum | Unset:
             if isinstance(data, Unset):
                 return data
             try:
@@ -219,7 +219,7 @@ class ComplianceAssessmentActionPlan:
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -232,11 +232,11 @@ class ComplianceAssessmentActionPlan:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_expiry_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiry_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -249,7 +249,7 @@ class ComplianceAssessmentActionPlan:
                 return expiry_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiry_date = _parse_expiry_date(d.pop("expiry_date", UNSET))
 

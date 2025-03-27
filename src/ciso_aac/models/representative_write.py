@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,14 +36,14 @@ class RepresentativeWrite:
     updated_at: datetime.datetime
     email: str
     entity: UUID
-    create_user: Union[Unset, bool] = False
-    is_published: Union[Unset, bool] = UNSET
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    phone: Union[Unset, str] = UNSET
-    role: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
-    user: Union[None, UUID, Unset] = UNSET
+    create_user: Unset | bool = False
+    is_published: Unset | bool = UNSET
+    first_name: Unset | str = UNSET
+    last_name: Unset | str = UNSET
+    phone: Unset | str = UNSET
+    role: Unset | str = UNSET
+    description: Unset | str = UNSET
+    user: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,7 +71,7 @@ class RepresentativeWrite:
 
         description = self.description
 
-        user: Union[None, Unset, str]
+        user: None | Unset | str
         if isinstance(self.user, Unset):
             user = UNSET
         elif isinstance(self.user, UUID):
@@ -152,7 +152,7 @@ class RepresentativeWrite:
             else (None, str(self.description).encode(), "text/plain")
         )
 
-        user: Union[Unset, tuple[None, bytes, str]]
+        user: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user, Unset):
             user = UNSET
@@ -220,7 +220,7 @@ class RepresentativeWrite:
 
         description = d.pop("description", UNSET)
 
-        def _parse_user(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -233,7 +233,7 @@ class RepresentativeWrite:
                 return user_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user = _parse_user(d.pop("user", UNSET))
 

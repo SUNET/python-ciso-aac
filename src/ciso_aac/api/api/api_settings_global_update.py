@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     id: UUID,
     *,
-    body: Union[
-        GlobalSettings,
-        GlobalSettings,
-        GlobalSettings,
-    ],
+    body: GlobalSettings | GlobalSettings | GlobalSettings,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,9 +42,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[GlobalSettings]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> GlobalSettings | None:
     if response.status_code == 200:
         response_200 = GlobalSettings.from_dict(response.json())
 
@@ -59,9 +53,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[GlobalSettings]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[GlobalSettings]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,11 +66,7 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        GlobalSettings,
-        GlobalSettings,
-        GlobalSettings,
-    ],
+    body: GlobalSettings | GlobalSettings | GlobalSettings,
 ) -> Response[GlobalSettings]:
     """
     Args:
@@ -111,12 +99,8 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        GlobalSettings,
-        GlobalSettings,
-        GlobalSettings,
-    ],
-) -> Optional[GlobalSettings]:
+    body: GlobalSettings | GlobalSettings | GlobalSettings,
+) -> GlobalSettings | None:
     """
     Args:
         id (UUID):
@@ -143,11 +127,7 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        GlobalSettings,
-        GlobalSettings,
-        GlobalSettings,
-    ],
+    body: GlobalSettings | GlobalSettings | GlobalSettings,
 ) -> Response[GlobalSettings]:
     """
     Args:
@@ -178,12 +158,8 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        GlobalSettings,
-        GlobalSettings,
-        GlobalSettings,
-    ],
-) -> Optional[GlobalSettings]:
+    body: GlobalSettings | GlobalSettings | GlobalSettings,
+) -> GlobalSettings | None:
     """
     Args:
         id (UUID):

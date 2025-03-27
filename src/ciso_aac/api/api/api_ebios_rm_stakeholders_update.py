@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        StakeholderWrite,
-        StakeholderWrite,
-        StakeholderWrite,
-    ],
+    body: StakeholderWrite | StakeholderWrite | StakeholderWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,9 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[StakeholderWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> StakeholderWrite | None:
     if response.status_code == 200:
         response_200 = StakeholderWrite.from_dict(response.json())
 
@@ -58,9 +52,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[StakeholderWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[StakeholderWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,11 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        StakeholderWrite,
-        StakeholderWrite,
-        StakeholderWrite,
-    ],
+    body: StakeholderWrite | StakeholderWrite | StakeholderWrite,
 ) -> Response[StakeholderWrite]:
     """
     Args:
@@ -110,12 +98,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        StakeholderWrite,
-        StakeholderWrite,
-        StakeholderWrite,
-    ],
-) -> Optional[StakeholderWrite]:
+    body: StakeholderWrite | StakeholderWrite | StakeholderWrite,
+) -> StakeholderWrite | None:
     """
     Args:
         id (str):
@@ -142,11 +126,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        StakeholderWrite,
-        StakeholderWrite,
-        StakeholderWrite,
-    ],
+    body: StakeholderWrite | StakeholderWrite | StakeholderWrite,
 ) -> Response[StakeholderWrite]:
     """
     Args:
@@ -177,12 +157,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        StakeholderWrite,
-        StakeholderWrite,
-        StakeholderWrite,
-    ],
-) -> Optional[StakeholderWrite]:
+    body: StakeholderWrite | StakeholderWrite | StakeholderWrite,
+) -> StakeholderWrite | None:
     """
     Args:
         id (str):

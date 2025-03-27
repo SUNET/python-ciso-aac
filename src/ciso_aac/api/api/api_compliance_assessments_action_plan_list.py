@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 from uuid import UUID
 
 import httpx
@@ -13,10 +13,10 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     id: UUID,
     *,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -40,8 +40,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PaginatedComplianceAssessmentActionPlanList]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> PaginatedComplianceAssessmentActionPlanList | None:
     if response.status_code == 200:
         response_200 = PaginatedComplianceAssessmentActionPlanList.from_dict(response.json())
 
@@ -53,7 +53,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[PaginatedComplianceAssessmentActionPlanList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -67,10 +67,10 @@ def sync_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedComplianceAssessmentActionPlanList]:
     """
     Args:
@@ -107,11 +107,11 @@ def sync(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedComplianceAssessmentActionPlanList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedComplianceAssessmentActionPlanList | None:
     """
     Args:
         id (UUID):
@@ -142,10 +142,10 @@ async def asyncio_detailed(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedComplianceAssessmentActionPlanList]:
     """
     Args:
@@ -180,11 +180,11 @@ async def asyncio(
     id: UUID,
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedComplianceAssessmentActionPlanList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedComplianceAssessmentActionPlanList | None:
     """
     Args:
         id (UUID):

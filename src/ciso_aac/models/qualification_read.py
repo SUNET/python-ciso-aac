@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,20 +36,20 @@ class QualificationRead:
 
     id: UUID
     name: str
-    description: Union[None, str]
-    annotation: Union[None, str]
+    description: None | str
+    annotation: None | str
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    is_published: Union[Unset, bool] = UNSET
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    abbreviation: Union[None, Unset, str] = UNSET
-    qualification_ordering: Union[Unset, int] = UNSET
-    security_objective_ordering: Union[Unset, int] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    is_published: Unset | bool = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    abbreviation: None | Unset | str = UNSET
+    qualification_ordering: Unset | int = UNSET
+    security_objective_ordering: Unset | int = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,10 +57,10 @@ class QualificationRead:
 
         name = self.name
 
-        description: Union[None, str]
+        description: None | str
         description = self.description
 
-        annotation: Union[None, str]
+        annotation: None | str
         annotation = self.annotation
 
         created_at = self.created_at.isoformat()
@@ -69,19 +69,19 @@ class QualificationRead:
 
         is_published = self.is_published
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -91,7 +91,7 @@ class QualificationRead:
 
         default_locale = self.default_locale
 
-        abbreviation: Union[None, Unset, str]
+        abbreviation: None | Unset | str
         if isinstance(self.abbreviation, Unset):
             abbreviation = UNSET
         else:
@@ -101,7 +101,7 @@ class QualificationRead:
 
         security_objective_ordering = self.security_objective_ordering
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -147,17 +147,17 @@ class QualificationRead:
 
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, str]:
+        def _parse_description(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         description = _parse_description(d.pop("description"))
 
-        def _parse_annotation(data: object) -> Union[None, str]:
+        def _parse_annotation(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         annotation = _parse_annotation(d.pop("annotation"))
 
@@ -167,30 +167,30 @@ class QualificationRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
@@ -198,12 +198,12 @@ class QualificationRead:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_abbreviation(data: object) -> Union[None, Unset, str]:
+        def _parse_abbreviation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         abbreviation = _parse_abbreviation(d.pop("abbreviation", UNSET))
 
@@ -212,7 +212,7 @@ class QualificationRead:
         security_objective_ordering = d.pop("security_objective_ordering", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

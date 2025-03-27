@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -36,12 +36,12 @@ class RepresentativeRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     email: str
-    is_published: Union[Unset, bool] = UNSET
-    first_name: Union[Unset, str] = UNSET
-    last_name: Union[Unset, str] = UNSET
-    phone: Union[Unset, str] = UNSET
-    role: Union[Unset, str] = UNSET
-    description: Union[Unset, str] = UNSET
+    is_published: Unset | bool = UNSET
+    first_name: Unset | str = UNSET
+    last_name: Unset | str = UNSET
+    phone: Unset | str = UNSET
+    role: Unset | str = UNSET
+    description: Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

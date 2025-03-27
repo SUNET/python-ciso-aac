@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -30,61 +30,61 @@ class PatchedEvidenceWrite:
         folder (Union[Unset, UUID]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
-    requirement_assessments: Union[Unset, list[UUID]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    attachment: Union[None, Unset, str] = UNSET
-    link: Union[None, Unset, str] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    id: Unset | UUID = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
+    requirement_assessments: Unset | list[UUID] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    attachment: None | Unset | str = UNSET
+    link: None | Unset | str = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
                 applied_controls_item = str(applied_controls_item_data)
                 applied_controls.append(applied_controls_item)
 
-        requirement_assessments: Union[Unset, list[str]] = UNSET
+        requirement_assessments: Unset | list[str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
                 requirement_assessments_item = str(requirement_assessments_item_data)
                 requirement_assessments.append(requirement_assessments_item)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        attachment: Union[None, Unset, str]
+        attachment: None | Unset | str
         if isinstance(self.attachment, Unset):
             attachment = UNSET
         else:
             attachment = self.attachment
 
-        link: Union[None, Unset, str]
+        link: None | Unset | str
         if isinstance(self.link, Unset):
             link = UNSET
         else:
@@ -92,7 +92,7 @@ class PatchedEvidenceWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -125,11 +125,11 @@ class PatchedEvidenceWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -137,7 +137,7 @@ class PatchedEvidenceWrite:
                 _temp_applied_controls.append(applied_controls_item)
             applied_controls = (None, json.dumps(_temp_applied_controls).encode(), "application/json")
 
-        requirement_assessments: Union[Unset, tuple[None, bytes, str]] = UNSET
+        requirement_assessments: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             _temp_requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
@@ -145,17 +145,17 @@ class PatchedEvidenceWrite:
                 _temp_requirement_assessments.append(requirement_assessments_item)
             requirement_assessments = (None, json.dumps(_temp_requirement_assessments).encode(), "application/json")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -164,7 +164,7 @@ class PatchedEvidenceWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        attachment: Union[Unset, tuple[None, bytes, str]]
+        attachment: Unset | tuple[None, bytes, str]
 
         if isinstance(self.attachment, Unset):
             attachment = UNSET
@@ -173,7 +173,7 @@ class PatchedEvidenceWrite:
         else:
             attachment = (None, str(self.attachment).encode(), "text/plain")
 
-        link: Union[Unset, tuple[None, bytes, str]]
+        link: Unset | tuple[None, bytes, str]
 
         if isinstance(self.link, Unset):
             link = UNSET
@@ -188,7 +188,7 @@ class PatchedEvidenceWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -226,7 +226,7 @@ class PatchedEvidenceWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -247,14 +247,14 @@ class PatchedEvidenceWrite:
             requirement_assessments.append(requirement_assessments_item)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -262,37 +262,37 @@ class PatchedEvidenceWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_attachment(data: object) -> Union[None, Unset, str]:
+        def _parse_attachment(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         attachment = _parse_attachment(d.pop("attachment", UNSET))
 
-        def _parse_link(data: object) -> Union[None, Unset, str]:
+        def _parse_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         link = _parse_link(d.pop("link", UNSET))
 
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

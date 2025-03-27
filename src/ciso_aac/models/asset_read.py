@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -50,12 +50,12 @@ class AssetRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    ebios_rm_studies: Union[Unset, list[Union[None, UUID]]] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    business_value: Union[Unset, str] = UNSET
-    reference_link: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    is_published: Union[Unset, bool] = UNSET
+    ebios_rm_studies: Unset | list[None | UUID] = UNSET
+    description: None | Unset | str = UNSET
+    business_value: Unset | str = UNSET
+    reference_link: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    is_published: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -85,18 +85,18 @@ class AssetRead:
 
         name = self.name
 
-        ebios_rm_studies: Union[Unset, list[Union[None, str]]] = UNSET
+        ebios_rm_studies: Unset | list[None | str] = UNSET
         if not isinstance(self.ebios_rm_studies, Unset):
             ebios_rm_studies = []
             for ebios_rm_studies_item_data in self.ebios_rm_studies:
-                ebios_rm_studies_item: Union[None, str]
+                ebios_rm_studies_item: None | str
                 if isinstance(ebios_rm_studies_item_data, UUID):
                     ebios_rm_studies_item = str(ebios_rm_studies_item_data)
                 else:
                     ebios_rm_studies_item = ebios_rm_studies_item_data
                 ebios_rm_studies.append(ebios_rm_studies_item)
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -104,7 +104,7 @@ class AssetRead:
 
         business_value = self.business_value
 
-        reference_link: Union[None, Unset, str]
+        reference_link: None | Unset | str
         if isinstance(self.reference_link, Unset):
             reference_link = UNSET
         else:
@@ -181,7 +181,7 @@ class AssetRead:
         _ebios_rm_studies = d.pop("ebios_rm_studies", UNSET)
         for ebios_rm_studies_item_data in _ebios_rm_studies or []:
 
-            def _parse_ebios_rm_studies_item(data: object) -> Union[None, UUID]:
+            def _parse_ebios_rm_studies_item(data: object) -> None | UUID:
                 if data is None:
                     return data
                 try:
@@ -192,29 +192,29 @@ class AssetRead:
                     return ebios_rm_studies_item_type_0
                 except:  # noqa: E722
                     pass
-                return cast(Union[None, UUID], data)
+                return cast(None | UUID, data)
 
             ebios_rm_studies_item = _parse_ebios_rm_studies_item(ebios_rm_studies_item_data)
 
             ebios_rm_studies.append(ebios_rm_studies_item)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         business_value = d.pop("business_value", UNSET)
 
-        def _parse_reference_link(data: object) -> Union[None, Unset, str]:
+        def _parse_reference_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         reference_link = _parse_reference_link(d.pop("reference_link", UNSET))
 

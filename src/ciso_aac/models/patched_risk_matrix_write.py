@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -35,38 +35,38 @@ class PatchedRiskMatrixWrite:
         provider (Union[None, Unset, str]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    annotation: Union[None, Unset, str] = UNSET
-    folder: Union[Unset, str] = UNSET
-    json_definition: Union[Unset, Any] = UNSET
-    library: Union[Unset, str] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    urn: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = UNSET
-    default_locale: Union[Unset, bool] = UNSET
-    is_enabled: Union[Unset, bool] = UNSET
-    provider: Union[None, Unset, str] = UNSET
+    id: Unset | UUID = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    annotation: None | Unset | str = UNSET
+    folder: Unset | str = UNSET
+    json_definition: Unset | Any = UNSET
+    library: Unset | str = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    urn: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    locale: Unset | str = UNSET
+    default_locale: Unset | bool = UNSET
+    is_enabled: Unset | bool = UNSET
+    provider: None | Unset | str = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        annotation: Union[None, Unset, str]
+        annotation: None | Unset | str
         if isinstance(self.annotation, Unset):
             annotation = UNSET
         else:
@@ -78,23 +78,23 @@ class PatchedRiskMatrixWrite:
 
         library = self.library
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         is_published = self.is_published
 
-        urn: Union[None, Unset, str]
+        urn: None | Unset | str
         if isinstance(self.urn, Unset):
             urn = UNSET
         else:
             urn = self.urn
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
@@ -106,7 +106,7 @@ class PatchedRiskMatrixWrite:
 
         is_enabled = self.is_enabled
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -151,13 +151,13 @@ class PatchedRiskMatrixWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -166,7 +166,7 @@ class PatchedRiskMatrixWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        annotation: Union[Unset, tuple[None, bytes, str]]
+        annotation: Unset | tuple[None, bytes, str]
 
         if isinstance(self.annotation, Unset):
             annotation = UNSET
@@ -185,11 +185,11 @@ class PatchedRiskMatrixWrite:
 
         library = self.library if isinstance(self.library, Unset) else (None, str(self.library).encode(), "text/plain")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -199,7 +199,7 @@ class PatchedRiskMatrixWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        urn: Union[Unset, tuple[None, bytes, str]]
+        urn: Unset | tuple[None, bytes, str]
 
         if isinstance(self.urn, Unset):
             urn = UNSET
@@ -208,7 +208,7 @@ class PatchedRiskMatrixWrite:
         else:
             urn = (None, str(self.urn).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -231,7 +231,7 @@ class PatchedRiskMatrixWrite:
             else (None, str(self.is_enabled).encode(), "text/plain")
         )
 
-        provider: Union[Unset, tuple[None, bytes, str]]
+        provider: Unset | tuple[None, bytes, str]
 
         if isinstance(self.provider, Unset):
             provider = UNSET
@@ -284,7 +284,7 @@ class PatchedRiskMatrixWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -292,21 +292,21 @@ class PatchedRiskMatrixWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_annotation(data: object) -> Union[None, Unset, str]:
+        def _parse_annotation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         annotation = _parse_annotation(d.pop("annotation", UNSET))
 
@@ -317,14 +317,14 @@ class PatchedRiskMatrixWrite:
         library = d.pop("library", UNSET)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -332,21 +332,21 @@ class PatchedRiskMatrixWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_urn(data: object) -> Union[None, Unset, str]:
+        def _parse_urn(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         urn = _parse_urn(d.pop("urn", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
@@ -356,12 +356,12 @@ class PatchedRiskMatrixWrite:
 
         is_enabled = d.pop("is_enabled", UNSET)
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 

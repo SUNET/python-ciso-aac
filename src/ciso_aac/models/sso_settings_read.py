@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -39,13 +39,13 @@ class SSOSettingsRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     provider_name: str
-    is_published: Union[Unset, bool] = UNSET
-    is_enabled: Union[Unset, bool] = UNSET
-    provider_id: Union[Unset, str] = UNSET
-    client_id: Union[Unset, str] = UNSET
-    secret: Union[Unset, str] = UNSET
-    key: Union[Unset, str] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    is_published: Unset | bool = UNSET
+    is_enabled: Unset | bool = UNSET
+    provider_id: Unset | str = UNSET
+    client_id: Unset | str = UNSET
+    secret: Unset | str = UNSET
+    key: Unset | str = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -75,7 +75,7 @@ class SSOSettingsRead:
 
         key = self.key
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -139,7 +139,7 @@ class SSOSettingsRead:
         key = d.pop("key", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

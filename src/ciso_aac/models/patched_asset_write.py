@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -39,53 +39,53 @@ class PatchedAssetWrite:
         security_exceptions (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    ebios_rm_studies: Union[Unset, list[Union[None, UUID]]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    business_value: Union[Unset, str] = UNSET
-    type_: Union[Unset, TypeEnum] = UNSET
-    reference_link: Union[None, Unset, str] = UNSET
-    security_objectives: Union[Unset, Any] = UNSET
-    disaster_recovery_objectives: Union[Unset, Any] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    filtering_labels: Union[Unset, list[UUID]] = UNSET
-    parent_assets: Union[Unset, list[UUID]] = UNSET
-    owner: Union[Unset, list[UUID]] = UNSET
-    security_exceptions: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    ebios_rm_studies: Unset | list[None | UUID] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    business_value: Unset | str = UNSET
+    type_: Unset | TypeEnum = UNSET
+    reference_link: None | Unset | str = UNSET
+    security_objectives: Unset | Any = UNSET
+    disaster_recovery_objectives: Unset | Any = UNSET
+    ref_id: Unset | str = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    filtering_labels: Unset | list[UUID] = UNSET
+    parent_assets: Unset | list[UUID] = UNSET
+    owner: Unset | list[UUID] = UNSET
+    security_exceptions: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        ebios_rm_studies: Union[Unset, list[Union[None, str]]] = UNSET
+        ebios_rm_studies: Unset | list[None | str] = UNSET
         if not isinstance(self.ebios_rm_studies, Unset):
             ebios_rm_studies = []
             for ebios_rm_studies_item_data in self.ebios_rm_studies:
-                ebios_rm_studies_item: Union[None, str]
+                ebios_rm_studies_item: None | str
                 if isinstance(ebios_rm_studies_item_data, UUID):
                     ebios_rm_studies_item = str(ebios_rm_studies_item_data)
                 else:
                     ebios_rm_studies_item = ebios_rm_studies_item_data
                 ebios_rm_studies.append(ebios_rm_studies_item)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -93,11 +93,11 @@ class PatchedAssetWrite:
 
         business_value = self.business_value
 
-        type_: Union[Unset, str] = UNSET
+        type_: Unset | str = UNSET
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
-        reference_link: Union[None, Unset, str]
+        reference_link: None | Unset | str
         if isinstance(self.reference_link, Unset):
             reference_link = UNSET
         else:
@@ -111,32 +111,32 @@ class PatchedAssetWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        filtering_labels: Union[Unset, list[str]] = UNSET
+        filtering_labels: Unset | list[str] = UNSET
         if not isinstance(self.filtering_labels, Unset):
             filtering_labels = []
             for filtering_labels_item_data in self.filtering_labels:
                 filtering_labels_item = str(filtering_labels_item_data)
                 filtering_labels.append(filtering_labels_item)
 
-        parent_assets: Union[Unset, list[str]] = UNSET
+        parent_assets: Unset | list[str] = UNSET
         if not isinstance(self.parent_assets, Unset):
             parent_assets = []
             for parent_assets_item_data in self.parent_assets:
                 parent_assets_item = str(parent_assets_item_data)
                 parent_assets.append(parent_assets_item)
 
-        owner: Union[Unset, list[str]] = UNSET
+        owner: Unset | list[str] = UNSET
         if not isinstance(self.owner, Unset):
             owner = []
             for owner_item_data in self.owner:
                 owner_item = str(owner_item_data)
                 owner.append(owner_item)
 
-        security_exceptions: Union[Unset, list[str]] = UNSET
+        security_exceptions: Unset | list[str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -186,15 +186,15 @@ class PatchedAssetWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        ebios_rm_studies: Union[Unset, tuple[None, bytes, str]] = UNSET
+        ebios_rm_studies: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.ebios_rm_studies, Unset):
             _temp_ebios_rm_studies = []
             for ebios_rm_studies_item_data in self.ebios_rm_studies:
-                ebios_rm_studies_item: Union[None, str]
+                ebios_rm_studies_item: None | str
                 if isinstance(ebios_rm_studies_item_data, UUID):
                     ebios_rm_studies_item = str(ebios_rm_studies_item_data)
                 else:
@@ -202,17 +202,17 @@ class PatchedAssetWrite:
                 _temp_ebios_rm_studies.append(ebios_rm_studies_item)
             ebios_rm_studies = (None, json.dumps(_temp_ebios_rm_studies).encode(), "application/json")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -227,11 +227,11 @@ class PatchedAssetWrite:
             else (None, str(self.business_value).encode(), "text/plain")
         )
 
-        type_: Union[Unset, tuple[None, bytes, str]] = UNSET
+        type_: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.type_, Unset):
             type_ = (None, str(self.type_.value).encode(), "text/plain")
 
-        reference_link: Union[Unset, tuple[None, bytes, str]]
+        reference_link: Unset | tuple[None, bytes, str]
 
         if isinstance(self.reference_link, Unset):
             reference_link = UNSET
@@ -260,11 +260,11 @@ class PatchedAssetWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        filtering_labels: Union[Unset, tuple[None, bytes, str]] = UNSET
+        filtering_labels: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.filtering_labels, Unset):
             _temp_filtering_labels = []
             for filtering_labels_item_data in self.filtering_labels:
@@ -272,7 +272,7 @@ class PatchedAssetWrite:
                 _temp_filtering_labels.append(filtering_labels_item)
             filtering_labels = (None, json.dumps(_temp_filtering_labels).encode(), "application/json")
 
-        parent_assets: Union[Unset, tuple[None, bytes, str]] = UNSET
+        parent_assets: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.parent_assets, Unset):
             _temp_parent_assets = []
             for parent_assets_item_data in self.parent_assets:
@@ -280,7 +280,7 @@ class PatchedAssetWrite:
                 _temp_parent_assets.append(parent_assets_item)
             parent_assets = (None, json.dumps(_temp_parent_assets).encode(), "application/json")
 
-        owner: Union[Unset, tuple[None, bytes, str]] = UNSET
+        owner: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.owner, Unset):
             _temp_owner = []
             for owner_item_data in self.owner:
@@ -288,7 +288,7 @@ class PatchedAssetWrite:
                 _temp_owner.append(owner_item)
             owner = (None, json.dumps(_temp_owner).encode(), "application/json")
 
-        security_exceptions: Union[Unset, tuple[None, bytes, str]] = UNSET
+        security_exceptions: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             _temp_security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -344,7 +344,7 @@ class PatchedAssetWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -354,7 +354,7 @@ class PatchedAssetWrite:
         _ebios_rm_studies = d.pop("ebios_rm_studies", UNSET)
         for ebios_rm_studies_item_data in _ebios_rm_studies or []:
 
-            def _parse_ebios_rm_studies_item(data: object) -> Union[None, UUID]:
+            def _parse_ebios_rm_studies_item(data: object) -> None | UUID:
                 if data is None:
                     return data
                 try:
@@ -365,21 +365,21 @@ class PatchedAssetWrite:
                     return ebios_rm_studies_item_type_0
                 except:  # noqa: E722
                     pass
-                return cast(Union[None, UUID], data)
+                return cast(None | UUID, data)
 
             ebios_rm_studies_item = _parse_ebios_rm_studies_item(ebios_rm_studies_item_data)
 
             ebios_rm_studies.append(ebios_rm_studies_item)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -387,30 +387,30 @@ class PatchedAssetWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
         business_value = d.pop("business_value", UNSET)
 
         _type_ = d.pop("type", UNSET)
-        type_: Union[Unset, TypeEnum]
+        type_: Unset | TypeEnum
         if isinstance(_type_, Unset):
             type_ = UNSET
         else:
             type_ = TypeEnum(_type_)
 
-        def _parse_reference_link(data: object) -> Union[None, Unset, str]:
+        def _parse_reference_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         reference_link = _parse_reference_link(d.pop("reference_link", UNSET))
 
@@ -423,7 +423,7 @@ class PatchedAssetWrite:
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

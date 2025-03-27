@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -34,13 +34,13 @@ class EvidenceWrite:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    applied_controls: Union[Unset, list[UUID]] = UNSET
-    requirement_assessments: Union[Unset, list[UUID]] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    attachment: Union[None, Unset, str] = UNSET
-    link: Union[None, Unset, str] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
+    requirement_assessments: Unset | list[UUID] = UNSET
+    description: None | Unset | str = UNSET
+    attachment: None | Unset | str = UNSET
+    link: None | Unset | str = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,33 +52,33 @@ class EvidenceWrite:
 
         name = self.name
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
                 applied_controls_item = str(applied_controls_item_data)
                 applied_controls.append(applied_controls_item)
 
-        requirement_assessments: Union[Unset, list[str]] = UNSET
+        requirement_assessments: Unset | list[str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
                 requirement_assessments_item = str(requirement_assessments_item_data)
                 requirement_assessments.append(requirement_assessments_item)
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        attachment: Union[None, Unset, str]
+        attachment: None | Unset | str
         if isinstance(self.attachment, Unset):
             attachment = UNSET
         else:
             attachment = self.attachment
 
-        link: Union[None, Unset, str]
+        link: None | Unset | str
         if isinstance(self.link, Unset):
             link = UNSET
         else:
@@ -86,7 +86,7 @@ class EvidenceWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -126,7 +126,7 @@ class EvidenceWrite:
 
         name = (None, str(self.name).encode(), "text/plain")
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -134,7 +134,7 @@ class EvidenceWrite:
                 _temp_applied_controls.append(applied_controls_item)
             applied_controls = (None, json.dumps(_temp_applied_controls).encode(), "application/json")
 
-        requirement_assessments: Union[Unset, tuple[None, bytes, str]] = UNSET
+        requirement_assessments: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.requirement_assessments, Unset):
             _temp_requirement_assessments = []
             for requirement_assessments_item_data in self.requirement_assessments:
@@ -142,7 +142,7 @@ class EvidenceWrite:
                 _temp_requirement_assessments.append(requirement_assessments_item)
             requirement_assessments = (None, json.dumps(_temp_requirement_assessments).encode(), "application/json")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -151,7 +151,7 @@ class EvidenceWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        attachment: Union[Unset, tuple[None, bytes, str]]
+        attachment: Unset | tuple[None, bytes, str]
 
         if isinstance(self.attachment, Unset):
             attachment = UNSET
@@ -160,7 +160,7 @@ class EvidenceWrite:
         else:
             attachment = (None, str(self.attachment).encode(), "text/plain")
 
-        link: Union[Unset, tuple[None, bytes, str]]
+        link: Unset | tuple[None, bytes, str]
 
         if isinstance(self.link, Unset):
             link = UNSET
@@ -175,7 +175,7 @@ class EvidenceWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -233,37 +233,37 @@ class EvidenceWrite:
 
             requirement_assessments.append(requirement_assessments_item)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_attachment(data: object) -> Union[None, Unset, str]:
+        def _parse_attachment(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         attachment = _parse_attachment(d.pop("attachment", UNSET))
 
-        def _parse_link(data: object) -> Union[None, Unset, str]:
+        def _parse_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         link = _parse_link(d.pop("link", UNSET))
 
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

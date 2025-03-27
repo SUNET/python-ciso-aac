@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,10 +11,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -37,9 +37,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PaginatedRoToReadList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PaginatedRoToReadList | None:
     if response.status_code == 200:
         response_200 = PaginatedRoToReadList.from_dict(response.json())
 
@@ -51,7 +49,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[PaginatedRoToReadList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -64,10 +62,10 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedRoToReadList]:
     """
     Args:
@@ -101,11 +99,11 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedRoToReadList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedRoToReadList | None:
     """
     Args:
         limit (Union[Unset, int]):
@@ -133,10 +131,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedRoToReadList]:
     """
     Args:
@@ -168,11 +166,11 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedRoToReadList]:
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedRoToReadList | None:
     """
     Args:
         limit (Union[Unset, int]):

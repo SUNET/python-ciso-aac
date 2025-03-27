@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,17 +11,17 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    email: Union[Unset, str] = UNSET,
-    first_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    is_applied_control_owner: Union[Unset, bool] = UNSET,
-    is_approver: Union[Unset, bool] = UNSET,
-    is_third_party: Union[Unset, bool] = UNSET,
-    last_name: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    email: Unset | str = UNSET,
+    first_name: Unset | str = UNSET,
+    is_active: Unset | bool = UNSET,
+    is_applied_control_owner: Unset | bool = UNSET,
+    is_approver: Unset | bool = UNSET,
+    is_third_party: Unset | bool = UNSET,
+    last_name: Unset | str = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -58,9 +58,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[PaginatedUserReadList]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PaginatedUserReadList | None:
     if response.status_code == 200:
         response_200 = PaginatedUserReadList.from_dict(response.json())
 
@@ -72,7 +70,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[PaginatedUserReadList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -85,17 +83,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    email: Union[Unset, str] = UNSET,
-    first_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    is_applied_control_owner: Union[Unset, bool] = UNSET,
-    is_approver: Union[Unset, bool] = UNSET,
-    is_third_party: Union[Unset, bool] = UNSET,
-    last_name: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    email: Unset | str = UNSET,
+    first_name: Unset | str = UNSET,
+    is_active: Unset | bool = UNSET,
+    is_applied_control_owner: Unset | bool = UNSET,
+    is_approver: Unset | bool = UNSET,
+    is_third_party: Unset | bool = UNSET,
+    last_name: Unset | str = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedUserReadList]:
     """API endpoint that allows users to be viewed or edited
 
@@ -144,18 +142,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    email: Union[Unset, str] = UNSET,
-    first_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    is_applied_control_owner: Union[Unset, bool] = UNSET,
-    is_approver: Union[Unset, bool] = UNSET,
-    is_third_party: Union[Unset, bool] = UNSET,
-    last_name: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedUserReadList]:
+    email: Unset | str = UNSET,
+    first_name: Unset | str = UNSET,
+    is_active: Unset | bool = UNSET,
+    is_applied_control_owner: Unset | bool = UNSET,
+    is_approver: Unset | bool = UNSET,
+    is_third_party: Unset | bool = UNSET,
+    last_name: Unset | str = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedUserReadList | None:
     """API endpoint that allows users to be viewed or edited
 
     Args:
@@ -198,17 +196,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    email: Union[Unset, str] = UNSET,
-    first_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    is_applied_control_owner: Union[Unset, bool] = UNSET,
-    is_approver: Union[Unset, bool] = UNSET,
-    is_third_party: Union[Unset, bool] = UNSET,
-    last_name: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
+    email: Unset | str = UNSET,
+    first_name: Unset | str = UNSET,
+    is_active: Unset | bool = UNSET,
+    is_applied_control_owner: Unset | bool = UNSET,
+    is_approver: Unset | bool = UNSET,
+    is_third_party: Unset | bool = UNSET,
+    last_name: Unset | str = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
 ) -> Response[PaginatedUserReadList]:
     """API endpoint that allows users to be viewed or edited
 
@@ -255,18 +253,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    email: Union[Unset, str] = UNSET,
-    first_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
-    is_applied_control_owner: Union[Unset, bool] = UNSET,
-    is_approver: Union[Unset, bool] = UNSET,
-    is_third_party: Union[Unset, bool] = UNSET,
-    last_name: Union[Unset, str] = UNSET,
-    limit: Union[Unset, int] = UNSET,
-    offset: Union[Unset, int] = UNSET,
-    ordering: Union[Unset, str] = UNSET,
-    search: Union[Unset, str] = UNSET,
-) -> Optional[PaginatedUserReadList]:
+    email: Unset | str = UNSET,
+    first_name: Unset | str = UNSET,
+    is_active: Unset | bool = UNSET,
+    is_applied_control_owner: Unset | bool = UNSET,
+    is_approver: Unset | bool = UNSET,
+    is_third_party: Unset | bool = UNSET,
+    last_name: Unset | str = UNSET,
+    limit: Unset | int = UNSET,
+    offset: Unset | int = UNSET,
+    ordering: Unset | str = UNSET,
+    search: Unset | str = UNSET,
+) -> PaginatedUserReadList | None:
     """API endpoint that allows users to be viewed or edited
 
     Args:

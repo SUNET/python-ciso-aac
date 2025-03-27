@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-    ],
+    body: RiskAcceptanceWrite | RiskAcceptanceWrite | RiskAcceptanceWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -44,9 +40,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RiskAcceptanceWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RiskAcceptanceWrite | None:
     if response.status_code == 201:
         response_201 = RiskAcceptanceWrite.from_dict(response.json())
 
@@ -57,9 +51,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RiskAcceptanceWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RiskAcceptanceWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -71,11 +63,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-    ],
+    body: RiskAcceptanceWrite | RiskAcceptanceWrite | RiskAcceptanceWrite,
 ) -> Response[RiskAcceptanceWrite]:
     """API endpoint that allows risk acceptance to be viewed or edited.
 
@@ -106,12 +94,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-    ],
-) -> Optional[RiskAcceptanceWrite]:
+    body: RiskAcceptanceWrite | RiskAcceptanceWrite | RiskAcceptanceWrite,
+) -> RiskAcceptanceWrite | None:
     """API endpoint that allows risk acceptance to be viewed or edited.
 
     Args:
@@ -136,11 +120,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-    ],
+    body: RiskAcceptanceWrite | RiskAcceptanceWrite | RiskAcceptanceWrite,
 ) -> Response[RiskAcceptanceWrite]:
     """API endpoint that allows risk acceptance to be viewed or edited.
 
@@ -169,12 +149,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-        RiskAcceptanceWrite,
-    ],
-) -> Optional[RiskAcceptanceWrite]:
+    body: RiskAcceptanceWrite | RiskAcceptanceWrite | RiskAcceptanceWrite,
+) -> RiskAcceptanceWrite | None:
     """API endpoint that allows risk acceptance to be viewed or edited.
 
     Args:

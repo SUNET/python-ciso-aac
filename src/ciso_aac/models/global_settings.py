@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -30,10 +30,10 @@ class GlobalSettings:
     id: UUID
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, NameEnum] = UNSET
-    value: Union[Unset, Any] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | NameEnum = UNSET
+    value: Unset | Any = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,13 +45,13 @@ class GlobalSettings:
 
         is_published = self.is_published
 
-        name: Union[Unset, str] = UNSET
+        name: Unset | str = UNSET
         if not isinstance(self.name, Unset):
             name = self.name.value
 
         value = self.value
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -88,13 +88,13 @@ class GlobalSettings:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        name: Union[Unset, tuple[None, bytes, str]] = UNSET
+        name: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.name, Unset):
             name = (None, str(self.name.value).encode(), "text/plain")
 
         value = self.value if isinstance(self.value, Unset) else (None, str(self.value).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -132,7 +132,7 @@ class GlobalSettings:
         is_published = d.pop("is_published", UNSET)
 
         _name = d.pop("name", UNSET)
-        name: Union[Unset, NameEnum]
+        name: Unset | NameEnum
         if isinstance(_name, Unset):
             name = UNSET
         else:
@@ -141,7 +141,7 @@ class GlobalSettings:
         value = d.pop("value", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

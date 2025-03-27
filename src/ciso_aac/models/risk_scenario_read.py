@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -70,13 +70,13 @@ class RiskScenarioRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    existing_controls: Union[Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    qualifications: Union[Unset, Any] = UNSET
-    justification: Union[None, Unset, str] = UNSET
-    vulnerabilities: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    existing_controls: Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    qualifications: Unset | Any = UNSET
+    justification: None | Unset | str = UNSET
+    vulnerabilities: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -126,7 +126,7 @@ class RiskScenarioRead:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -138,13 +138,13 @@ class RiskScenarioRead:
 
         qualifications = self.qualifications
 
-        justification: Union[None, Unset, str]
+        justification: None | Unset | str
         if isinstance(self.justification, Unset):
             justification = UNSET
         else:
             justification = self.justification
 
-        vulnerabilities: Union[Unset, list[str]] = UNSET
+        vulnerabilities: Unset | list[str] = UNSET
         if not isinstance(self.vulnerabilities, Unset):
             vulnerabilities = []
             for vulnerabilities_item_data in self.vulnerabilities:
@@ -245,12 +245,12 @@ class RiskScenarioRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -260,12 +260,12 @@ class RiskScenarioRead:
 
         qualifications = d.pop("qualifications", UNSET)
 
-        def _parse_justification(data: object) -> Union[None, Unset, str]:
+        def _parse_justification(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         justification = _parse_justification(d.pop("justification", UNSET))
 

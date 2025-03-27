@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -38,13 +38,13 @@ class RoleAssignmentWrite:
     name: str
     role: UUID
     perimeter_folders: list[UUID]
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    is_recursive: Union[Unset, bool] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    user: Union[None, UUID, Unset] = UNSET
-    user_group: Union[None, UUID, Unset] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    is_recursive: Unset | bool = UNSET
+    builtin: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    user: None | UUID | Unset = UNSET
+    user_group: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,7 +65,7 @@ class RoleAssignmentWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -75,11 +75,11 @@ class RoleAssignmentWrite:
 
         builtin = self.builtin
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        user: Union[None, Unset, str]
+        user: None | Unset | str
         if isinstance(self.user, Unset):
             user = UNSET
         elif isinstance(self.user, UUID):
@@ -87,7 +87,7 @@ class RoleAssignmentWrite:
         else:
             user = self.user
 
-        user_group: Union[None, Unset, str]
+        user_group: None | Unset | str
         if isinstance(self.user_group, Unset):
             user_group = UNSET
         elif isinstance(self.user_group, UUID):
@@ -147,7 +147,7 @@ class RoleAssignmentWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -164,11 +164,11 @@ class RoleAssignmentWrite:
 
         builtin = self.builtin if isinstance(self.builtin, Unset) else (None, str(self.builtin).encode(), "text/plain")
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        user: Union[Unset, tuple[None, bytes, str]]
+        user: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user, Unset):
             user = UNSET
@@ -177,7 +177,7 @@ class RoleAssignmentWrite:
         else:
             user = (None, str(self.user).encode(), "text/plain")
 
-        user_group: Union[Unset, tuple[None, bytes, str]]
+        user_group: Unset | tuple[None, bytes, str]
 
         if isinstance(self.user_group, Unset):
             user_group = UNSET
@@ -239,12 +239,12 @@ class RoleAssignmentWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -253,13 +253,13 @@ class RoleAssignmentWrite:
         builtin = d.pop("builtin", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_user(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -272,11 +272,11 @@ class RoleAssignmentWrite:
                 return user_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user = _parse_user(d.pop("user", UNSET))
 
-        def _parse_user_group(data: object) -> Union[None, UUID, Unset]:
+        def _parse_user_group(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -289,7 +289,7 @@ class RoleAssignmentWrite:
                 return user_group_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         user_group = _parse_user_group(d.pop("user_group", UNSET))
 

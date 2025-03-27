@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -26,19 +26,19 @@ class PatchedAttackPathWrite:
         stakeholders (Union[Unset, list[UUID]]): Stakeholders leveraged by the attack path
     """
 
-    id: Union[Unset, UUID] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    strategic_scenario: Union[Unset, UUID] = UNSET
-    stakeholders: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: Unset | str = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    strategic_scenario: Unset | UUID = UNSET
+    stakeholders: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -46,7 +46,7 @@ class PatchedAttackPathWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -58,11 +58,11 @@ class PatchedAttackPathWrite:
 
         justification = self.justification
 
-        strategic_scenario: Union[Unset, str] = UNSET
+        strategic_scenario: Unset | str = UNSET
         if not isinstance(self.strategic_scenario, Unset):
             strategic_scenario = str(self.strategic_scenario)
 
-        stakeholders: Union[Unset, list[str]] = UNSET
+        stakeholders: Unset | list[str] = UNSET
         if not isinstance(self.stakeholders, Unset):
             stakeholders = []
             for stakeholders_item_data in self.stakeholders:
@@ -94,7 +94,7 @@ class PatchedAttackPathWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
@@ -106,7 +106,7 @@ class PatchedAttackPathWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -129,11 +129,11 @@ class PatchedAttackPathWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        strategic_scenario: Union[Unset, bytes] = UNSET
+        strategic_scenario: Unset | bytes = UNSET
         if not isinstance(self.strategic_scenario, Unset):
             strategic_scenario = str(self.strategic_scenario)
 
-        stakeholders: Union[Unset, tuple[None, bytes, str]] = UNSET
+        stakeholders: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.stakeholders, Unset):
             _temp_stakeholders = []
             for stakeholders_item_data in self.stakeholders:
@@ -171,7 +171,7 @@ class PatchedAttackPathWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -181,12 +181,12 @@ class PatchedAttackPathWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -197,7 +197,7 @@ class PatchedAttackPathWrite:
         justification = d.pop("justification", UNSET)
 
         _strategic_scenario = d.pop("strategic_scenario", UNSET)
-        strategic_scenario: Union[Unset, UUID]
+        strategic_scenario: Unset | UUID
         if isinstance(_strategic_scenario, Unset):
             strategic_scenario = UNSET
         else:

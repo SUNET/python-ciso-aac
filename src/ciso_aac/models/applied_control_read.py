@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -64,16 +64,16 @@ class AppliedControlRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    findings: Union[Unset, list[UUID]] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    status: Union[BlankEnum, Status2E9Enum, Unset] = UNSET
-    start_date: Union[None, Unset, datetime.date] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    expiry_date: Union[None, Unset, datetime.date] = UNSET
-    link: Union[None, Unset, str] = UNSET
-    progress_field: Union[Unset, int] = UNSET
-    is_published: Union[Unset, bool] = UNSET
+    findings: Unset | list[UUID] = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    status: BlankEnum | Status2E9Enum | Unset = UNSET
+    start_date: None | Unset | datetime.date = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    expiry_date: None | Unset | datetime.date = UNSET
+    link: None | Unset | str = UNSET
+    progress_field: Unset | int = UNSET
+    is_published: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -111,26 +111,26 @@ class AppliedControlRead:
 
         name = self.name
 
-        findings: Union[Unset, list[str]] = UNSET
+        findings: Unset | list[str] = UNSET
         if not isinstance(self.findings, Unset):
             findings = []
             for findings_item_data in self.findings:
                 findings_item = str(findings_item_data)
                 findings.append(findings_item)
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        status: Union[Unset, str]
+        status: Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status2E9Enum):
@@ -138,7 +138,7 @@ class AppliedControlRead:
         else:
             status = self.status.value
 
-        start_date: Union[None, Unset, str]
+        start_date: None | Unset | str
         if isinstance(self.start_date, Unset):
             start_date = UNSET
         elif isinstance(self.start_date, datetime.date):
@@ -146,7 +146,7 @@ class AppliedControlRead:
         else:
             start_date = self.start_date
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -154,7 +154,7 @@ class AppliedControlRead:
         else:
             eta = self.eta
 
-        expiry_date: Union[None, Unset, str]
+        expiry_date: None | Unset | str
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
         elif isinstance(self.expiry_date, datetime.date):
@@ -162,7 +162,7 @@ class AppliedControlRead:
         else:
             expiry_date = self.expiry_date
 
-        link: Union[None, Unset, str]
+        link: None | Unset | str
         if isinstance(self.link, Unset):
             link = UNSET
         else:
@@ -262,25 +262,25 @@ class AppliedControlRead:
 
             findings.append(findings_item)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, Status2E9Enum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | Status2E9Enum | Unset:
             if isinstance(data, Unset):
                 return data
             try:
@@ -299,7 +299,7 @@ class AppliedControlRead:
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_start_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -312,11 +312,11 @@ class AppliedControlRead:
                 return start_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         start_date = _parse_start_date(d.pop("start_date", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -329,11 +329,11 @@ class AppliedControlRead:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_expiry_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiry_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -346,16 +346,16 @@ class AppliedControlRead:
                 return expiry_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiry_date = _parse_expiry_date(d.pop("expiry_date", UNSET))
 
-        def _parse_link(data: object) -> Union[None, Unset, str]:
+        def _parse_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         link = _parse_link(d.pop("link", UNSET))
 

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-    ],
+    body: PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,9 +42,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RiskAssessmentWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> RiskAssessmentWrite | None:
     if response.status_code == 200:
         response_200 = RiskAssessmentWrite.from_dict(response.json())
 
@@ -59,9 +53,7 @@ def _parse_response(
         return None
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RiskAssessmentWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[RiskAssessmentWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,11 +66,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-    ],
+    body: PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite,
 ) -> Response[RiskAssessmentWrite]:
     """API endpoint that allows risk assessments to be viewed or edited.
 
@@ -112,12 +100,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-    ],
-) -> Optional[RiskAssessmentWrite]:
+    body: PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite,
+) -> RiskAssessmentWrite | None:
     """API endpoint that allows risk assessments to be viewed or edited.
 
     Args:
@@ -145,11 +129,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-    ],
+    body: PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite,
 ) -> Response[RiskAssessmentWrite]:
     """API endpoint that allows risk assessments to be viewed or edited.
 
@@ -181,12 +161,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-        PatchedRiskAssessmentWrite,
-    ],
-) -> Optional[RiskAssessmentWrite]:
+    body: PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite | PatchedRiskAssessmentWrite,
+) -> RiskAssessmentWrite | None:
     """API endpoint that allows risk assessments to be viewed or edited.
 
     Args:

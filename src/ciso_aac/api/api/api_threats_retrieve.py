@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -20,7 +20,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[ThreatRead]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ThreatRead | None:
     if response.status_code == 200:
         response_200 = ThreatRead.from_dict(response.json())
 
@@ -31,7 +31,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ThreatRead]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ThreatRead]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,7 +73,7 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[ThreatRead]:
+) -> ThreatRead | None:
     """API endpoint that allows threats to be viewed or edited.
 
     Args:
@@ -124,7 +124,7 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[ThreatRead]:
+) -> ThreatRead | None:
     """API endpoint that allows threats to be viewed or edited.
 
     Args:

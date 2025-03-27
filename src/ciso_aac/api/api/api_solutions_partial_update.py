@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -13,11 +13,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-    ],
+    body: PatchedSolutionWrite | PatchedSolutionWrite | PatchedSolutionWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,7 +42,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[SolutionWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> SolutionWrite | None:
     if response.status_code == 200:
         response_200 = SolutionWrite.from_dict(response.json())
 
@@ -57,7 +53,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[SolutionWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[SolutionWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -70,11 +66,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-    ],
+    body: PatchedSolutionWrite | PatchedSolutionWrite | PatchedSolutionWrite,
 ) -> Response[SolutionWrite]:
     """API endpoint that allows solutions to be viewed or edited.
 
@@ -108,12 +100,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-    ],
-) -> Optional[SolutionWrite]:
+    body: PatchedSolutionWrite | PatchedSolutionWrite | PatchedSolutionWrite,
+) -> SolutionWrite | None:
     """API endpoint that allows solutions to be viewed or edited.
 
     Args:
@@ -141,11 +129,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-    ],
+    body: PatchedSolutionWrite | PatchedSolutionWrite | PatchedSolutionWrite,
 ) -> Response[SolutionWrite]:
     """API endpoint that allows solutions to be viewed or edited.
 
@@ -177,12 +161,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-        PatchedSolutionWrite,
-    ],
-) -> Optional[SolutionWrite]:
+    body: PatchedSolutionWrite | PatchedSolutionWrite | PatchedSolutionWrite,
+) -> SolutionWrite | None:
     """API endpoint that allows solutions to be viewed or edited.
 
     Args:

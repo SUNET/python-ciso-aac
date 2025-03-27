@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -66,19 +66,19 @@ class RequirementAssessmentRead:
     security_exceptions: list[str]
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    is_published: Union[Unset, bool] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[None, Unset, datetime.date] = UNSET
-    status: Union[Unset, StatusAb4Enum] = UNSET
-    result: Union[Unset, ResultEnum] = UNSET
-    is_scored: Union[Unset, bool] = UNSET
-    score: Union[None, Unset, int] = UNSET
-    documentation_score: Union[None, Unset, int] = UNSET
-    observation: Union[None, Unset, str] = UNSET
-    selected: Union[Unset, bool] = UNSET
-    mapping_inference: Union[Unset, Any] = UNSET
-    answer: Union[Unset, Any] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    due_date: None | Unset | datetime.date = UNSET
+    status: Unset | StatusAb4Enum = UNSET
+    result: Unset | ResultEnum = UNSET
+    is_scored: Unset | bool = UNSET
+    score: None | Unset | int = UNSET
+    documentation_score: None | Unset | int = UNSET
+    observation: None | Unset | str = UNSET
+    selected: Unset | bool = UNSET
+    mapping_inference: Unset | Any = UNSET
+    answer: Unset | Any = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -106,7 +106,7 @@ class RequirementAssessmentRead:
 
         is_published = self.is_published
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -114,7 +114,7 @@ class RequirementAssessmentRead:
         else:
             eta = self.eta
 
-        due_date: Union[None, Unset, str]
+        due_date: None | Unset | str
         if isinstance(self.due_date, Unset):
             due_date = UNSET
         elif isinstance(self.due_date, datetime.date):
@@ -122,29 +122,29 @@ class RequirementAssessmentRead:
         else:
             due_date = self.due_date
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
-        result: Union[Unset, str] = UNSET
+        result: Unset | str = UNSET
         if not isinstance(self.result, Unset):
             result = self.result.value
 
         is_scored = self.is_scored
 
-        score: Union[None, Unset, int]
+        score: None | Unset | int
         if isinstance(self.score, Unset):
             score = UNSET
         else:
             score = self.score
 
-        documentation_score: Union[None, Unset, int]
+        documentation_score: None | Unset | int
         if isinstance(self.documentation_score, Unset):
             documentation_score = UNSET
         else:
             documentation_score = self.documentation_score
 
-        observation: Union[None, Unset, str]
+        observation: None | Unset | str
         if isinstance(self.observation, Unset):
             observation = UNSET
         else:
@@ -156,7 +156,7 @@ class RequirementAssessmentRead:
 
         answer = self.answer
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -238,7 +238,7 @@ class RequirementAssessmentRead:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -251,11 +251,11 @@ class RequirementAssessmentRead:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_due_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -268,19 +268,19 @@ class RequirementAssessmentRead:
                 return due_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         due_date = _parse_due_date(d.pop("due_date", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, StatusAb4Enum]
+        status: Unset | StatusAb4Enum
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = StatusAb4Enum(_status)
 
         _result = d.pop("result", UNSET)
-        result: Union[Unset, ResultEnum]
+        result: Unset | ResultEnum
         if isinstance(_result, Unset):
             result = UNSET
         else:
@@ -288,30 +288,30 @@ class RequirementAssessmentRead:
 
         is_scored = d.pop("is_scored", UNSET)
 
-        def _parse_score(data: object) -> Union[None, Unset, int]:
+        def _parse_score(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         score = _parse_score(d.pop("score", UNSET))
 
-        def _parse_documentation_score(data: object) -> Union[None, Unset, int]:
+        def _parse_documentation_score(data: object) -> None | Unset | int:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(None | Unset | int, data)
 
         documentation_score = _parse_documentation_score(d.pop("documentation_score", UNSET))
 
-        def _parse_observation(data: object) -> Union[None, Unset, str]:
+        def _parse_observation(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         observation = _parse_observation(d.pop("observation", UNSET))
 

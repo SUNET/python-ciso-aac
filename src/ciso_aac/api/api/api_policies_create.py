@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -11,11 +11,7 @@ from ...types import Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        PolicyWrite,
-        PolicyWrite,
-        PolicyWrite,
-    ],
+    body: PolicyWrite | PolicyWrite | PolicyWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -44,7 +40,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[PolicyWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> PolicyWrite | None:
     if response.status_code == 201:
         response_201 = PolicyWrite.from_dict(response.json())
 
@@ -55,7 +51,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[PolicyWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[PolicyWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -67,11 +63,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PolicyWrite,
-        PolicyWrite,
-        PolicyWrite,
-    ],
+    body: PolicyWrite | PolicyWrite | PolicyWrite,
 ) -> Response[PolicyWrite]:
     """API endpoint that allows applied controls to be viewed or edited.
 
@@ -102,12 +94,8 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PolicyWrite,
-        PolicyWrite,
-        PolicyWrite,
-    ],
-) -> Optional[PolicyWrite]:
+    body: PolicyWrite | PolicyWrite | PolicyWrite,
+) -> PolicyWrite | None:
     """API endpoint that allows applied controls to be viewed or edited.
 
     Args:
@@ -132,11 +120,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PolicyWrite,
-        PolicyWrite,
-        PolicyWrite,
-    ],
+    body: PolicyWrite | PolicyWrite | PolicyWrite,
 ) -> Response[PolicyWrite]:
     """API endpoint that allows applied controls to be viewed or edited.
 
@@ -165,12 +149,8 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PolicyWrite,
-        PolicyWrite,
-        PolicyWrite,
-    ],
-) -> Optional[PolicyWrite]:
+    body: PolicyWrite | PolicyWrite | PolicyWrite,
+) -> PolicyWrite | None:
     """API endpoint that allows applied controls to be viewed or edited.
 
     Args:

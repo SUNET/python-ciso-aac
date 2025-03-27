@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-    ],
+    body: RequirementMappingSetWrite | RequirementMappingSetWrite | RequirementMappingSetWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -46,8 +42,8 @@ def _get_kwargs(
 
 
 def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RequirementMappingSetWrite]:
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> RequirementMappingSetWrite | None:
     if response.status_code == 200:
         response_200 = RequirementMappingSetWrite.from_dict(response.json())
 
@@ -59,7 +55,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+    *, client: AuthenticatedClient | Client, response: httpx.Response
 ) -> Response[RequirementMappingSetWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
@@ -73,11 +69,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-    ],
+    body: RequirementMappingSetWrite | RequirementMappingSetWrite | RequirementMappingSetWrite,
 ) -> Response[RequirementMappingSetWrite]:
     """
     Args:
@@ -110,12 +102,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-    ],
-) -> Optional[RequirementMappingSetWrite]:
+    body: RequirementMappingSetWrite | RequirementMappingSetWrite | RequirementMappingSetWrite,
+) -> RequirementMappingSetWrite | None:
     """
     Args:
         id (str):
@@ -142,11 +130,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-    ],
+    body: RequirementMappingSetWrite | RequirementMappingSetWrite | RequirementMappingSetWrite,
 ) -> Response[RequirementMappingSetWrite]:
     """
     Args:
@@ -177,12 +161,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-        RequirementMappingSetWrite,
-    ],
-) -> Optional[RequirementMappingSetWrite]:
+    body: RequirementMappingSetWrite | RequirementMappingSetWrite | RequirementMappingSetWrite,
+) -> RequirementMappingSetWrite | None:
     """
     Args:
         id (str):

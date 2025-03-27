@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -55,13 +55,13 @@ class RoToWrite:
     risk_origin: RiskOriginEnum
     target_objective: str
     ebios_rm_study: UUID
-    is_published: Union[Unset, bool] = UNSET
-    motivation: Union[Unset, MotivationEnum] = UNSET
-    resources: Union[Unset, ResourcesEnum] = UNSET
-    activity: Union[Unset, ActivityEnum] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    feared_events: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    motivation: Unset | MotivationEnum = UNSET
+    resources: Unset | ResourcesEnum = UNSET
+    activity: Unset | ActivityEnum = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    feared_events: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -75,15 +75,15 @@ class RoToWrite:
 
         is_published = self.is_published
 
-        motivation: Union[Unset, int] = UNSET
+        motivation: Unset | int = UNSET
         if not isinstance(self.motivation, Unset):
             motivation = self.motivation.value
 
-        resources: Union[Unset, int] = UNSET
+        resources: Unset | int = UNSET
         if not isinstance(self.resources, Unset):
             resources = self.resources.value
 
-        activity: Union[Unset, int] = UNSET
+        activity: Unset | int = UNSET
         if not isinstance(self.activity, Unset):
             activity = self.activity.value
 
@@ -91,7 +91,7 @@ class RoToWrite:
 
         justification = self.justification
 
-        feared_events: Union[Unset, list[str]] = UNSET
+        feared_events: Unset | list[str] = UNSET
         if not isinstance(self.feared_events, Unset):
             feared_events = []
             for feared_events_item_data in self.feared_events:
@@ -140,15 +140,15 @@ class RoToWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        motivation: Union[Unset, tuple[None, bytes, str]] = UNSET
+        motivation: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.motivation, Unset):
             motivation = (None, str(self.motivation.value).encode(), "text/plain")
 
-        resources: Union[Unset, tuple[None, bytes, str]] = UNSET
+        resources: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.resources, Unset):
             resources = (None, str(self.resources.value).encode(), "text/plain")
 
-        activity: Union[Unset, tuple[None, bytes, str]] = UNSET
+        activity: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.activity, Unset):
             activity = (None, str(self.activity.value).encode(), "text/plain")
 
@@ -164,7 +164,7 @@ class RoToWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        feared_events: Union[Unset, tuple[None, bytes, str]] = UNSET
+        feared_events: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.feared_events, Unset):
             _temp_feared_events = []
             for feared_events_item_data in self.feared_events:
@@ -215,21 +215,21 @@ class RoToWrite:
         is_published = d.pop("is_published", UNSET)
 
         _motivation = d.pop("motivation", UNSET)
-        motivation: Union[Unset, MotivationEnum]
+        motivation: Unset | MotivationEnum
         if isinstance(_motivation, Unset):
             motivation = UNSET
         else:
             motivation = MotivationEnum(_motivation)
 
         _resources = d.pop("resources", UNSET)
-        resources: Union[Unset, ResourcesEnum]
+        resources: Unset | ResourcesEnum
         if isinstance(_resources, Unset):
             resources = UNSET
         else:
             resources = ResourcesEnum(_resources)
 
         _activity = d.pop("activity", UNSET)
-        activity: Union[Unset, ActivityEnum]
+        activity: Unset | ActivityEnum
         if isinstance(_activity, Unset):
             activity = UNSET
         else:

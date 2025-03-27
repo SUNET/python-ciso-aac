@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any
 
 import httpx
 
@@ -12,11 +12,7 @@ from ...types import Response
 def _get_kwargs(
     id: str,
     *,
-    body: Union[
-        AssetWrite,
-        AssetWrite,
-        AssetWrite,
-    ],
+    body: AssetWrite | AssetWrite | AssetWrite,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -45,7 +41,7 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[AssetWrite]:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> AssetWrite | None:
     if response.status_code == 200:
         response_200 = AssetWrite.from_dict(response.json())
 
@@ -56,7 +52,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[AssetWrite]:
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[AssetWrite]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -69,11 +65,7 @@ def sync_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AssetWrite,
-        AssetWrite,
-        AssetWrite,
-    ],
+    body: AssetWrite | AssetWrite | AssetWrite,
 ) -> Response[AssetWrite]:
     """API endpoint that allows assets to be viewed or edited.
 
@@ -107,12 +99,8 @@ def sync(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AssetWrite,
-        AssetWrite,
-        AssetWrite,
-    ],
-) -> Optional[AssetWrite]:
+    body: AssetWrite | AssetWrite | AssetWrite,
+) -> AssetWrite | None:
     """API endpoint that allows assets to be viewed or edited.
 
     Args:
@@ -140,11 +128,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AssetWrite,
-        AssetWrite,
-        AssetWrite,
-    ],
+    body: AssetWrite | AssetWrite | AssetWrite,
 ) -> Response[AssetWrite]:
     """API endpoint that allows assets to be viewed or edited.
 
@@ -176,12 +160,8 @@ async def asyncio(
     id: str,
     *,
     client: AuthenticatedClient,
-    body: Union[
-        AssetWrite,
-        AssetWrite,
-        AssetWrite,
-    ],
-) -> Optional[AssetWrite]:
+    body: AssetWrite | AssetWrite | AssetWrite,
+) -> AssetWrite | None:
     """API endpoint that allows assets to be viewed or edited.
 
     Args:

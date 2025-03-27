@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -44,28 +44,28 @@ class StoredLibraryDetailed:
 
     id: UUID
     name: str
-    description: Union[None, str]
-    annotation: Union[None, str]
+    description: None | str
+    annotation: None | str
     locales: list[Any]
     created_at: datetime.datetime
     updated_at: datetime.datetime
-    urn: Union[None, str]
+    urn: None | str
     version: int
     hash_checksum: str
     content: Any
-    is_published: Union[Unset, bool] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    provider: Union[None, Unset, str] = UNSET
-    locale: Union[Unset, str] = "en"
-    default_locale: Union[Unset, bool] = UNSET
-    copyright_: Union[None, Unset, str] = UNSET
-    packager: Union[None, Unset, str] = UNSET
-    publication_date: Union[None, Unset, datetime.date] = UNSET
-    builtin: Union[Unset, bool] = UNSET
-    objects_meta: Union[Unset, Any] = UNSET
-    dependencies: Union[Unset, Any] = UNSET
-    is_loaded: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
+    is_published: Unset | bool = UNSET
+    ref_id: None | Unset | str = UNSET
+    provider: None | Unset | str = UNSET
+    locale: Unset | str = "en"
+    default_locale: Unset | bool = UNSET
+    copyright_: None | Unset | str = UNSET
+    packager: None | Unset | str = UNSET
+    publication_date: None | Unset | datetime.date = UNSET
+    builtin: Unset | bool = UNSET
+    objects_meta: Unset | Any = UNSET
+    dependencies: Unset | Any = UNSET
+    is_loaded: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,10 +73,10 @@ class StoredLibraryDetailed:
 
         name = self.name
 
-        description: Union[None, str]
+        description: None | str
         description = self.description
 
-        annotation: Union[None, str]
+        annotation: None | str
         annotation = self.annotation
 
         locales = self.locales
@@ -85,7 +85,7 @@ class StoredLibraryDetailed:
 
         updated_at = self.updated_at.isoformat()
 
-        urn: Union[None, str]
+        urn: None | str
         urn = self.urn
 
         version = self.version
@@ -96,13 +96,13 @@ class StoredLibraryDetailed:
 
         is_published = self.is_published
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        provider: Union[None, Unset, str]
+        provider: None | Unset | str
         if isinstance(self.provider, Unset):
             provider = UNSET
         else:
@@ -112,19 +112,19 @@ class StoredLibraryDetailed:
 
         default_locale = self.default_locale
 
-        copyright_: Union[None, Unset, str]
+        copyright_: None | Unset | str
         if isinstance(self.copyright_, Unset):
             copyright_ = UNSET
         else:
             copyright_ = self.copyright_
 
-        packager: Union[None, Unset, str]
+        packager: None | Unset | str
         if isinstance(self.packager, Unset):
             packager = UNSET
         else:
             packager = self.packager
 
-        publication_date: Union[None, Unset, str]
+        publication_date: None | Unset | str
         if isinstance(self.publication_date, Unset):
             publication_date = UNSET
         elif isinstance(self.publication_date, datetime.date):
@@ -140,7 +140,7 @@ class StoredLibraryDetailed:
 
         is_loaded = self.is_loaded
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
@@ -197,17 +197,17 @@ class StoredLibraryDetailed:
 
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, str]:
+        def _parse_description(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         description = _parse_description(d.pop("description"))
 
-        def _parse_annotation(data: object) -> Union[None, str]:
+        def _parse_annotation(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         annotation = _parse_annotation(d.pop("annotation"))
 
@@ -217,10 +217,10 @@ class StoredLibraryDetailed:
 
         updated_at = isoparse(d.pop("updated_at"))
 
-        def _parse_urn(data: object) -> Union[None, str]:
+        def _parse_urn(data: object) -> None | str:
             if data is None:
                 return data
-            return cast(Union[None, str], data)
+            return cast(None | str, data)
 
         urn = _parse_urn(d.pop("urn"))
 
@@ -232,21 +232,21 @@ class StoredLibraryDetailed:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_provider(data: object) -> Union[None, Unset, str]:
+        def _parse_provider(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         provider = _parse_provider(d.pop("provider", UNSET))
 
@@ -254,25 +254,25 @@ class StoredLibraryDetailed:
 
         default_locale = d.pop("default_locale", UNSET)
 
-        def _parse_copyright_(data: object) -> Union[None, Unset, str]:
+        def _parse_copyright_(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         copyright_ = _parse_copyright_(d.pop("copyright", UNSET))
 
-        def _parse_packager(data: object) -> Union[None, Unset, str]:
+        def _parse_packager(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         packager = _parse_packager(d.pop("packager", UNSET))
 
-        def _parse_publication_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_publication_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -285,7 +285,7 @@ class StoredLibraryDetailed:
                 return publication_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         publication_date = _parse_publication_date(d.pop("publication_date", UNSET))
 
@@ -298,7 +298,7 @@ class StoredLibraryDetailed:
         is_loaded = d.pop("is_loaded", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:

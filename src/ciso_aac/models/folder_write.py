@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -29,9 +29,9 @@ class FolderWrite:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    is_published: Union[Unset, bool] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    parent_folder: Union[None, UUID, Unset] = UNSET
+    is_published: Unset | bool = UNSET
+    description: None | Unset | str = UNSET
+    parent_folder: None | UUID | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -45,13 +45,13 @@ class FolderWrite:
 
         is_published = self.is_published
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        parent_folder: Union[None, Unset, str]
+        parent_folder: None | Unset | str
         if isinstance(self.parent_folder, Unset):
             parent_folder = UNSET
         elif isinstance(self.parent_folder, UUID):
@@ -93,7 +93,7 @@ class FolderWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -102,7 +102,7 @@ class FolderWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        parent_folder: Union[Unset, tuple[None, bytes, str]]
+        parent_folder: Unset | tuple[None, bytes, str]
 
         if isinstance(self.parent_folder, Unset):
             parent_folder = UNSET
@@ -145,16 +145,16 @@ class FolderWrite:
 
         is_published = d.pop("is_published", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_parent_folder(data: object) -> Union[None, UUID, Unset]:
+        def _parse_parent_folder(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -167,7 +167,7 @@ class FolderWrite:
                 return parent_folder_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         parent_folder = _parse_parent_folder(d.pop("parent_folder", UNSET))
 

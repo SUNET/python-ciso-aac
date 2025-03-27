@@ -1,6 +1,6 @@
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -30,11 +30,11 @@ class OperationalScenarioWrite:
     operating_modes_description: str
     ebios_rm_study: UUID
     attack_path: UUID
-    is_published: Union[Unset, bool] = UNSET
-    likelihood: Union[Unset, int] = UNSET
-    is_selected: Union[Unset, bool] = UNSET
-    justification: Union[Unset, str] = UNSET
-    threats: Union[Unset, list[UUID]] = UNSET
+    is_published: Unset | bool = UNSET
+    likelihood: Unset | int = UNSET
+    is_selected: Unset | bool = UNSET
+    justification: Unset | str = UNSET
+    threats: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -54,7 +54,7 @@ class OperationalScenarioWrite:
 
         justification = self.justification
 
-        threats: Union[Unset, list[str]] = UNSET
+        threats: Unset | list[str] = UNSET
         if not isinstance(self.threats, Unset):
             threats = []
             for threats_item_data in self.threats:
@@ -117,7 +117,7 @@ class OperationalScenarioWrite:
             else (None, str(self.justification).encode(), "text/plain")
         )
 
-        threats: Union[Unset, tuple[None, bytes, str]] = UNSET
+        threats: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.threats, Unset):
             _temp_threats = []
             for threats_item_data in self.threats:

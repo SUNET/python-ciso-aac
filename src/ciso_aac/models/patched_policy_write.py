@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -54,61 +54,61 @@ class PatchedPolicyWrite:
         security_exceptions (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    findings: Union[Unset, list[UUID]] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    priority: Union[None, PriorityEnum, Unset] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    category: Union[BlankEnum, CategoryAe3Enum, None, Unset] = UNSET
-    csf_function: Union[BlankEnum, CsfFunctionEnum, None, Unset] = UNSET
-    status: Union[BlankEnum, Status2E9Enum, Unset] = UNSET
-    start_date: Union[None, Unset, datetime.date] = UNSET
-    eta: Union[None, Unset, datetime.date] = UNSET
-    expiry_date: Union[None, Unset, datetime.date] = UNSET
-    link: Union[None, Unset, str] = UNSET
-    effort: Union[BlankEnum, EffortEnum, None, Unset] = UNSET
-    cost: Union[None, Unset, float] = UNSET
-    progress_field: Union[Unset, int] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    folder: Union[Unset, UUID] = UNSET
-    reference_control: Union[None, UUID, Unset] = UNSET
-    evidences: Union[Unset, list[UUID]] = UNSET
-    owner: Union[Unset, list[UUID]] = UNSET
-    security_exceptions: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    findings: Unset | list[UUID] = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    priority: None | PriorityEnum | Unset = UNSET
+    ref_id: None | Unset | str = UNSET
+    category: BlankEnum | CategoryAe3Enum | None | Unset = UNSET
+    csf_function: BlankEnum | CsfFunctionEnum | None | Unset = UNSET
+    status: BlankEnum | Status2E9Enum | Unset = UNSET
+    start_date: None | Unset | datetime.date = UNSET
+    eta: None | Unset | datetime.date = UNSET
+    expiry_date: None | Unset | datetime.date = UNSET
+    link: None | Unset | str = UNSET
+    effort: BlankEnum | EffortEnum | None | Unset = UNSET
+    cost: None | Unset | float = UNSET
+    progress_field: Unset | int = UNSET
+    is_published: Unset | bool = UNSET
+    folder: Unset | UUID = UNSET
+    reference_control: None | UUID | Unset = UNSET
+    evidences: Unset | list[UUID] = UNSET
+    owner: Unset | list[UUID] = UNSET
+    security_exceptions: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        findings: Union[Unset, list[str]] = UNSET
+        findings: Unset | list[str] = UNSET
         if not isinstance(self.findings, Unset):
             findings = []
             for findings_item_data in self.findings:
                 findings_item = str(findings_item_data)
                 findings.append(findings_item)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        priority: Union[None, Unset, int]
+        priority: None | Unset | int
         if isinstance(self.priority, Unset):
             priority = UNSET
         elif isinstance(self.priority, PriorityEnum):
@@ -116,13 +116,13 @@ class PatchedPolicyWrite:
         else:
             priority = self.priority
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        category: Union[None, Unset, str]
+        category: None | Unset | str
         if isinstance(self.category, Unset):
             category = UNSET
         elif isinstance(self.category, CategoryAe3Enum):
@@ -132,7 +132,7 @@ class PatchedPolicyWrite:
         else:
             category = self.category
 
-        csf_function: Union[None, Unset, str]
+        csf_function: None | Unset | str
         if isinstance(self.csf_function, Unset):
             csf_function = UNSET
         elif isinstance(self.csf_function, CsfFunctionEnum):
@@ -142,7 +142,7 @@ class PatchedPolicyWrite:
         else:
             csf_function = self.csf_function
 
-        status: Union[Unset, str]
+        status: Unset | str
         if isinstance(self.status, Unset):
             status = UNSET
         elif isinstance(self.status, Status2E9Enum):
@@ -150,7 +150,7 @@ class PatchedPolicyWrite:
         else:
             status = self.status.value
 
-        start_date: Union[None, Unset, str]
+        start_date: None | Unset | str
         if isinstance(self.start_date, Unset):
             start_date = UNSET
         elif isinstance(self.start_date, datetime.date):
@@ -158,7 +158,7 @@ class PatchedPolicyWrite:
         else:
             start_date = self.start_date
 
-        eta: Union[None, Unset, str]
+        eta: None | Unset | str
         if isinstance(self.eta, Unset):
             eta = UNSET
         elif isinstance(self.eta, datetime.date):
@@ -166,7 +166,7 @@ class PatchedPolicyWrite:
         else:
             eta = self.eta
 
-        expiry_date: Union[None, Unset, str]
+        expiry_date: None | Unset | str
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
         elif isinstance(self.expiry_date, datetime.date):
@@ -174,13 +174,13 @@ class PatchedPolicyWrite:
         else:
             expiry_date = self.expiry_date
 
-        link: Union[None, Unset, str]
+        link: None | Unset | str
         if isinstance(self.link, Unset):
             link = UNSET
         else:
             link = self.link
 
-        effort: Union[None, Unset, str]
+        effort: None | Unset | str
         if isinstance(self.effort, Unset):
             effort = UNSET
         elif isinstance(self.effort, EffortEnum):
@@ -190,7 +190,7 @@ class PatchedPolicyWrite:
         else:
             effort = self.effort
 
-        cost: Union[None, Unset, float]
+        cost: None | Unset | float
         if isinstance(self.cost, Unset):
             cost = UNSET
         else:
@@ -200,11 +200,11 @@ class PatchedPolicyWrite:
 
         is_published = self.is_published
 
-        folder: Union[Unset, str] = UNSET
+        folder: Unset | str = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        reference_control: Union[None, Unset, str]
+        reference_control: None | Unset | str
         if isinstance(self.reference_control, Unset):
             reference_control = UNSET
         elif isinstance(self.reference_control, UUID):
@@ -212,21 +212,21 @@ class PatchedPolicyWrite:
         else:
             reference_control = self.reference_control
 
-        evidences: Union[Unset, list[str]] = UNSET
+        evidences: Unset | list[str] = UNSET
         if not isinstance(self.evidences, Unset):
             evidences = []
             for evidences_item_data in self.evidences:
                 evidences_item = str(evidences_item_data)
                 evidences.append(evidences_item)
 
-        owner: Union[Unset, list[str]] = UNSET
+        owner: Unset | list[str] = UNSET
         if not isinstance(self.owner, Unset):
             owner = []
             for owner_item_data in self.owner:
                 owner_item = str(owner_item_data)
                 owner.append(owner_item)
 
-        security_exceptions: Union[Unset, list[str]] = UNSET
+        security_exceptions: Unset | list[str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -288,11 +288,11 @@ class PatchedPolicyWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        findings: Union[Unset, tuple[None, bytes, str]] = UNSET
+        findings: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.findings, Unset):
             _temp_findings = []
             for findings_item_data in self.findings:
@@ -300,17 +300,17 @@ class PatchedPolicyWrite:
                 _temp_findings.append(findings_item)
             findings = (None, json.dumps(_temp_findings).encode(), "application/json")
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -319,7 +319,7 @@ class PatchedPolicyWrite:
         else:
             description = (None, str(self.description).encode(), "text/plain")
 
-        priority: Union[Unset, tuple[None, bytes, str]]
+        priority: Unset | tuple[None, bytes, str]
 
         if isinstance(self.priority, Unset):
             priority = UNSET
@@ -330,7 +330,7 @@ class PatchedPolicyWrite:
         else:
             priority = (None, str(self.priority).encode(), "text/plain")
 
-        ref_id: Union[Unset, tuple[None, bytes, str]]
+        ref_id: Unset | tuple[None, bytes, str]
 
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
@@ -339,7 +339,7 @@ class PatchedPolicyWrite:
         else:
             ref_id = (None, str(self.ref_id).encode(), "text/plain")
 
-        category: Union[Unset, tuple[None, bytes, str]]
+        category: Unset | tuple[None, bytes, str]
 
         if isinstance(self.category, Unset):
             category = UNSET
@@ -352,7 +352,7 @@ class PatchedPolicyWrite:
         else:
             category = (None, str(self.category).encode(), "text/plain")
 
-        csf_function: Union[Unset, tuple[None, bytes, str]]
+        csf_function: Unset | tuple[None, bytes, str]
 
         if isinstance(self.csf_function, Unset):
             csf_function = UNSET
@@ -365,7 +365,7 @@ class PatchedPolicyWrite:
         else:
             csf_function = (None, str(self.csf_function).encode(), "text/plain")
 
-        status: Union[Unset, tuple[None, bytes, str]]
+        status: Unset | tuple[None, bytes, str]
 
         if isinstance(self.status, Unset):
             status = UNSET
@@ -374,7 +374,7 @@ class PatchedPolicyWrite:
         else:
             status = (None, str(self.status.value).encode(), "text/plain")
 
-        start_date: Union[Unset, tuple[None, bytes, str]]
+        start_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.start_date, Unset):
             start_date = UNSET
@@ -383,7 +383,7 @@ class PatchedPolicyWrite:
         else:
             start_date = (None, str(self.start_date).encode(), "text/plain")
 
-        eta: Union[Unset, tuple[None, bytes, str]]
+        eta: Unset | tuple[None, bytes, str]
 
         if isinstance(self.eta, Unset):
             eta = UNSET
@@ -392,7 +392,7 @@ class PatchedPolicyWrite:
         else:
             eta = (None, str(self.eta).encode(), "text/plain")
 
-        expiry_date: Union[Unset, tuple[None, bytes, str]]
+        expiry_date: Unset | tuple[None, bytes, str]
 
         if isinstance(self.expiry_date, Unset):
             expiry_date = UNSET
@@ -401,7 +401,7 @@ class PatchedPolicyWrite:
         else:
             expiry_date = (None, str(self.expiry_date).encode(), "text/plain")
 
-        link: Union[Unset, tuple[None, bytes, str]]
+        link: Unset | tuple[None, bytes, str]
 
         if isinstance(self.link, Unset):
             link = UNSET
@@ -410,7 +410,7 @@ class PatchedPolicyWrite:
         else:
             link = (None, str(self.link).encode(), "text/plain")
 
-        effort: Union[Unset, tuple[None, bytes, str]]
+        effort: Unset | tuple[None, bytes, str]
 
         if isinstance(self.effort, Unset):
             effort = UNSET
@@ -423,7 +423,7 @@ class PatchedPolicyWrite:
         else:
             effort = (None, str(self.effort).encode(), "text/plain")
 
-        cost: Union[Unset, tuple[None, bytes, str]]
+        cost: Unset | tuple[None, bytes, str]
 
         if isinstance(self.cost, Unset):
             cost = UNSET
@@ -444,11 +444,11 @@ class PatchedPolicyWrite:
             else (None, str(self.is_published).encode(), "text/plain")
         )
 
-        folder: Union[Unset, bytes] = UNSET
+        folder: Unset | bytes = UNSET
         if not isinstance(self.folder, Unset):
             folder = str(self.folder)
 
-        reference_control: Union[Unset, tuple[None, bytes, str]]
+        reference_control: Unset | tuple[None, bytes, str]
 
         if isinstance(self.reference_control, Unset):
             reference_control = UNSET
@@ -457,7 +457,7 @@ class PatchedPolicyWrite:
         else:
             reference_control = (None, str(self.reference_control).encode(), "text/plain")
 
-        evidences: Union[Unset, tuple[None, bytes, str]] = UNSET
+        evidences: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.evidences, Unset):
             _temp_evidences = []
             for evidences_item_data in self.evidences:
@@ -465,7 +465,7 @@ class PatchedPolicyWrite:
                 _temp_evidences.append(evidences_item)
             evidences = (None, json.dumps(_temp_evidences).encode(), "application/json")
 
-        owner: Union[Unset, tuple[None, bytes, str]] = UNSET
+        owner: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.owner, Unset):
             _temp_owner = []
             for owner_item_data in self.owner:
@@ -473,7 +473,7 @@ class PatchedPolicyWrite:
                 _temp_owner.append(owner_item)
             owner = (None, json.dumps(_temp_owner).encode(), "application/json")
 
-        security_exceptions: Union[Unset, tuple[None, bytes, str]] = UNSET
+        security_exceptions: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             _temp_security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -541,7 +541,7 @@ class PatchedPolicyWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
@@ -555,14 +555,14 @@ class PatchedPolicyWrite:
             findings.append(findings_item)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -570,16 +570,16 @@ class PatchedPolicyWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_priority(data: object) -> Union[None, PriorityEnum, Unset]:
+        def _parse_priority(data: object) -> None | PriorityEnum | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -592,20 +592,20 @@ class PatchedPolicyWrite:
                 return priority_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, PriorityEnum, Unset], data)
+            return cast(None | PriorityEnum | Unset, data)
 
         priority = _parse_priority(d.pop("priority", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
-        def _parse_category(data: object) -> Union[BlankEnum, CategoryAe3Enum, None, Unset]:
+        def _parse_category(data: object) -> BlankEnum | CategoryAe3Enum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -626,11 +626,11 @@ class PatchedPolicyWrite:
                 return category_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CategoryAe3Enum, None, Unset], data)
+            return cast(BlankEnum | CategoryAe3Enum | None | Unset, data)
 
         category = _parse_category(d.pop("category", UNSET))
 
-        def _parse_csf_function(data: object) -> Union[BlankEnum, CsfFunctionEnum, None, Unset]:
+        def _parse_csf_function(data: object) -> BlankEnum | CsfFunctionEnum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -651,11 +651,11 @@ class PatchedPolicyWrite:
                 return csf_function_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, CsfFunctionEnum, None, Unset], data)
+            return cast(BlankEnum | CsfFunctionEnum | None | Unset, data)
 
         csf_function = _parse_csf_function(d.pop("csf_function", UNSET))
 
-        def _parse_status(data: object) -> Union[BlankEnum, Status2E9Enum, Unset]:
+        def _parse_status(data: object) -> BlankEnum | Status2E9Enum | Unset:
             if isinstance(data, Unset):
                 return data
             try:
@@ -674,7 +674,7 @@ class PatchedPolicyWrite:
 
         status = _parse_status(d.pop("status", UNSET))
 
-        def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_start_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -687,11 +687,11 @@ class PatchedPolicyWrite:
                 return start_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         start_date = _parse_start_date(d.pop("start_date", UNSET))
 
-        def _parse_eta(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_eta(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -704,11 +704,11 @@ class PatchedPolicyWrite:
                 return eta_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         eta = _parse_eta(d.pop("eta", UNSET))
 
-        def _parse_expiry_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiry_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -721,20 +721,20 @@ class PatchedPolicyWrite:
                 return expiry_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiry_date = _parse_expiry_date(d.pop("expiry_date", UNSET))
 
-        def _parse_link(data: object) -> Union[None, Unset, str]:
+        def _parse_link(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         link = _parse_link(d.pop("link", UNSET))
 
-        def _parse_effort(data: object) -> Union[BlankEnum, EffortEnum, None, Unset]:
+        def _parse_effort(data: object) -> BlankEnum | EffortEnum | None | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -755,16 +755,16 @@ class PatchedPolicyWrite:
                 return effort_type_1
             except:  # noqa: E722
                 pass
-            return cast(Union[BlankEnum, EffortEnum, None, Unset], data)
+            return cast(BlankEnum | EffortEnum | None | Unset, data)
 
         effort = _parse_effort(d.pop("effort", UNSET))
 
-        def _parse_cost(data: object) -> Union[None, Unset, float]:
+        def _parse_cost(data: object) -> None | Unset | float:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, float], data)
+            return cast(None | Unset | float, data)
 
         cost = _parse_cost(d.pop("cost", UNSET))
 
@@ -773,13 +773,13 @@ class PatchedPolicyWrite:
         is_published = d.pop("is_published", UNSET)
 
         _folder = d.pop("folder", UNSET)
-        folder: Union[Unset, UUID]
+        folder: Unset | UUID
         if isinstance(_folder, Unset):
             folder = UNSET
         else:
             folder = UUID(_folder)
 
-        def _parse_reference_control(data: object) -> Union[None, UUID, Unset]:
+        def _parse_reference_control(data: object) -> None | UUID | Unset:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -792,7 +792,7 @@ class PatchedPolicyWrite:
                 return reference_control_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(None | UUID | Unset, data)
 
         reference_control = _parse_reference_control(d.pop("reference_control", UNSET))
 

@@ -1,7 +1,7 @@
 import datetime
 import json
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -54,49 +54,49 @@ class PatchedRiskScenarioWrite:
         security_exceptions (Union[Unset, list[UUID]]):
     """
 
-    id: Union[Unset, UUID] = UNSET
-    risk_matrix: Union[Unset, UUID] = UNSET
-    created_at: Union[Unset, datetime.datetime] = UNSET
-    updated_at: Union[Unset, datetime.datetime] = UNSET
-    is_published: Union[Unset, bool] = UNSET
-    name: Union[Unset, str] = UNSET
-    description: Union[None, Unset, str] = UNSET
-    existing_controls: Union[Unset, str] = UNSET
-    current_proba: Union[Unset, int] = UNSET
-    current_impact: Union[Unset, int] = UNSET
-    current_level: Union[Unset, int] = UNSET
-    residual_proba: Union[Unset, int] = UNSET
-    residual_impact: Union[Unset, int] = UNSET
-    residual_level: Union[Unset, int] = UNSET
-    treatment: Union[Unset, TreatmentEnum] = UNSET
-    ref_id: Union[Unset, str] = UNSET
-    qualifications: Union[Unset, Any] = UNSET
-    strength_of_knowledge: Union[Unset, int] = UNSET
-    justification: Union[None, Unset, str] = UNSET
-    risk_assessment: Union[Unset, UUID] = UNSET
-    assets: Union[Unset, list[UUID]] = UNSET
-    vulnerabilities: Union[Unset, list[UUID]] = UNSET
-    applied_controls: Union[Unset, list[UUID]] = UNSET
-    threats: Union[Unset, list[UUID]] = UNSET
-    existing_applied_controls: Union[Unset, list[UUID]] = UNSET
-    owner: Union[Unset, list[UUID]] = UNSET
-    security_exceptions: Union[Unset, list[UUID]] = UNSET
+    id: Unset | UUID = UNSET
+    risk_matrix: Unset | UUID = UNSET
+    created_at: Unset | datetime.datetime = UNSET
+    updated_at: Unset | datetime.datetime = UNSET
+    is_published: Unset | bool = UNSET
+    name: Unset | str = UNSET
+    description: None | Unset | str = UNSET
+    existing_controls: Unset | str = UNSET
+    current_proba: Unset | int = UNSET
+    current_impact: Unset | int = UNSET
+    current_level: Unset | int = UNSET
+    residual_proba: Unset | int = UNSET
+    residual_impact: Unset | int = UNSET
+    residual_level: Unset | int = UNSET
+    treatment: Unset | TreatmentEnum = UNSET
+    ref_id: Unset | str = UNSET
+    qualifications: Unset | Any = UNSET
+    strength_of_knowledge: Unset | int = UNSET
+    justification: None | Unset | str = UNSET
+    risk_assessment: Unset | UUID = UNSET
+    assets: Unset | list[UUID] = UNSET
+    vulnerabilities: Unset | list[UUID] = UNSET
+    applied_controls: Unset | list[UUID] = UNSET
+    threats: Unset | list[UUID] = UNSET
+    existing_applied_controls: Unset | list[UUID] = UNSET
+    owner: Unset | list[UUID] = UNSET
+    security_exceptions: Unset | list[UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[Unset, str] = UNSET
+        id: Unset | str = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        risk_matrix: Union[Unset, str] = UNSET
+        risk_matrix: Unset | str = UNSET
         if not isinstance(self.risk_matrix, Unset):
             risk_matrix = str(self.risk_matrix)
 
-        created_at: Union[Unset, str] = UNSET
+        created_at: Unset | str = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat()
 
-        updated_at: Union[Unset, str] = UNSET
+        updated_at: Unset | str = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat()
 
@@ -104,7 +104,7 @@ class PatchedRiskScenarioWrite:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
@@ -124,7 +124,7 @@ class PatchedRiskScenarioWrite:
 
         residual_level = self.residual_level
 
-        treatment: Union[Unset, str] = UNSET
+        treatment: Unset | str = UNSET
         if not isinstance(self.treatment, Unset):
             treatment = self.treatment.value
 
@@ -134,59 +134,59 @@ class PatchedRiskScenarioWrite:
 
         strength_of_knowledge = self.strength_of_knowledge
 
-        justification: Union[None, Unset, str]
+        justification: None | Unset | str
         if isinstance(self.justification, Unset):
             justification = UNSET
         else:
             justification = self.justification
 
-        risk_assessment: Union[Unset, str] = UNSET
+        risk_assessment: Unset | str = UNSET
         if not isinstance(self.risk_assessment, Unset):
             risk_assessment = str(self.risk_assessment)
 
-        assets: Union[Unset, list[str]] = UNSET
+        assets: Unset | list[str] = UNSET
         if not isinstance(self.assets, Unset):
             assets = []
             for assets_item_data in self.assets:
                 assets_item = str(assets_item_data)
                 assets.append(assets_item)
 
-        vulnerabilities: Union[Unset, list[str]] = UNSET
+        vulnerabilities: Unset | list[str] = UNSET
         if not isinstance(self.vulnerabilities, Unset):
             vulnerabilities = []
             for vulnerabilities_item_data in self.vulnerabilities:
                 vulnerabilities_item = str(vulnerabilities_item_data)
                 vulnerabilities.append(vulnerabilities_item)
 
-        applied_controls: Union[Unset, list[str]] = UNSET
+        applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             applied_controls = []
             for applied_controls_item_data in self.applied_controls:
                 applied_controls_item = str(applied_controls_item_data)
                 applied_controls.append(applied_controls_item)
 
-        threats: Union[Unset, list[str]] = UNSET
+        threats: Unset | list[str] = UNSET
         if not isinstance(self.threats, Unset):
             threats = []
             for threats_item_data in self.threats:
                 threats_item = str(threats_item_data)
                 threats.append(threats_item)
 
-        existing_applied_controls: Union[Unset, list[str]] = UNSET
+        existing_applied_controls: Unset | list[str] = UNSET
         if not isinstance(self.existing_applied_controls, Unset):
             existing_applied_controls = []
             for existing_applied_controls_item_data in self.existing_applied_controls:
                 existing_applied_controls_item = str(existing_applied_controls_item_data)
                 existing_applied_controls.append(existing_applied_controls_item)
 
-        owner: Union[Unset, list[str]] = UNSET
+        owner: Unset | list[str] = UNSET
         if not isinstance(self.owner, Unset):
             owner = []
             for owner_item_data in self.owner:
                 owner_item = str(owner_item_data)
                 owner.append(owner_item)
 
-        security_exceptions: Union[Unset, list[str]] = UNSET
+        security_exceptions: Unset | list[str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -254,19 +254,19 @@ class PatchedRiskScenarioWrite:
         return field_dict
 
     def to_multipart(self) -> dict[str, Any]:
-        id: Union[Unset, bytes] = UNSET
+        id: Unset | bytes = UNSET
         if not isinstance(self.id, Unset):
             id = str(self.id)
 
-        risk_matrix: Union[Unset, bytes] = UNSET
+        risk_matrix: Unset | bytes = UNSET
         if not isinstance(self.risk_matrix, Unset):
             risk_matrix = str(self.risk_matrix)
 
-        created_at: Union[Unset, bytes] = UNSET
+        created_at: Unset | bytes = UNSET
         if not isinstance(self.created_at, Unset):
             created_at = self.created_at.isoformat().encode()
 
-        updated_at: Union[Unset, bytes] = UNSET
+        updated_at: Unset | bytes = UNSET
         if not isinstance(self.updated_at, Unset):
             updated_at = self.updated_at.isoformat().encode()
 
@@ -278,7 +278,7 @@ class PatchedRiskScenarioWrite:
 
         name = self.name if isinstance(self.name, Unset) else (None, str(self.name).encode(), "text/plain")
 
-        description: Union[Unset, tuple[None, bytes, str]]
+        description: Unset | tuple[None, bytes, str]
 
         if isinstance(self.description, Unset):
             description = UNSET
@@ -329,7 +329,7 @@ class PatchedRiskScenarioWrite:
             else (None, str(self.residual_level).encode(), "text/plain")
         )
 
-        treatment: Union[Unset, tuple[None, bytes, str]] = UNSET
+        treatment: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.treatment, Unset):
             treatment = (None, str(self.treatment.value).encode(), "text/plain")
 
@@ -347,7 +347,7 @@ class PatchedRiskScenarioWrite:
             else (None, str(self.strength_of_knowledge).encode(), "text/plain")
         )
 
-        justification: Union[Unset, tuple[None, bytes, str]]
+        justification: Unset | tuple[None, bytes, str]
 
         if isinstance(self.justification, Unset):
             justification = UNSET
@@ -356,11 +356,11 @@ class PatchedRiskScenarioWrite:
         else:
             justification = (None, str(self.justification).encode(), "text/plain")
 
-        risk_assessment: Union[Unset, bytes] = UNSET
+        risk_assessment: Unset | bytes = UNSET
         if not isinstance(self.risk_assessment, Unset):
             risk_assessment = str(self.risk_assessment)
 
-        assets: Union[Unset, tuple[None, bytes, str]] = UNSET
+        assets: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.assets, Unset):
             _temp_assets = []
             for assets_item_data in self.assets:
@@ -368,7 +368,7 @@ class PatchedRiskScenarioWrite:
                 _temp_assets.append(assets_item)
             assets = (None, json.dumps(_temp_assets).encode(), "application/json")
 
-        vulnerabilities: Union[Unset, tuple[None, bytes, str]] = UNSET
+        vulnerabilities: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.vulnerabilities, Unset):
             _temp_vulnerabilities = []
             for vulnerabilities_item_data in self.vulnerabilities:
@@ -376,7 +376,7 @@ class PatchedRiskScenarioWrite:
                 _temp_vulnerabilities.append(vulnerabilities_item)
             vulnerabilities = (None, json.dumps(_temp_vulnerabilities).encode(), "application/json")
 
-        applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.applied_controls, Unset):
             _temp_applied_controls = []
             for applied_controls_item_data in self.applied_controls:
@@ -384,7 +384,7 @@ class PatchedRiskScenarioWrite:
                 _temp_applied_controls.append(applied_controls_item)
             applied_controls = (None, json.dumps(_temp_applied_controls).encode(), "application/json")
 
-        threats: Union[Unset, tuple[None, bytes, str]] = UNSET
+        threats: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.threats, Unset):
             _temp_threats = []
             for threats_item_data in self.threats:
@@ -392,7 +392,7 @@ class PatchedRiskScenarioWrite:
                 _temp_threats.append(threats_item)
             threats = (None, json.dumps(_temp_threats).encode(), "application/json")
 
-        existing_applied_controls: Union[Unset, tuple[None, bytes, str]] = UNSET
+        existing_applied_controls: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.existing_applied_controls, Unset):
             _temp_existing_applied_controls = []
             for existing_applied_controls_item_data in self.existing_applied_controls:
@@ -400,7 +400,7 @@ class PatchedRiskScenarioWrite:
                 _temp_existing_applied_controls.append(existing_applied_controls_item)
             existing_applied_controls = (None, json.dumps(_temp_existing_applied_controls).encode(), "application/json")
 
-        owner: Union[Unset, tuple[None, bytes, str]] = UNSET
+        owner: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.owner, Unset):
             _temp_owner = []
             for owner_item_data in self.owner:
@@ -408,7 +408,7 @@ class PatchedRiskScenarioWrite:
                 _temp_owner.append(owner_item)
             owner = (None, json.dumps(_temp_owner).encode(), "application/json")
 
-        security_exceptions: Union[Unset, tuple[None, bytes, str]] = UNSET
+        security_exceptions: Unset | tuple[None, bytes, str] = UNSET
         if not isinstance(self.security_exceptions, Unset):
             _temp_security_exceptions = []
             for security_exceptions_item_data in self.security_exceptions:
@@ -482,28 +482,28 @@ class PatchedRiskScenarioWrite:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
         _id = d.pop("id", UNSET)
-        id: Union[Unset, UUID]
+        id: Unset | UUID
         if isinstance(_id, Unset):
             id = UNSET
         else:
             id = UUID(_id)
 
         _risk_matrix = d.pop("risk_matrix", UNSET)
-        risk_matrix: Union[Unset, UUID]
+        risk_matrix: Unset | UUID
         if isinstance(_risk_matrix, Unset):
             risk_matrix = UNSET
         else:
             risk_matrix = UUID(_risk_matrix)
 
         _created_at = d.pop("created_at", UNSET)
-        created_at: Union[Unset, datetime.datetime]
+        created_at: Unset | datetime.datetime
         if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
 
         _updated_at = d.pop("updated_at", UNSET)
-        updated_at: Union[Unset, datetime.datetime]
+        updated_at: Unset | datetime.datetime
         if isinstance(_updated_at, Unset):
             updated_at = UNSET
         else:
@@ -513,12 +513,12 @@ class PatchedRiskScenarioWrite:
 
         name = d.pop("name", UNSET)
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
@@ -537,7 +537,7 @@ class PatchedRiskScenarioWrite:
         residual_level = d.pop("residual_level", UNSET)
 
         _treatment = d.pop("treatment", UNSET)
-        treatment: Union[Unset, TreatmentEnum]
+        treatment: Unset | TreatmentEnum
         if isinstance(_treatment, Unset):
             treatment = UNSET
         else:
@@ -549,17 +549,17 @@ class PatchedRiskScenarioWrite:
 
         strength_of_knowledge = d.pop("strength_of_knowledge", UNSET)
 
-        def _parse_justification(data: object) -> Union[None, Unset, str]:
+        def _parse_justification(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         justification = _parse_justification(d.pop("justification", UNSET))
 
         _risk_assessment = d.pop("risk_assessment", UNSET)
-        risk_assessment: Union[Unset, UUID]
+        risk_assessment: Unset | UUID
         if isinstance(_risk_assessment, Unset):
             risk_assessment = UNSET
         else:

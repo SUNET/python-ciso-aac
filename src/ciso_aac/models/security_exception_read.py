@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -45,11 +45,11 @@ class SecurityExceptionRead:
     created_at: datetime.datetime
     updated_at: datetime.datetime
     name: str
-    description: Union[None, Unset, str] = UNSET
-    ref_id: Union[None, Unset, str] = UNSET
-    status: Union[Unset, Status687Enum] = UNSET
-    expiration_date: Union[None, Unset, datetime.date] = UNSET
-    is_published: Union[Unset, bool] = UNSET
+    description: None | Unset | str = UNSET
+    ref_id: None | Unset | str = UNSET
+    status: Unset | Status687Enum = UNSET
+    expiration_date: None | Unset | datetime.date = UNSET
+    is_published: Unset | bool = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -69,23 +69,23 @@ class SecurityExceptionRead:
 
         name = self.name
 
-        description: Union[None, Unset, str]
+        description: None | Unset | str
         if isinstance(self.description, Unset):
             description = UNSET
         else:
             description = self.description
 
-        ref_id: Union[None, Unset, str]
+        ref_id: None | Unset | str
         if isinstance(self.ref_id, Unset):
             ref_id = UNSET
         else:
             ref_id = self.ref_id
 
-        status: Union[Unset, str] = UNSET
+        status: Unset | str = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value
 
-        expiration_date: Union[None, Unset, str]
+        expiration_date: None | Unset | str
         if isinstance(self.expiration_date, Unset):
             expiration_date = UNSET
         elif isinstance(self.expiration_date, datetime.date):
@@ -141,32 +141,32 @@ class SecurityExceptionRead:
 
         name = d.pop("name")
 
-        def _parse_description(data: object) -> Union[None, Unset, str]:
+        def _parse_description(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         description = _parse_description(d.pop("description", UNSET))
 
-        def _parse_ref_id(data: object) -> Union[None, Unset, str]:
+        def _parse_ref_id(data: object) -> None | Unset | str:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(None | Unset | str, data)
 
         ref_id = _parse_ref_id(d.pop("ref_id", UNSET))
 
         _status = d.pop("status", UNSET)
-        status: Union[Unset, Status687Enum]
+        status: Unset | Status687Enum
         if isinstance(_status, Unset):
             status = UNSET
         else:
             status = Status687Enum(_status)
 
-        def _parse_expiration_date(data: object) -> Union[None, Unset, datetime.date]:
+        def _parse_expiration_date(data: object) -> None | Unset | datetime.date:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -179,7 +179,7 @@ class SecurityExceptionRead:
                 return expiration_date_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, Unset, datetime.date], data)
+            return cast(None | Unset | datetime.date, data)
 
         expiration_date = _parse_expiration_date(d.pop("expiration_date", UNSET))
 
