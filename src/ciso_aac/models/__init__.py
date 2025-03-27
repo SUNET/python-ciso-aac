@@ -14,6 +14,8 @@ from .blank_enum import BlankEnum
 from .category_5c3_enum import Category5C3Enum
 from .category_ae_3_enum import CategoryAe3Enum
 from .change_password import ChangePassword
+from .client_settings_read import ClientSettingsRead
+from .client_settings_write import ClientSettingsWrite
 from .compliance_assessment_action_plan import ComplianceAssessmentActionPlan
 from .compliance_assessment_read import ComplianceAssessmentRead
 from .compliance_assessment_write import ComplianceAssessmentWrite
@@ -55,6 +57,7 @@ from .operational_scenario_write import OperationalScenarioWrite
 from .paginated_applied_control_read_list import PaginatedAppliedControlReadList
 from .paginated_asset_read_list import PaginatedAssetReadList
 from .paginated_attack_path_read_list import PaginatedAttackPathReadList
+from .paginated_client_settings_read_list import PaginatedClientSettingsReadList
 from .paginated_compliance_assessment_action_plan_list import PaginatedComplianceAssessmentActionPlanList
 from .paginated_compliance_assessment_read_list import PaginatedComplianceAssessmentReadList
 from .paginated_ebios_rm_study_read_list import PaginatedEbiosRMStudyReadList
@@ -97,6 +100,7 @@ from .paginated_vulnerability_read_list import PaginatedVulnerabilityReadList
 from .patched_applied_control_write import PatchedAppliedControlWrite
 from .patched_asset_write import PatchedAssetWrite
 from .patched_attack_path_write import PatchedAttackPathWrite
+from .patched_client_settings_write import PatchedClientSettingsWrite
 from .patched_compliance_assessment_write import PatchedComplianceAssessmentWrite
 from .patched_ebios_rm_study_write import PatchedEbiosRMStudyWrite
 from .patched_entity_assessment_write import PatchedEntityAssessmentWrite
@@ -218,6 +222,8 @@ __all__ = (
     "Category5C3Enum",
     "CategoryAe3Enum",
     "ChangePassword",
+    "ClientSettingsRead",
+    "ClientSettingsWrite",
     "ComplianceAssessmentActionPlan",
     "ComplianceAssessmentRead",
     "ComplianceAssessmentWrite",
@@ -259,6 +265,7 @@ __all__ = (
     "PaginatedAppliedControlReadList",
     "PaginatedAssetReadList",
     "PaginatedAttackPathReadList",
+    "PaginatedClientSettingsReadList",
     "PaginatedComplianceAssessmentActionPlanList",
     "PaginatedComplianceAssessmentReadList",
     "PaginatedEbiosRMStudyReadList",
@@ -301,6 +308,7 @@ __all__ = (
     "PatchedAppliedControlWrite",
     "PatchedAssetWrite",
     "PatchedAttackPathWrite",
+    "PatchedClientSettingsWrite",
     "PatchedComplianceAssessmentWrite",
     "PatchedEbiosRMStudyWrite",
     "PatchedEntityAssessmentWrite",

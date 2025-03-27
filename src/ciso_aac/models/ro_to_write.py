@@ -3,8 +3,7 @@ from collections.abc import Mapping
 from typing import Any, TypeVar
 from uuid import UUID
 
-from attrs import define as _attrs_define
-from attrs import field as _attrs_field
+from attrs import define as _attrs_define, field as _attrs_field
 
 from ..models.activity_enum import ActivityEnum
 from ..models.motivation_enum import MotivationEnum
