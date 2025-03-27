@@ -25,7 +25,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
 ]
 
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "attrs>=25.3.0",
     "httpx>=0.28.1",
@@ -42,18 +42,30 @@ sources = ["src"]
 
 [tool.ruff]
 line-length = 120
+target-version = "py311"
 
 [tool.ruff.lint]
-select = ["F", "I", "UP"]
+select = [
+  "ANN",
+  "ASYNC",
+  "E",
+  "ERA",
+  "F",
+  "FAST",
+  "FLY",
+  "FURB",
+  "I",
+  "PERF",
+  "PGH",
+  "PIE",
+  "PL",
+  "UP",
+  "W",
+]
+ignore = ["PLR", "ANN401", "ANN204", "E501"]
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
-
-[dependency-groups]
-dev = [
-    "mypy>=1.15.0",
-    "ruff>=0.11.2",
-]
 
 [tool.mypy]
 ignore_missing_imports = true
