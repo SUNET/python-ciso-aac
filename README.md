@@ -1,46 +1,41 @@
-# ciso-assistant-api-experimental-client
+# Python CISO Assistant API Client
 A client library for accessing CISO Assistant API - Experimental
 
 ## Usage
-First, create a client:
+Authenticate and call an endpoint with a model:
 
 ```python
-from ciso_aac import Client
-
-client = Client(base_url="https://api.example.com")
-```
-
-If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
-
-```python
-from ciso_aac import AuthenticatedClient
-
-client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
-```
-
-Now call your endpoint and use your models:
-
-```python
-from ciso_aac.models import MyDataModel
-from ciso_aac.api.my_tag import get_my_data_model
+from ciso_aac import Client, AuthenticatedClient
+from ciso_aac.models import Login, LoginResponse, PaginatedEntityReadList
+from ciso_aac.api.api import api_iam_login_create, api_entities_list
 from ciso_aac.types import Response
 
-with client as client:
-    my_data: MyDataModel = get_my_data_model.sync(client=client)
+base_url = "https://localhost:8443"
+verify_ssl = False
+login = Login(username="user@example.com", password="secret")
+
+# login
+with Client(base_url=base_url, verify_ssl=verify_ssl) as client:
+    login_response: LoginResponse = api_iam_login_create.sync(client=client, body=login)
+
+# make an authenticated request
+client = AuthenticatedClient(base_url=base_url, verify_ssl=verify_ssl, token=login_response.token)
+with client:
+    entities: PaginatedEntityReadList = api_entities_list.sync(client=client)
     # or if you need more info (e.g. status_code)
-    response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
+    response: Response[PaginatedEntityReadList] = api_entities_list.sync_detailed(client=client)
 ```
 
 Or do the same thing with an async version:
 
 ```python
-from ciso_aac.models import MyDataModel
-from ciso_aac.api.my_tag import get_my_data_model
+from ciso_aac.models import PaginatedEntityReadList
+from ciso_aac.api.api import api_entities_list
 from ciso_aac.types import Response
 
-async with client as client:
-    my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
-    response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
+async with client:
+    entities: PaginatedEntityReadList = api_entities_list.sync(client=client)    
+    response: Response[PaginatedEntityReadList] = api_entities_list.sync_detailed(client=client)
 ```
 
 By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
@@ -110,9 +105,7 @@ client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies
 ```
 
 ## Building / publishing this package
-This project uses [uv](https://docs.astral.sh/uv/) to manage dependencies  and packaging.  Here are the basics:
-1. Update the metadata in pyproject.toml (e.g. authors, version)
-1. Publish the client with `poetry publish --build -r <your-repository-name>` or, if for public PyPI, just `poetry publish --build`
+This project uses [uv](https://docs.astral.sh/uv/) to manage dependencies and packaging.
 
 If you want to install this client into another project without publishing it (e.g. for development) then:
 1. If that project **is using uv**, you can simply do `uv add <path-to-this-client>` from that project
