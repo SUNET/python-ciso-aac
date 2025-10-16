@@ -5,26 +5,25 @@
 ## Project Overview
 This is a Python HTTP client library for the CISO Assistant API, built with httpx and pydantic. The library provides both synchronous and asynchronous clients with full type safety and comprehensive test coverage.
 
-**Current Status:** ✅ Production-ready with comprehensive tests (46 tests, all passing)
+**Current Status:** ✅ Production-ready with comprehensive tests (58 tests, all passing)
 
-**Current Implementation:** Folders, Assets, and Evidences API endpoints (full CRUD)
+**Current Implementation:** Folders, Assets, and Evidences API endpoints (full CRUD) with pagination support
 
 ## What Has Been Built
 
 ### 1. Core Implementation (src/ciso_assistant_client/)
-- **models.py** - Pydantic models for API schemas:
-  - `ApiToken` - API token for authentication (token field)
-  - `FolderRead` / `FolderWrite` - Folder information and creation
-  - `PagedFolderRead` - Paginated list of folders
-  - `AssetRead` / `AssetWrite` - Asset information and creation
-  - `PagedAssetRead` - Paginated list of assets
-  - `EvidenceRead` / `EvidenceWrite` - Evidence information and creation
-  - `PagedEvidenceRead` - Paginated list of evidences
+- **models/** - Pydantic models organized by resource type:
+  - **base.py** - Base models: `ApiToken`, `BasePagedRead`, `BaseDetail`, `BaseWrite`
+  - **folders.py** - Folder models: `FolderRead`, `FolderWrite`, `PagedFolderRead`
+  - **assets.py** - Asset models: `AssetRead`, `AssetWrite`, `PagedAssetRead`
+  - **evidences.py** - Evidence models: `EvidenceRead`, `EvidenceWrite`, `PagedEvidenceRead`
+  - **__init__.py** - Exports all models for easy importing
 
 - **client.py** - HTTP client implementation with ABC base class:
   - `BaseCISOAssistantClient` - Abstract base class containing:
-    - Common initialization logic (base_url, timeout, headers, follow_redirects, auth)
+    - Common initialization logic (base_url, timeout, headers, follow_redirects, auth, verify)
     - API Token authentication support via Authorization header
+    - SSL certificate verification control (supports bool, str path, or SSLContext)
     - Static response handling method (`_handle_response`)
     - Static validation methods for all response types
   - `CISOAssistantClient` - Synchronous client using `httpx.Client`
@@ -32,9 +31,10 @@ This is a Python HTTP client library for the CISO Assistant API, built with http
     - Folder methods: `list_folders()`, `get_folder()`, `create_folder()`, `delete_folder()`
     - Asset methods: `list_assets()`, `get_asset()`, `create_asset()`, `delete_asset()`
     - Evidence methods: `list_evidences()`, `get_evidence()`, `create_evidence()`, `delete_evidence()`
+    - Pagination methods: `next_page()`, `previous_page()`
   - `AsyncCISOAssistantClient` - Asynchronous client using `httpx.AsyncClient`
     - Async context manager support (`__aenter__`/`__aexit__`)
-    - Same 12 API methods with async/await
+    - Same 14 API methods with async/await
 
 - **exceptions.py** - Custom exception hierarchy:
   - `CISOAssistantError` - Base exception
@@ -67,21 +67,23 @@ Based on ciso-aa.yaml specification:
 
 ### 3. Test Suite (tests/)
 - **conftest.py** - Pytest fixtures with mock data for all API responses
-- **test_client.py** - 23 tests for `CISOAssistantClient` (synchronous)
-- **test_async_client.py** - 23 tests for `AsyncCISOAssistantClient` (asynchronous)
+- **test_client.py** - 29 tests for `CISOAssistantClient` (synchronous)
+- **test_async_client.py** - 29 tests for `AsyncCISOAssistantClient` (asynchronous)
 
 Test coverage includes:
 - Client initialization and configuration
 - API Token authentication and header verification
+- SSL certificate verification control
 - Context manager functionality
 - All 12 API endpoints (folders, assets, evidences)
+- Pagination methods (`next_page()`, `previous_page()`)
 - Success cases with data validation
 - HTTP error handling (404, 400, 500)
 - Pydantic validation errors
 - Query parameter handling
 - Create, read, and delete operations
 
-All 46 tests pass using respx for HTTP mocking.
+All 58 tests pass using respx for HTTP mocking.
 
 ## Dependencies
 **Core:**
@@ -105,14 +107,19 @@ python-ciso-aac/
 ├── src/ciso_assistant_client/
 │   ├── __init__.py        # Public API exports
 │   ├── client.py          # BaseCISOAssistantClient, CISOAssistantClient, AsyncCISOAssistantClient
-│   ├── models.py          # Pydantic schemas
 │   ├── exceptions.py      # Custom exceptions
+│   ├── models/            # Pydantic schemas organized by resource
+│   │   ├── __init__.py    # Model exports
+│   │   ├── base.py        # Base models (ApiToken, BasePagedRead, BaseDetail, BaseWrite)
+│   │   ├── folders.py     # Folder models
+│   │   ├── assets.py      # Asset models
+│   │   └── evidences.py   # Evidence models
 │   └── py.typed           # Type marker
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py        # Pytest fixtures
-│   ├── test_client.py     # Sync client tests (23 tests)
-│   └── test_async_client.py  # Async client tests (23 tests)
+│   ├── test_client.py     # Sync client tests (29 tests)
+│   └── test_async_client.py  # Async client tests (29 tests)
 ├── ciso-aa.yaml           # API specification (source of truth)
 ├── pyproject.toml         # Project config with BSD-2-Clause license
 ├── LICENSE                # BSD 2-Clause License
@@ -184,6 +191,22 @@ auth = ApiToken(token="your-api-token-here")
 with CISOAssistantClient(base_url="https://ciso.example.com", auth=auth) as client:
     folders = client.list_folders(limit=100)
 
+# Disable SSL verification (for testing/development)
+with CISOAssistantClient(
+    base_url="https://ciso.example.com",
+    auth=auth,
+    verify=False
+) as client:
+    folders = client.list_folders()
+
+# Use custom CA bundle
+with CISOAssistantClient(
+    base_url="https://ciso.example.com",
+    auth=auth,
+    verify="/path/to/ca-bundle.crt"
+) as client:
+    folders = client.list_folders()
+
 # Asynchronous
 from ciso_assistant_client import AsyncCISOAssistantClient
 
@@ -202,18 +225,37 @@ Look at the OpenAPI spec to understand:
 - Authentication requirements
 
 ### Step 2: Add Pydantic models (if needed)
-In `models.py`, create models for request/response schemas:
+Create a new file in `models/` directory for the resource:
 ```python
-class NewResourceRead(BaseModel):
-    """New resource read schema."""
-    id: str = Field(..., description="Resource UUID")
-    name: str = Field(..., max_length=200, description="Resource name")
-    # ... other fields
+# models/new_resource.py
+from pydantic import Field
+from .base import BaseDetail, BasePagedRead, BaseWrite
 
-class PagedNewResourceRead(BaseModel):
+class NewResourceRead(BaseDetail):
+    """New resource read schema."""
+    # Add resource-specific fields
+    specific_field: str = Field(..., description="Specific field")
+
+class PagedNewResourceRead(BasePagedRead):
     """Paginated resource list response."""
-    count: int = Field(..., description="Total count")
     results: list[NewResourceRead] = Field(..., description="List of resources")
+
+class NewResourceWrite(BaseWrite):
+    """New resource write schema."""
+    # Add resource-specific fields
+    specific_field: str = Field(..., description="Specific field")
+```
+
+Then export in `models/__init__.py`:
+```python
+from .new_resource import NewResourceRead, NewResourceWrite, PagedNewResourceRead
+
+__all__ = [
+    # ... existing exports
+    "NewResourceRead",
+    "NewResourceWrite",
+    "PagedNewResourceRead",
+]
 ```
 
 ### Step 3: Add validation method to base class
@@ -351,7 +393,9 @@ The package uses hatchling as the build backend:
 
 ## Key Files to Review
 - `src/ciso_assistant_client/client.py` - Main client implementation (read this first)
-- `src/ciso_assistant_client/models.py` - All Pydantic schemas
+- `src/ciso_assistant_client/models/` - All Pydantic schemas organized by resource
+  - `base.py` - Base models with common patterns
+  - `folders.py`, `assets.py`, `evidences.py` - Resource-specific models
 - `ciso-aa.yaml` - Source of truth for API specification (20,964 lines, 500+ operations)
 - `tests/conftest.py` - Mock data fixtures
 - `tests/test_client.py` - Example test patterns
