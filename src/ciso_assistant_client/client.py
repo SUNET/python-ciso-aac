@@ -1,7 +1,8 @@
 """HTTP client for the CISO Assistant API."""
 
 from abc import ABC
-from typing import Any
+from ssl import SSLContext
+from typing import Any, TypeVar
 
 import httpx
 from pydantic import ValidationError
@@ -19,6 +20,10 @@ from .models import (
     PagedEvidenceRead,
     PagedFolderRead,
 )
+from .models.base import BasePagedRead
+
+# TypeVar for maintaining type in pagination methods
+PagedT = TypeVar("PagedT", bound=BasePagedRead)
 
 
 class BaseCISOAssistantClient(ABC):
@@ -31,7 +36,7 @@ class BaseCISOAssistantClient(ABC):
         headers: dict[str, str] | None = None,
         follow_redirects: bool = True,
         auth: ApiToken | None = None,
-        verify: bool = True,
+        verify: SSLContext | str | bool = True,
     ) -> None:
         """Initialize the base CISO Assistant client.
 
@@ -41,7 +46,11 @@ class BaseCISOAssistantClient(ABC):
             headers: Optional custom headers
             follow_redirects: Whether to follow redirects
             auth: Optional API token credentials
-            verify: Whether to verify SSL certificates
+            verify: SSL verification. Can be:
+                - True: verify SSL certificates (default)
+                - False: disable SSL verification
+                - str: path to CA bundle file
+                - SSLContext: custom SSL context
         """
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
@@ -254,7 +263,7 @@ class CISOAssistantClient(BaseCISOAssistantClient):
         headers: dict[str, str] | None = None,
         follow_redirects: bool = True,
         auth: ApiToken | None = None,
-        verify: bool = True,
+        verify: SSLContext | str | bool = True,
     ) -> None:
         """Initialize the CISO Assistant client.
 
@@ -264,7 +273,11 @@ class CISOAssistantClient(BaseCISOAssistantClient):
             headers: Optional custom headers
             follow_redirects: Whether to follow redirects
             auth: Optional API token credentials
-            verify: Whether to verify SSL certificates
+            verify: SSL verification. Can be:
+                - True: verify SSL certificates (default)
+                - False: disable SSL verification
+                - str: path to CA bundle file
+                - SSLContext: custom SSL context
         """
         super().__init__(base_url, timeout, headers, follow_redirects, auth, verify)
         self._client = httpx.Client(
@@ -551,6 +564,60 @@ class CISOAssistantClient(BaseCISOAssistantClient):
                 f"API request failed with status {e.response.status_code}: {e.response.text}"
             ) from e
 
+    def next_page(self, paged_result: PagedT) -> PagedT | None:
+        """Fetch the next page of results.
+
+        Args:
+            paged_result: Current paged result with next URL
+
+        Returns:
+            Next page of results with same type, or None if no next page
+
+        Raises:
+            CISOAssistantAPIError: If the API request fails
+            CISOAssistantValidationError: If response validation fails
+        """
+        if paged_result.next is None:
+            return None
+
+        response = self._client.get(paged_result.next)
+        data = self._handle_response(response)
+        assert isinstance(data, dict)
+
+        # Use the same model class as the input to validate the response
+        result_class = type(paged_result)
+        try:
+            return result_class.model_validate(data)
+        except ValidationError as e:
+            raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
+
+    def previous_page(self, paged_result: PagedT) -> PagedT | None:
+        """Fetch the previous page of results.
+
+        Args:
+            paged_result: Current paged result with previous URL
+
+        Returns:
+            Previous page of results with same type, or None if no previous page
+
+        Raises:
+            CISOAssistantAPIError: If the API request fails
+            CISOAssistantValidationError: If response validation fails
+        """
+        if paged_result.previous is None:
+            return None
+
+        response = self._client.get(paged_result.previous)
+        data = self._handle_response(response)
+        assert isinstance(data, dict)
+
+        # Use the same model class as the input to validate the response
+        result_class = type(paged_result)
+        try:
+            return result_class.model_validate(data)
+        except ValidationError as e:
+            raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
+
 
 class AsyncCISOAssistantClient(BaseCISOAssistantClient):
     """Asynchronous HTTP client for the CISO Assistant API."""
@@ -562,7 +629,7 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
         headers: dict[str, str] | None = None,
         follow_redirects: bool = True,
         auth: ApiToken | None = None,
-        verify: bool = True,
+        verify: SSLContext | str | bool = True,
     ) -> None:
         """Initialize the async CISO Assistant client.
 
@@ -572,7 +639,11 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
             headers: Optional custom headers
             follow_redirects: Whether to follow redirects
             auth: Optional API token credentials
-            verify: Whether to verify SSL certificates
+            verify: SSL verification. Can be:
+                - True: verify SSL certificates (default)
+                - False: disable SSL verification
+                - str: path to CA bundle file
+                - SSLContext: custom SSL context
         """
         super().__init__(base_url, timeout, headers, follow_redirects, auth, verify)
         self._client = httpx.AsyncClient(
@@ -858,3 +929,57 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
             raise CISOAssistantAPIError(
                 f"API request failed with status {e.response.status_code}: {e.response.text}"
             ) from e
+
+    async def next_page(self, paged_result: PagedT) -> PagedT | None:
+        """Fetch the next page of results.
+
+        Args:
+            paged_result: Current paged result with next URL
+
+        Returns:
+            Next page of results with same type, or None if no next page
+
+        Raises:
+            CISOAssistantAPIError: If the API request fails
+            CISOAssistantValidationError: If response validation fails
+        """
+        if paged_result.next is None:
+            return None
+
+        response = await self._client.get(paged_result.next)
+        data = self._handle_response(response)
+        assert isinstance(data, dict)
+
+        # Use the same model class as the input to validate the response
+        result_class = type(paged_result)
+        try:
+            return result_class.model_validate(data)
+        except ValidationError as e:
+            raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
+
+    async def previous_page(self, paged_result: PagedT) -> PagedT | None:
+        """Fetch the previous page of results.
+
+        Args:
+            paged_result: Current paged result with previous URL
+
+        Returns:
+            Previous page of results with same type, or None if no previous page
+
+        Raises:
+            CISOAssistantAPIError: If the API request fails
+            CISOAssistantValidationError: If response validation fails
+        """
+        if paged_result.previous is None:
+            return None
+
+        response = await self._client.get(paged_result.previous)
+        data = self._handle_response(response)
+        assert isinstance(data, dict)
+
+        # Use the same model class as the input to validate the response
+        result_class = type(paged_result)
+        try:
+            return result_class.model_validate(data)
+        except ValidationError as e:
+            raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
