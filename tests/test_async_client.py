@@ -259,3 +259,101 @@ class TestAsyncCISOAssistantClient:
         async with AsyncCISOAssistantClient(base_url=base_url) as client:
             # Should not raise any exception
             await client.delete_evidence(evidence_id)
+
+    @respx.mock
+    async def test_next_page_success(
+        self, base_url: str, mock_paged_folders_page1: dict, mock_paged_folders_page2: dict
+    ) -> None:
+        """Test fetching next page successfully."""
+        route1 = respx.get(f"{base_url}/api/folders/", params={"offset": 0}).mock(
+            return_value=Response(200, json=mock_paged_folders_page1)
+        )
+        route2 = respx.get(url__regex=r".*/api/folders/\?limit=1&offset=1").mock(
+            return_value=Response(200, json=mock_paged_folders_page2)
+        )
+
+        async with AsyncCISOAssistantClient(base_url=base_url) as client:
+            page1 = await client.list_folders()
+            assert page1.count == 3
+            assert len(page1.results) == 1
+            assert page1.results[0].name == "Test Folder 1"
+            assert page1.next is not None
+            assert route1.called
+
+            page2 = await client.next_page(page1)
+            assert page2 is not None
+            assert page2.count == 3
+            assert len(page2.results) == 1
+            assert page2.results[0].name == "Test Folder 2"
+            assert page2.previous is not None
+            assert route2.called
+
+    @respx.mock
+    async def test_next_page_none_when_no_next(self, base_url: str) -> None:
+        """Test next_page returns None when there's no next page."""
+        data_no_next = {
+            "count": 1,
+            "next": None,
+            "previous": None,
+            "results": [],
+        }
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=data_no_next))
+
+        async with AsyncCISOAssistantClient(base_url=base_url) as client:
+            page = await client.list_folders()
+            next_page = await client.next_page(page)
+            assert next_page is None
+
+    @respx.mock
+    async def test_previous_page_success(
+        self, base_url: str, mock_paged_folders_page1: dict, mock_paged_folders_page2: dict
+    ) -> None:
+        """Test fetching previous page successfully."""
+        respx.get("https://api.example.com/api/folders/?limit=1&offset=1").mock(
+            return_value=Response(200, json=mock_paged_folders_page2)
+        )
+        respx.get("https://api.example.com/api/folders/?limit=1&offset=0").mock(
+            return_value=Response(200, json=mock_paged_folders_page1)
+        )
+
+        async with AsyncCISOAssistantClient(base_url=base_url) as client:
+            # Simulate being on page 2
+            page2_response = await client._client.get("https://api.example.com/api/folders/?limit=1&offset=1")
+            page2_data = client._handle_response(page2_response)
+            assert isinstance(page2_data, dict)
+            page2 = client._validate_paged_folders(page2_data)
+
+            assert page2.previous is not None
+            page1 = await client.previous_page(page2)
+            assert page1 is not None
+            assert page1.count == 3
+            assert page1.results[0].name == "Test Folder 1"
+            assert page1.next is not None
+
+    @respx.mock
+    async def test_previous_page_none_when_no_previous(self, base_url: str, mock_paged_folders_data: dict) -> None:
+        """Test previous_page returns None when there's no previous page."""
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=mock_paged_folders_data))
+
+        async with AsyncCISOAssistantClient(base_url=base_url) as client:
+            page = await client.list_folders()
+            previous_page = await client.previous_page(page)
+            assert previous_page is None
+
+    @pytest.mark.asyncio
+    async def test_verify_ssl_default_true(self, base_url: str) -> None:
+        """Test that SSL verification is enabled by default."""
+        client = AsyncCISOAssistantClient(base_url=base_url)
+        assert client.verify is True
+        assert client._client._transport._pool._ssl_context is not None
+        await client.close()
+
+    @pytest.mark.asyncio
+    async def test_verify_ssl_can_be_disabled(self, base_url: str) -> None:
+        """Test that SSL verification can be disabled."""
+        client = AsyncCISOAssistantClient(base_url=base_url, verify=False)
+        assert client.verify is False
+        ssl_ctx = client._client._transport._pool._ssl_context
+        if ssl_ctx is not None:
+            assert ssl_ctx.check_hostname is False
+        await client.close()
