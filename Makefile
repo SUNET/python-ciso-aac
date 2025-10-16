@@ -1,29 +1,34 @@
-TOPDIR:=	$(abspath .)
-SRCDIR=		$(TOPDIR)/src
-SOURCE=		$(SRCDIR)/ciso_aac
+TOPDIR:=$(abspath .)
+SRCDIR=$(TOPDIR)/src
+PYTHON=$(shell which python)
+UV=$(shell which uv)
+
+test:
+	$(UV) run pytest --log-cli-level DEBUG
 
 reformat:
 	# sort imports and remove unused imports
-	uv tool run ruff check --select F401,I --fix
+	$(UV) tool run ruff check --select F401,I --fix
 	# reformat
-	uv tool run ruff format
+	$(UV) tool run ruff format
 	# make an extended check with rules that might be triggered by reformat
-	uv tool run ruff check
+	$(UV) tool run ruff check --config ruff-extended.toml
 
 typecheck:
-	MYPYPATH=$(SRCDIR) uv tool run mypy -p ciso_aac
+	$(UV) tool run mypy --install-types --non-interactive --pretty --ignore-missing-imports --warn-unused-ignores $(SRCDIR)
 
 update_deps:
 	@echo "Updating ALL the dependencies"
-	uv lock --upgrade
+	$(UV) lock --upgrade
 
 dev_sync_deps:
-	uv sync
+	$(UV) sync
+
+build: clean
+	$(UV) build
 
 clean:
-	rm -rf .pytest_cache .coverage .mypy_cache .cache .eggs
-	find . -name '*.pyc' -delete
-	find . -name '__pycache__' -delete
-
-regenerate_source: ciso-aa.yaml
-	uv tool run openapi-python-client generate --meta none --overwrite --path ciso-aa.yaml --output-path src/ciso_aac
+	rm -rf dist/ build/ *.egg-info src/*.egg-info
+	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+	find . -type f -name "*.pyc" -delete
+	find . -type f -name "*.pyo" -delete

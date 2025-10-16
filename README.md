@@ -1,114 +1,186 @@
-# Python CISO Assistant API Client
-A client library for accessing CISO Assistant API - Experimental
+# python-ciso-assistant-client
 
-## Usage
-Authenticate and call an endpoint with a model:
+A Python HTTP client library for the CISO Assistant API, providing both synchronous and asynchronous interfaces with full type safety.
 
-```python
-from ciso_aac import Client, AuthenticatedClient
-from ciso_aac.models import Login, LoginResponse, PaginatedEntityReadList
-from ciso_aac.api.api import api_iam_login_create, api_entities_list
-from ciso_aac.types import Response
+## Features
 
-base_url = "https://localhost:8443"
-verify_ssl = False
-login = Login(username="user@example.com", password="secret")
+- 🔄 Both synchronous and asynchronous clients
+- 🔒 Full type safety with Pydantic models
+- ✅ Comprehensive test coverage (46 tests, 100% passing)
+- 🔐 API token authentication support
+- 🎯 Clean, minimal API
+- 📦 Context manager support for automatic cleanup
+- 🚀 Support for Folders, Assets, and Evidences endpoints
 
-# login
-with Client(base_url=base_url, verify_ssl=verify_ssl) as client:
-    login_response: LoginResponse = api_iam_login_create.sync(client=client, body=login)
+## Installation
 
-# make an authenticated request
-client = AuthenticatedClient(base_url=base_url, verify_ssl=verify_ssl, token=login_response.token)
-with client:
-    entities: PaginatedEntityReadList = api_entities_list.sync(client=client)
-    # or if you need more info (e.g. status_code)
-    response: Response[PaginatedEntityReadList] = api_entities_list.sync_detailed(client=client)
+```bash
+pip install python-ciso-assistant-client
 ```
 
-Or do the same thing with an async version:
+Or with uv:
 
-```python
-from ciso_aac.models import PaginatedEntityReadList
-from ciso_aac.api.api import api_entities_list
-from ciso_aac.types import Response
-
-async with client:
-    entities: PaginatedEntityReadList = api_entities_list.sync(client=client)    
-    response: Response[PaginatedEntityReadList] = api_entities_list.sync_detailed(client=client)
+```bash
+uv pip install python-ciso-assistant-client
 ```
 
-By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
+## Quick Start
+
+### Synchronous Client
 
 ```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken",
-    verify_ssl="/path/to/certificate_bundle.pem",
-)
+from ciso_assistant_client import CISOAssistantClient, ApiToken
+
+# Basic usage
+with CISOAssistantClient(base_url="https://your-ciso-instance.com") as client:
+    # List folders
+    folders = client.list_folders(limit=100)
+    for folder in folders.results:
+        print(f"{folder.id}: {folder.name}")
+    
+    # List assets
+    assets = client.list_assets(limit=50, search="server")
+    for asset in assets.results:
+        print(f"{asset.name}: {asset.business_value}")
+    
+    # List evidences
+    evidences = client.list_evidences(limit=20)
+    for evidence in evidences.results:
+        print(f"{evidence.name}: {evidence.attachment}")
 ```
 
-You can also disable certificate validation altogether, but beware that **this is a security risk**.
+### Authentication
 
 ```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken", 
-    verify_ssl=False
-)
+from ciso_assistant_client import CISOAssistantClient, ApiToken
+
+# With API Token
+auth = ApiToken(token="your-api-token-here")
+with CISOAssistantClient(base_url="https://your-ciso-instance.com", auth=auth) as client:
+    folders = client.list_folders()
 ```
 
-Things to know:
-1. Every path/method combo becomes a Python module with four functions:
-    1. `sync`: Blocking request that returns parsed data (if successful) or `None`
-    1. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
-    1. `asyncio`: Like `sync` but async instead of blocking
-    1. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
-
-1. All path/query params, and bodies become method arguments.
-1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
-1. Any endpoint which did not have a tag will be in `ciso_aac.api.default`
-
-## Advanced customizations
-
-There are more settings on the generated `Client` class which let you control more runtime behavior, check out the docstring on that class for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
+### Creating Resources
 
 ```python
-from ciso_aac import Client
+from ciso_assistant_client import CISOAssistantClient, ApiToken, FolderWrite, AssetWrite, EvidenceWrite
 
-def log_request(request):
-    print(f"Request event hook: {request.method} {request.url} - Waiting for response")
-
-def log_response(response):
-    request = response.request
-    print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
-
-client = Client(
-    base_url="https://api.example.com",
-    httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
-)
-
-# Or get the underlying httpx client to modify directly with client.get_httpx_client() or client.get_async_httpx_client()
+auth = ApiToken(token="your-api-token")
+with CISOAssistantClient(base_url="https://ciso.example.com", auth=auth) as client:
+    # Create a folder
+    folder = FolderWrite(name="My Folder", description="Test folder")
+    created_folder = client.create_folder(folder)
+    print(f"Created folder: {created_folder.id}")
+    
+    # Create an asset
+    asset = AssetWrite(
+        name="Production Server",
+        business_value="Critical",
+        type="Primary",
+        folder=created_folder.id
+    )
+    created_asset = client.create_asset(asset)
+    
+    # Create evidence
+    evidence = EvidenceWrite(
+        name="Security Audit 2024",
+        folder=created_folder.id,
+        attachment="https://example.com/audit.pdf"
+    )
+    created_evidence = client.create_evidence(evidence)
 ```
 
-You can even set the httpx client directly, but beware that this will override any existing settings (e.g., base_url):
+### Asynchronous Client
 
 ```python
-import httpx
-from ciso_aac import Client
+from ciso_assistant_client import AsyncCISOAssistantClient, ApiToken
 
-client = Client(
-    base_url="https://api.example.com",
-)
-# Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
-client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
+async def main():
+    auth = ApiToken(token="your-api-token")
+    async with AsyncCISOAssistantClient(base_url="https://ciso.example.com", auth=auth) as client:
+        # List resources
+        folders = await client.list_folders(limit=100)
+        assets = await client.list_assets(limit=50)
+        evidences = await client.list_evidences(limit=20)
+        
+        # Get specific resources
+        folder = await client.get_folder("folder-uuid")
+        asset = await client.get_asset("asset-uuid")
+        evidence = await client.get_evidence("evidence-uuid")
 ```
 
-## Building / publishing this package
-This project uses [uv](https://docs.astral.sh/uv/) to manage dependencies and packaging.
+## API Coverage
 
-If you want to install this client into another project without publishing it (e.g. for development) then:
-1. If that project **is using uv**, you can simply do `uv add <path-to-this-client>` from that project
-1. If that project is not using uv:
-    1. Build a wheel with `uv build --wheel`
-    1. Install that wheel from the other project `pip install <path-to-wheel>`
+The client currently supports full CRUD operations for:
+
+- **Folders**: `list_folders()`, `get_folder()`, `create_folder()`, `delete_folder()`
+- **Assets**: `list_assets()`, `get_asset()`, `create_asset()`, `delete_asset()`
+- **Evidences**: `list_evidences()`, `get_evidence()`, `create_evidence()`, `delete_evidence()`
+
+All methods support both synchronous and asynchronous usage.
+
+## Development
+
+### Setup
+
+```bash
+# Install dependencies
+uv sync
+
+# Install in editable mode
+uv pip install -e .
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+make test
+
+# Run with pytest directly
+uv run pytest tests/ -v
+```
+
+### Code Quality
+
+```bash
+# Format and lint code
+make reformat
+
+# Type checking
+make typecheck
+
+# Run all checks
+make reformat && make test && make typecheck
+```
+
+### Building Package
+
+```bash
+# Build distribution packages
+make build
+
+# Clean build artifacts
+make clean
+```
+
+## Requirements
+
+- Python 3.11 or higher
+- httpx >= 0.28.1
+- pydantic >= 2.12.1
+
+## License
+
+This project is licensed under the BSD 2-Clause License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+For development guidelines, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+## Links
+
+- [Development Documentation](./DEVELOPMENT.md)
+- [CISO Assistant API Documentation](https://github.com/intuitem/ciso-assistant-community)

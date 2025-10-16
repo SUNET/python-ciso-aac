@@ -1,76 +1,56 @@
 [project]
-name = "ciso-aac"
+name = "python-ciso-assistant-client"
 version = "0.1.0"
 description = "A client library for accessing CISO Assistant API"
 authors = [
     { name = "Johan Lundberg", email = "lundberg@sunet.se" }
 ]
 readme = "README.md"
-license = "BSD-2-clause"
+license = "BSD-2-Clause"
 license-files = ["LICEN[CS]E*"]
-
+requires-python = ">=3.11"
+keywords = [
+    "ciso-assistant",
+    "api",
+    "client",
+    "http",
+    "rest",
+    "async",
+    "httpx",
+    "pydantic",
+]
 classifiers = [
-    "Environment :: Web Environment",
-    "Framework :: AsyncIO",
-    "Framework :: Trio",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
 ]
-
-requires-python = ">=3.11"
 dependencies = [
-    "attrs>=25.3.0",
     "httpx>=0.28.1",
-    "python-dateutil>=2.9.0.post0",
+    "pydantic>=2.12.1",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build.targets.sdist]
-include = ["/src/ciso_aac"]
-sources = ["src"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/ciso_assistant_client"]
 
-[tool.ruff]
-line-length = 120
-target-version = "py311"
-
-[tool.ruff.lint]
-select = [
-  "ANN",
-  "ASYNC",
-  "E",
-  "ERA",
-  "F",
-  "FAST",
-  "FLY",
-  "FURB",
-  "I",
-  "PERF",
-  "PGH",
-  "PIE",
-  "PL",
-  "UP",
-  "W",
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.2",
+    "respx>=0.22.0",
 ]
-ignore = ["PLR", "ANN401", "ANN204", "E501"]
 
-[tool.ruff.lint.isort]
-combine-as-imports = true
-
-[tool.mypy]
-ignore_missing_imports = true
-strict = true
-
-[project.urls]
-Homepage = "https://github.com/SUNET/python-ciso-aac"
-Issues = "https://github.com/SUNET/python-ciso-aac/issues"
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

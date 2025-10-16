@@ -1,0 +1,261 @@
+"""Tests for the synchronous CISO Assistant client."""
+
+import pytest
+import respx
+from httpx import Response
+
+from ciso_assistant_client import (
+    ApiToken,
+    AssetWrite,
+    CISOAssistantAPIError,
+    CISOAssistantClient,
+    CISOAssistantValidationError,
+    EvidenceWrite,
+    FolderWrite,
+)
+
+
+class TestCISOAssistantClient:
+    """Tests for CISOAssistantClient."""
+
+    def test_client_initialization(self, base_url: str) -> None:
+        """Test client initialization."""
+        client = CISOAssistantClient(base_url=base_url)
+        assert client.base_url == base_url
+        assert client.timeout == 30.0
+        assert client.follow_redirects is True
+        client.close()
+
+    def test_client_with_api_token(self, base_url: str, api_token: str) -> None:
+        """Test client initialization with API token."""
+        auth = ApiToken(token=api_token)
+        client = CISOAssistantClient(base_url=base_url, auth=auth)
+        assert "Authorization" in client.headers
+        assert client.headers["Authorization"] == f"Token {api_token}"
+        client.close()
+
+    def test_context_manager(self, base_url: str) -> None:
+        """Test client as context manager."""
+        with CISOAssistantClient(base_url=base_url) as client:
+            assert client is not None
+
+    @respx.mock
+    def test_list_folders_success(self, base_url: str, mock_paged_folders_data: dict) -> None:
+        """Test listing folders successfully."""
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=mock_paged_folders_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.list_folders()
+            assert result.count == 1
+            assert len(result.results) == 1
+            assert result.results[0].name == "Test Folder"
+
+    @respx.mock
+    def test_list_folders_with_params(self, base_url: str, mock_paged_folders_data: dict) -> None:
+        """Test listing folders with query parameters."""
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=mock_paged_folders_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.list_folders(limit=10, offset=5, ordering="name", search="test")
+            assert result.count == 1
+
+    @respx.mock
+    def test_list_folders_http_error(self, base_url: str) -> None:
+        """Test listing folders with HTTP error."""
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(500, text="Internal Server Error"))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            with pytest.raises(CISOAssistantAPIError):
+                client.list_folders()
+
+    @respx.mock
+    def test_list_folders_validation_error(self, base_url: str) -> None:
+        """Test listing folders with validation error."""
+        invalid_data = {"invalid": "data"}
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=invalid_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            with pytest.raises(CISOAssistantValidationError):
+                client.list_folders()
+
+    @respx.mock
+    def test_get_folder_success(self, base_url: str, mock_folder_data: dict) -> None:
+        """Test getting a folder successfully."""
+        folder_id = "550e8400-e29b-41d4-a716-446655440000"
+        respx.get(f"{base_url}/api/folders/{folder_id}/").mock(return_value=Response(200, json=mock_folder_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.get_folder(folder_id)
+            assert result.id == folder_id
+            assert result.name == "Test Folder"
+            assert result.is_published is True
+
+    @respx.mock
+    def test_get_folder_http_error(self, base_url: str) -> None:
+        """Test getting a folder with HTTP error."""
+        folder_id = "550e8400-e29b-41d4-a716-446655440000"
+        respx.get(f"{base_url}/api/folders/{folder_id}/").mock(return_value=Response(404, text="Not Found"))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            with pytest.raises(CISOAssistantAPIError):
+                client.get_folder(folder_id)
+
+    @respx.mock
+    def test_api_token_header_sent(self, base_url: str, api_token: str, mock_paged_folders_data: dict) -> None:
+        """Test that API token is sent in header."""
+        route = respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=mock_paged_folders_data))
+
+        auth = ApiToken(token=api_token)
+        with CISOAssistantClient(base_url=base_url, auth=auth) as client:
+            client.list_folders()
+            assert route.called
+            assert route.calls.last.request.headers["Authorization"] == f"Token {api_token}"
+
+    @respx.mock
+    def test_create_folder_success(
+        self, base_url: str, mock_folder_write_data: dict, mock_created_folder_data: dict
+    ) -> None:
+        """Test creating a folder successfully."""
+        respx.post(f"{base_url}/api/folders/").mock(return_value=Response(201, json=mock_created_folder_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            folder_data = FolderWrite(**mock_folder_write_data)
+            result = client.create_folder(folder_data)
+            assert result.id == "660e8400-e29b-41d4-a716-446655440001"
+            assert result.name == "New Test Folder"
+            assert result.description == "A newly created test folder"
+            assert result.is_published is False
+
+    @respx.mock
+    def test_create_folder_http_error(self, base_url: str, mock_folder_write_data: dict) -> None:
+        """Test creating a folder with HTTP error."""
+        respx.post(f"{base_url}/api/folders/").mock(return_value=Response(400, text="Bad Request"))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            folder_data = FolderWrite(**mock_folder_write_data)
+            with pytest.raises(CISOAssistantAPIError):
+                client.create_folder(folder_data)
+
+    @respx.mock
+    def test_create_folder_validation_error(self, base_url: str, mock_folder_write_data: dict) -> None:
+        """Test creating a folder with validation error."""
+        invalid_data = {"invalid": "data"}
+        respx.post(f"{base_url}/api/folders/").mock(return_value=Response(201, json=invalid_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            folder_data = FolderWrite(**mock_folder_write_data)
+            with pytest.raises(CISOAssistantValidationError):
+                client.create_folder(folder_data)
+
+    @respx.mock
+    def test_delete_folder_success(self, base_url: str) -> None:
+        """Test deleting a folder successfully."""
+        folder_id = "550e8400-e29b-41d4-a716-446655440000"
+        respx.delete(f"{base_url}/api/folders/{folder_id}/").mock(return_value=Response(204))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            # Should not raise any exception
+            client.delete_folder(folder_id)
+
+    @respx.mock
+    def test_delete_folder_http_error(self, base_url: str) -> None:
+        """Test deleting a folder with HTTP error."""
+        folder_id = "550e8400-e29b-41d4-a716-446655440000"
+        respx.delete(f"{base_url}/api/folders/{folder_id}/").mock(return_value=Response(404, text="Not Found"))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            with pytest.raises(CISOAssistantAPIError):
+                client.delete_folder(folder_id)
+
+    @respx.mock
+    def test_list_assets_success(self, base_url: str, mock_paged_assets_data: dict) -> None:
+        """Test listing assets successfully."""
+        respx.get(f"{base_url}/api/assets/").mock(return_value=Response(200, json=mock_paged_assets_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.list_assets()
+            assert result.count == 1
+            assert len(result.results) == 1
+            assert result.results[0].name == "Test Asset"
+
+    @respx.mock
+    def test_get_asset_success(self, base_url: str, mock_asset_data: dict) -> None:
+        """Test getting an asset successfully."""
+        asset_id = "770e8400-e29b-41d4-a716-446655440000"
+        respx.get(f"{base_url}/api/assets/{asset_id}/").mock(return_value=Response(200, json=mock_asset_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.get_asset(asset_id)
+            assert result.id == asset_id
+            assert result.name == "Test Asset"
+            assert result.business_value == "High"
+
+    @respx.mock
+    def test_create_asset_success(
+        self, base_url: str, mock_asset_write_data: dict, mock_created_asset_data: dict
+    ) -> None:
+        """Test creating an asset successfully."""
+        respx.post(f"{base_url}/api/assets/").mock(return_value=Response(201, json=mock_created_asset_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            asset_data = AssetWrite(**mock_asset_write_data)
+            result = client.create_asset(asset_data)
+            assert result.id == "880e8400-e29b-41d4-a716-446655440002"
+            assert result.name == "New Test Asset"
+            assert result.business_value == "Medium"
+
+    @respx.mock
+    def test_delete_asset_success(self, base_url: str) -> None:
+        """Test deleting an asset successfully."""
+        asset_id = "770e8400-e29b-41d4-a716-446655440000"
+        respx.delete(f"{base_url}/api/assets/{asset_id}/").mock(return_value=Response(204))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            # Should not raise any exception
+            client.delete_asset(asset_id)
+
+    @respx.mock
+    def test_list_evidences_success(self, base_url: str, mock_paged_evidences_data: dict) -> None:
+        """Test listing evidences successfully."""
+        respx.get(f"{base_url}/api/evidences/").mock(return_value=Response(200, json=mock_paged_evidences_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.list_evidences()
+            assert result.count == 1
+            assert len(result.results) == 1
+            assert result.results[0].name == "Test Evidence"
+
+    @respx.mock
+    def test_get_evidence_success(self, base_url: str, mock_evidence_data: dict) -> None:
+        """Test getting an evidence successfully."""
+        evidence_id = "990e8400-e29b-41d4-a716-446655440000"
+        respx.get(f"{base_url}/api/evidences/{evidence_id}/").mock(return_value=Response(200, json=mock_evidence_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            result = client.get_evidence(evidence_id)
+            assert result.id == evidence_id
+            assert result.name == "Test Evidence"
+            assert result.attachment == "https://example.com/evidence.pdf"
+
+    @respx.mock
+    def test_create_evidence_success(
+        self, base_url: str, mock_evidence_write_data: dict, mock_created_evidence_data: dict
+    ) -> None:
+        """Test creating an evidence successfully."""
+        respx.post(f"{base_url}/api/evidences/").mock(return_value=Response(201, json=mock_created_evidence_data))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            evidence_data = EvidenceWrite(**mock_evidence_write_data)
+            result = client.create_evidence(evidence_data)
+            assert result.id == "aa0e8400-e29b-41d4-a716-446655440003"
+            assert result.name == "New Test Evidence"
+
+    @respx.mock
+    def test_delete_evidence_success(self, base_url: str) -> None:
+        """Test deleting an evidence successfully."""
+        evidence_id = "990e8400-e29b-41d4-a716-446655440000"
+        respx.delete(f"{base_url}/api/evidences/{evidence_id}/").mock(return_value=Response(204))
+
+        with CISOAssistantClient(base_url=base_url) as client:
+            # Should not raise any exception
+            client.delete_evidence(evidence_id)
