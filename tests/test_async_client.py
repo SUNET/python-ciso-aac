@@ -39,6 +39,43 @@ class TestAsyncCISOAssistantClient:
         async with AsyncCISOAssistantClient(base_url=base_url) as client:
             assert client is not None
 
+    async def test_context_manager_reuse(self, base_url: str) -> None:
+        """Test that client can be reused after being closed."""
+        client = AsyncCISOAssistantClient(base_url=base_url)
+
+        # First use
+        async with client as c1:
+            assert c1.base_url == base_url
+            assert not c1._client.is_closed
+
+        # Client should be closed after exiting context
+        assert client._client.is_closed
+
+        # Second use - should reinitialize
+        async with client as c2:
+            assert c2.base_url == base_url
+            assert not c2._client.is_closed
+
+        # Client should be closed again
+        assert client._client.is_closed
+
+    @respx.mock
+    async def test_context_manager_reuse_with_requests(self, base_url: str, mock_paged_folders_data: dict) -> None:
+        """Test that client can make requests after being reused."""
+        respx.get(f"{base_url}/api/folders/").mock(return_value=Response(200, json=mock_paged_folders_data))
+
+        client = AsyncCISOAssistantClient(base_url=base_url)
+
+        # First use
+        async with client:
+            result1 = await client.list_folders()
+            assert result1.count == 1
+
+        # Second use - should work after being closed and reopened
+        async with client:
+            result2 = await client.list_folders()
+            assert result2.count == 1
+
     @respx.mock
     async def test_list_folders_success(self, base_url: str, mock_paged_folders_data: dict) -> None:
         """Test listing folders successfully."""
