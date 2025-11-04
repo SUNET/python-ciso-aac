@@ -280,7 +280,10 @@ class CISOAssistantClient(BaseCISOAssistantClient):
                 - SSLContext: custom SSL context
         """
         super().__init__(base_url, timeout, headers, follow_redirects, auth, verify)
-        self._client = httpx.Client(
+        self._client = self._init_client()
+
+    def _init_client(self) -> httpx.Client:
+        return httpx.Client(
             base_url=self.base_url,
             timeout=self.timeout,
             headers=self.headers,
@@ -290,6 +293,8 @@ class CISOAssistantClient(BaseCISOAssistantClient):
 
     def __enter__(self) -> "CISOAssistantClient":
         """Enter context manager."""
+        if self._client.is_closed:
+            self._client = self._init_client()
         return self
 
     def __exit__(self, *args: Any) -> None:
@@ -646,7 +651,10 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
                 - SSLContext: custom SSL context
         """
         super().__init__(base_url, timeout, headers, follow_redirects, auth, verify)
-        self._client = httpx.AsyncClient(
+        self._client = self._init_client()
+
+    def _init_client(self) -> httpx.AsyncClient:
+        return httpx.AsyncClient(
             base_url=self.base_url,
             timeout=self.timeout,
             headers=self.headers,
@@ -656,6 +664,8 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
 
     async def __aenter__(self) -> "AsyncCISOAssistantClient":
         """Enter async context manager."""
+        if self._client.is_closed:
+            self._client = self._init_client()
         return self
 
     async def __aexit__(self, *args: Any) -> None:
