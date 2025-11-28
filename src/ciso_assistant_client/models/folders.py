@@ -32,5 +32,5 @@ class FolderWrite(BaseModel):
 
     name: str = Field(..., max_length=200, description="Folder name")
     description: str | None = Field(None, description="Folder description")
-    parent_folder: ParentFolder | None = Field(None, description="Parent folder")
+    parent_folder: str | None = Field(None, description="Parent folder UUID")
     is_published: bool = Field(default=False, description="Published status")

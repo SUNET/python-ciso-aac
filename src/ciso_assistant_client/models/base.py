@@ -31,5 +31,5 @@ class BaseDetail(BaseModel):
 
 class BaseWrite(BaseModel):
     name: str = Field(..., max_length=200, description="Item name")
-    description: str | None = Field(None, description="Item description")
+    description: str | None = Field(default=None, description="Item description")
     is_published: bool = Field(default=False, description="Published status")

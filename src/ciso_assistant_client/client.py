@@ -20,6 +20,7 @@ from .models import (
     PagedEvidenceRead,
     PagedFolderRead,
 )
+from .models.assets import AssetWriteResponse
 from .models.base import BasePagedRead
 
 # TypeVar for maintaining type in pagination methods
@@ -177,7 +178,7 @@ class BaseCISOAssistantClient(ABC):
             raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
 
     @staticmethod
-    def _validate_asset_write(data: dict[str, Any]) -> AssetRead:
+    def _validate_asset_write(data: dict[str, Any]) -> AssetWriteResponse:
         """Validate and return asset write response.
 
         Note: The API returns AssetRead schema even for write operations.
@@ -192,7 +193,7 @@ class BaseCISOAssistantClient(ABC):
             CISOAssistantValidationError: If validation fails
         """
         try:
-            return AssetRead.model_validate(data)
+            return AssetWriteResponse.model_validate(data)
         except ValidationError as e:
             raise CISOAssistantValidationError(f"Failed to validate response: {e}") from e
 
@@ -446,7 +447,7 @@ class CISOAssistantClient(BaseCISOAssistantClient):
         assert isinstance(data, dict)
         return self._validate_asset(data)
 
-    def create_asset(self, asset: AssetWrite) -> AssetRead:
+    def create_asset(self, asset: AssetWrite) -> AssetWriteResponse:
         """Create a new asset.
 
         Args:
@@ -817,7 +818,7 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
         assert isinstance(data, dict)
         return self._validate_asset(data)
 
-    async def create_asset(self, asset: AssetWrite) -> AssetRead:
+    async def create_asset(self, asset: AssetWrite) -> AssetWriteResponse:
         """Create a new asset.
 
         Args:
