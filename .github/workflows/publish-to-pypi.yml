@@ -3,13 +3,13 @@ name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
 on: push
 
 jobs:
+  unittests:
+    uses: .github/workflows/run-tests.yaml
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
     needs:
       - unittests
-      - typecheck
-      - lint
     steps:
     - uses: actions/checkout@v4
       with:
