@@ -4,12 +4,7 @@ on: push
 
 jobs:
   unittests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: ./.github/workflows/unittests
+    uses: ./.github/workflows/run-tests.yml
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
