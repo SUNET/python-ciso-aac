@@ -4,16 +4,18 @@ on: push
 
 jobs:
   unittests:
-    uses: .github/workflows/run-tests.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: .github/workflows/run-tests.yaml
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
     needs:
       - unittests
     steps:
-    - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
