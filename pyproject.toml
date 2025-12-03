@@ -1,6 +1,6 @@
 [project]
 name = "python-ciso-assistant-client"
-version = "0.1.0"
+version = "0.1.1"
 description = "A client library for accessing CISO Assistant API"
 authors = [
     { name = "Johan Lundberg", email = "lundberg@sunet.se" }
