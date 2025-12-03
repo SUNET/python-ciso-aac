@@ -32,3 +32,11 @@ clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete
 	find . -type f -name "*.pyo" -delete
+
+tag_version:
+	@NEW_VERSION=$$(grep "^version =" pyproject.toml | cut -d'=' -f2 | tr -d '" '); \
+	if [ -z "$$NEW_VERSION" ]; then echo "Error: Could not determine new version"; exit 1; fi; \
+	echo "Setting version to $$NEW_VERSION"; \
+	git add pyproject.toml; \
+	git commit -m "Version $$NEW_VERSION"; \
+	git tag v$$NEW_VERSION
