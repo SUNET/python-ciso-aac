@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: ./.github/workflows/run-tests.yaml
+      - uses: ./.github/workflows/unittests
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
