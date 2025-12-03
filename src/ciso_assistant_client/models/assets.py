@@ -25,7 +25,7 @@ class AssetRead(BaseDetail):
     """Asset read schema."""
 
     folder: ParentFolder = Field(..., description="Folder UUID")
-    path: list[ParentFolder] = Field(..., description="Folder paths")
+    path: list[ParentFolder] = Field(default_factory=list, description="Folder paths")
     parent_assets: list[Dependency] = Field(default_factory=list, description="Parent asset UUIDs")
     children_assets: list[Dependency] = Field(default_factory=list, description="Children asset UUIDs")
     owner: list[str] = Field(default_factory=list, description="Owner UUIDs")
@@ -33,6 +33,7 @@ class AssetRead(BaseDetail):
     type: AssetType = Field(..., description="Asset type")
     security_exceptions: list[str] = Field(default_factory=list, description="Security exception UUIDs")
     reference_link: str | None = Field(None, description="External reference link")
+    business_value: str | None = Field(None, max_length=200, description="Business value")
 
 
 class PagedAssetRead(BasePagedRead):
@@ -49,6 +50,7 @@ class AssetWrite(BaseWrite):
     parent_assets: list[str] = Field(default_factory=list, description="Parent asset UUIDs")
     reference_link: str | None = Field(default=None, max_length=2048, description="External reference link")
     filtering_labels: list[str] = Field(default_factory=list, description="Filtering label UUIDs")
+    business_value: str | None = Field(None, max_length=200, description="Business value")
 
 
 class AssetWriteResponse(BaseWrite):
@@ -57,3 +59,4 @@ class AssetWriteResponse(BaseWrite):
     updated_at: datetime = Field(..., description="Update timestamp")
     folder: str = Field(..., description="Folder UUID")
     parent_assets: list[str] = Field(default_factory=list, description="Parent asset UUIDs")
+    business_value: str | None = Field(None, max_length=200, description="Business value")

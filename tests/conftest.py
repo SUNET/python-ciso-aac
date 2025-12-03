@@ -120,7 +120,10 @@ def mock_asset_data() -> dict:
     """Return mock asset data."""
     return {
         "id": "770e8400-e29b-41d4-a716-446655440000",
-        "folder": "550e8400-e29b-41d4-a716-446655440000",
+        "folder": {
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "str": "Test Folder",
+        },
         "parent_assets": [],
         "children_assets": [],
         "owner": [],
