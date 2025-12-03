@@ -48,7 +48,7 @@ jobs:
           uv pip install mypy
       - name: Run mypy to check types
         run: |
-          mypy --version
+          uv tool run mypy --version
           make typecheck
 
   lint:
