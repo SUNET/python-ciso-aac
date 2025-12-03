@@ -45,6 +45,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
+          uv pip install mypy
       - name: Run mypy to check types
         run: |
           mypy --version
