@@ -1,5 +1,5 @@
 [project]
-name = "python-ciso-assistant-client"
+name = "ciso-aac"
 version = "0.1.1"
 description = "A client library for accessing CISO Assistant API"
 authors = [
