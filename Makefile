@@ -39,4 +39,4 @@ tag_version:
 	echo "Setting version to $$NEW_VERSION"; \
 	git add pyproject.toml; \
 	git commit -m "Version $$NEW_VERSION"; \
-	git tag v$$NEW_VERSION
+	git tag -a -m "Version $$NEW_VERSION" v$$NEW_VERSION
