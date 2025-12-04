@@ -1,4 +1,4 @@
-# Development Context for python-ciso-assistant-client
+# Development Context for python-ciso-aac
 
 > **For LLMs:** Read this entire document to understand the project state. All code is complete, tested, and follows project conventions. When making changes: (1) run `make reformat` after modifications, (2) run `make test` to verify tests pass, (3) run `make typecheck` to verify type safety, (4) maintain the existing architecture patterns (ABC base class, static validation methods, etc.).
 

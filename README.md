@@ -1,4 +1,4 @@
-# python-ciso-assistant-client
+# CISO Assistant API Client
 
 A Python HTTP client library for the CISO Assistant API, providing both synchronous and asynchronous interfaces with full type safety.
 
@@ -17,13 +17,13 @@ A Python HTTP client library for the CISO Assistant API, providing both synchron
 ## Installation
 
 ```bash
-pip install python-ciso-assistant-client
+pip install ciso-aac
 ```
 
 Or with uv:
 
 ```bash
-uv pip install python-ciso-assistant-client
+uv pip install ciso-aac
 ```
 
 ## Quick Start
