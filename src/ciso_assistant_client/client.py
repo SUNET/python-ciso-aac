@@ -1,5 +1,6 @@
 """HTTP client for the CISO Assistant API."""
 
+import logging
 from abc import ABC
 from ssl import SSLContext
 from typing import Any, TypeVar
@@ -22,6 +23,8 @@ from .models import (
 )
 from .models.assets import AssetWriteResponse
 from .models.base import BasePagedRead
+
+logger = logging.getLogger(__name__)
 
 # TypeVar for maintaining type in pagination methods
 PagedT = TypeVar("PagedT", bound=BasePagedRead)
@@ -76,6 +79,14 @@ class BaseCISOAssistantClient(ABC):
         Raises:
             CISOAssistantAPIError: If the API returns an error
         """
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
+
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -387,6 +398,13 @@ class CISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = self._client.delete(f"/api/folders/{folder_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -475,6 +493,13 @@ class CISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = self._client.delete(f"/api/assets/{asset_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -563,6 +588,13 @@ class CISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = self._client.delete(f"/api/evidences/{evidence_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -758,6 +790,13 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = await self._client.delete(f"/api/folders/{folder_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -846,6 +885,13 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = await self._client.delete(f"/api/assets/{asset_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
@@ -934,6 +980,13 @@ class AsyncCISOAssistantClient(BaseCISOAssistantClient):
             CISOAssistantAPIError: If the API request fails
         """
         response = await self._client.delete(f"/api/evidences/{evidence_id}/")
+        logger.debug(
+            "HTTP %s %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
+        logger.debug("Response content: %s", response.text)
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
